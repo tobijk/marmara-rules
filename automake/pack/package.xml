@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+<!ENTITY rules       SYSTEM "rules.xml">
+<!ENTITY automake    SYSTEM "automake.xml">
+<!ENTITY changelog   SYSTEM "changelog.xml">
+<!ENTITY description SYSTEM "description.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR" value="automake-src"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+        <def name="XPACK_AUTOMAKE_VERSION" value="1.11"/>
+    </defines>
+
+    <source name="automake" architecture-independent="true">
+        &description;
+
+        <sources>
+            <file src="automake-1.11.1.tar.bz2"/>
+        </sources>
+
+        <requires>
+            <package name="autoconf"/>
+            <package name="autotools-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &automake;
+
+    <!-- changelog -->
+    &changelog;
+
+</control>

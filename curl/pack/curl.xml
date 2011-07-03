@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="curl" section="web">
+    <description>
+        <summary>Get a file from an HTTP, HTTPS or FTP server</summary>
+        <p>
+        curl is a client to get files from servers using any of the supported
+        protocols. The command is designed to work without user interaction
+        or any kind of interactivity.
+        </p>
+        <p>
+        curl offers a busload of useful tricks like proxy support, user
+        authentication, ftp upload, HTTP post, file transfer resume and more.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/bin/curl"/>
+    </contents>
+</package>

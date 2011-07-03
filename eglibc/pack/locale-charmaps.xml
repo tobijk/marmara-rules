@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="locale-charmaps" section="libs">
+    <description>
+        <summary>Internationalization support files for the GNU C library</summary>
+        <p>
+            Machine-readable data files, shared objects and programs used by the
+        C library for localization (l10n) and internationalization (i18n) support.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/share/i18n/charmaps/"/>
+    </contents>
+</package>

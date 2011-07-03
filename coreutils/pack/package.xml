@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+<!ENTITY description SYSTEM "description.xml">
+<!ENTITY rules       SYSTEM "rules.xml">
+<!ENTITY coreutils   SYSTEM "coreutils.xml">
+<!ENTITY changelog   SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR" value="coreutils-src"/>
+        <def name="XPACK_BUILD_DIR" value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="coreutils" architecture-independent="false">
+        &description;
+
+        <sources>
+            <file src="coreutils-8.12.tar.xz"/>
+        </sources>
+
+        <requires>
+            <package name="libattr1-dev"/>
+            <package name="libacl1-dev"/>
+            <package name="bison"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &coreutils;
+
+    <!-- changelog -->
+    &changelog;
+
+</control>

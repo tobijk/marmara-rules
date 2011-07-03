@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libcurl3" section="libs">
+    <description>
+        <summary>Multi-protocol file transfer library (OpenSSL)</summary>
+        <p>
+        libcurl is designed to be a solid, usable, reliable and portable
+        multi-protocol file transfer library.
+        </p>
+        <p>
+        SSL support is provided by OpenSSL.
+        </p>
+        <p>
+        This is the shared version of libcurl.
+        </p>
+    </description>
+
+    <requires>
+        <package name="ca-certificates"/>
+    </requires>
+
+    <contents>
+        <file src="/usr/lib/lib*.so.*"/>
+    </contents>
+</package>

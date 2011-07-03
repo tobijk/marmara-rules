@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+<!ENTITY rules       SYSTEM "rules.xml">
+<!ENTITY libcap2     SYSTEM "libcap2.xml">
+<!ENTITY libcap2-bin SYSTEM "libcap2-bin.xml">
+<!ENTITY libcap-dev  SYSTEM "libcap2-dev.xml">
+<!ENTITY changelog   SYSTEM "changelog.xml">
+<!ENTITY description SYSTEM "description.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR" value="libcap-src"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="libcap2" architecture-independent="false">
+        &description;
+
+        <sources>
+            <file src="libcap-2.21.tar.bz2"/>
+        </sources>
+
+        <requires>
+            <package name="libc6-dev"/>
+            <package name="libattr1-dev"/>
+            <package name="libpam0g-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libcap2;
+    &libcap2-bin;
+    &libcap-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control>

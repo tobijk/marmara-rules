@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="autotools-dev" section="devel">
+    &description;
+
+    <contents>
+        <file src="/usr/share/misc/"/>
+    </contents>
+</package>

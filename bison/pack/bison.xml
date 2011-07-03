@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="bison" section="devel">
+    &description;
+
+    <requires>
+        <package name="m4"/>
+    </requires>
+
+    <contents>
+        <file src="/usr/bin/"/>
+        <file src="/usr/share/bison/"/>
+        <file src="/usr/share/aclocal/"/>
+        <file src="/usr/lib/"/>
+    </contents>
+</package>

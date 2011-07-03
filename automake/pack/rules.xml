@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+cd $XPACK_SOURCE_DIR
+./configure --prefix=/usr
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make DESTDIR=$XPACK_INSTALL_DIR install
+
+rm -f $XPACK_INSTALL_DIR/usr/share/automake-${XPACK_AUTOMAKE_VERSION}/config.sub
+rm -f $XPACK_INSTALL_DIR/usr/share/automake-${XPACK_AUTOMAKE_VERSION}/config.guess
+
+ln -s /usr/share/misc/config.sub \
+    $XPACK_INSTALL_DIR/usr/share/automake-${XPACK_AUTOMAKE_VERSION}/config.sub
+
+ln -s /usr/share/misc/config.guess \
+    $XPACK_INSTALL_DIR/usr/share/automake-${XPACK_AUTOMAKE_VERSION}/config.guess
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+<!ENTITY rules       SYSTEM "rules.xml">
+<!ENTITY mt          SYSTEM "mt.xml">
+<!ENTITY cpio        SYSTEM "cpio.xml">
+<!ENTITY changelog   SYSTEM "changelog.xml">
+<!ENTITY description SYSTEM "description.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR" value="cpio-src"/>
+        <def name="XPACK_BUILD_DIR" value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="cpio" architecture-independent="false">
+        &description;
+
+        <sources>
+            <file src="cpio-2.11.tar.bz2"/>
+        </sources>
+
+        <requires>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &cpio;
+    &mt;
+
+    <!-- changelog -->
+    &changelog;
+
+</control>

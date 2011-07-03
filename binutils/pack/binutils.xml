@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="binutils" section="devel">
+    &description;
+
+    <requires>
+        <package name="m4"/>
+        <package name="perl"/>
+    </requires>
+
+    <contents>
+        <file src="/usr/bin/*"/>
+        <file src="/usr/lib/lib*-2.*.so"/>
+        <file src="/usr/lib/ldscripts/"/>
+    </contents>
+</package>

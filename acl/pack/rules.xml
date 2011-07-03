@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+export INSTALL_USER=root
+export INSTALL_GROUP=root
+export OPTIMIZER=-O
+export DEBUG=-DNDEBUG
+export DISTRIBUTION=splash
+export CC='gcc -g'
+
+cd $XPACK_SOURCE_DIR
+autoconf
+./configure --prefix=/usr --libexecdir=/lib --libdir=/lib
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make LIBTOOL=/usr/bin/libtool -j${XPACK_PARALLEL_JOBS}
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make DIST_ROOT=$XPACK_INSTALL_DIR LIBTOOL=/usr/bin/libtool -C . install
+make DIST_ROOT=$XPACK_INSTALL_DIR LIBTOOL=/usr/bin/libtool -C . install-dev
+make DIST_ROOT=$XPACK_INSTALL_DIR LIBTOOL=/usr/bin/libtool -C . install-lib
+make DIST_ROOT=$XPACK_INSTALL_DIR LIBTOOL=/usr/bin/libtool -C build src-manifest
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>

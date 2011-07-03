@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+<!ENTITY rules       SYSTEM "rules.xml">
+<!ENTITY libacl1     SYSTEM "libacl1.xml">
+<!ENTITY acl         SYSTEM "acl.xml">
+<!ENTITY libacl1-dev SYSTEM "libacl1-dev.xml">
+<!ENTITY changelog   SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR" value="acl-src"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="attr" architecture-independent="false">
+        <description>
+            <summary>Utilities and libraries for manipulating access control lists</summary>
+        </description>
+
+        <sources>
+            <file src="acl-2.2.51.src.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="autoconf"/>
+            <package name="automake"/>
+            <package name="libtool"/>
+            <package name="libattr1-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &acl;
+    &libacl1;
+    &libacl1-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control>

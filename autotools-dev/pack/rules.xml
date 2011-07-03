@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <install>
+    <![CDATA[
+
+install -m 0755 -d $XPACK_INSTALL_DIR/usr
+install -m 0755 -d $XPACK_INSTALL_DIR/usr/share
+install -m 0755 -d $XPACK_INSTALL_DIR/usr/share/misc
+
+install -m 0644 $XPACK_SOURCE_DIR/config.guess $XPACK_INSTALL_DIR/usr/share/misc/
+install -m 0644 $XPACK_SOURCE_DIR/config.sub   $XPACK_INSTALL_DIR/usr/share/misc/
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>

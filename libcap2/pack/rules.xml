@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+exit 0 # nothing to do
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make DESTDIR=$XPACK_INSTALL_DIR RAISE_SETFCAP=no lib=lib install
+
+# extra directories
+install -m 0755 -d $XPACK_INSTALL_DIR/usr/share
+install -m 0755 -d $XPACK_INSTALL_DIR/etc/security
+
+#mv -v $XPACK_SOURCE_DIR/pam-configs $XPACK_INSTALL_DIR/usr/share
+mv -v $XPACK_SOURCE_DIR/pam_cap/capability.conf $XPACK_INSTALL_DIR/etc/security/
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>

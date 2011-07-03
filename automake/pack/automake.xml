@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="automake" section="devel">
+    &description;
+
+    <requires>
+        <package name="autoconf"/>
+        <package name="autotools-dev"/>
+    </requires>
+
+    <contents>
+        <file src="/usr/bin/*-*"/>
+        <file src="/usr/share/automake-*/**"/>
+        <file src="/usr/share/aclocal-*/**"/>
+    </contents>
+</package>

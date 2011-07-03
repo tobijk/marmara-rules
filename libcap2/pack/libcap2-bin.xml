@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libcap2-bin" section="admin">
+    <description>
+        <summary>basic utility programs for using capabilities</summary>
+        <p>
+            This package contains the programs
+        </p>
+        <ul>
+            <li>sucap</li>
+            <li>execap</li>
+            <li>getpcaps</li>
+            <li>setpcaps</li>
+        </ul>
+        <p>
+        for manipulation of capabilities. 
+        </p>
+    </description>
+
+    <requires>
+        <package name="libpam-runtime" version=">= 1.1.1"/>
+    </requires>
+
+    <contents>
+        <file src="/lib/security/*"/>
+        <file src="/sbin/"/>
+
+        <!-- need to understand what this is for in Debian
+        <file src="/usr/share/pam-configs/"/>
+        -->
+
+        <file src="/etc/security"/>
+    </contents>
+</package>

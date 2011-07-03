@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+<!ENTITY rules       SYSTEM "rules.xml">
+<!ENTITY autodev     SYSTEM "autotools-dev.xml">
+<!ENTITY changelog   SYSTEM "changelog.xml">
+<!ENTITY description SYSTEM "description.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR" value="autotools-dev-src"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="autotools-dev" architecture-independent="true">
+        &description;
+
+        <sources>
+            <file src="autotools-dev-20110511.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="perl"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &autodev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control>

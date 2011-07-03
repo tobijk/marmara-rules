@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+$XPACK_SOURCE_DIR/configure  \
+            --with-sysroot=/ \
+            --enable-shared  \
+            --enable-plugins \
+            --prefix=/usr    \
+            --disable-nls    \
+            --with-pkgversion="GNU Binutils for Splash Linux"
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make -j${XPACK_PARALLEL_JOBS}
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make DESTDIR=$XPACK_INSTALL_DIR install
+
+# turn hardlink into symbolic link
+rm $XPACK_INSTALL_DIR/usr/bin/ld
+ln -s ld.bfd $XPACK_INSTALL_DIR/usr/bin/ld
+
+# copy additional header files
+for i in demangle.h libiberty.h; do
+  cp $XPACK_SOURCE_DIR/include/$i $XPACK_INSTALL_DIR/usr/include
+done
+
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_INSTALL_DIR" "$XPACK_BUILD_DIR"
+
+    ]]>
+    </clean>
+
+</rules>

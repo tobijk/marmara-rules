@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+<!ENTITY rules       SYSTEM "rules.xml">
+<!ENTITY m4          SYSTEM "m4.xml">
+<!ENTITY changelog   SYSTEM "changelog.xml">
+<!ENTITY description SYSTEM "description.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR" value="m4-src"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="m4" architecture-independent="false">
+        &description;
+
+        <sources>
+            <file src="m4-1.4.16.tar.bz2"/>
+        </sources>
+
+        <requires>
+            <package name="libc6-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &m4;
+
+    <!-- changelog -->
+    &changelog;
+
+</control>

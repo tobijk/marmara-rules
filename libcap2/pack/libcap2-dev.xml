@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libcap2-dev" section="devel">
+    <description>
+        <summary>development libraries and header files for libcap2</summary>
+        <p>
+            Contains the necessary support for building applications that use
+        capabilities.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/include/"/>
+        <file src="/lib/*.{so,a}"/>
+    </contents>
+
+    <requires>
+        <package name="libcap2" version="=="/>
+    </requires>
+</package>

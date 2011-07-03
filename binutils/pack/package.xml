@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+<!ENTITY description SYSTEM "description.xml">
+<!ENTITY rules       SYSTEM "rules.xml">
+<!ENTITY binutils    SYSTEM "binutils.xml">
+<!ENTITY binutils-dev SYSTEM "binutils-dev.xml">
+<!ENTITY changelog   SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR" value="binutils-src"/>
+        <def name="XPACK_BUILD_DIR" value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="binutils" architecture-independent="false">
+        &description;
+
+        <sources>
+            <file src="binutils-2.21.tar.bz2"/>
+        </sources>
+
+        <patches>
+            <patchset>
+                <file src="patches/001_ld_makefile_patch.dpatch"/>
+            </patchset>
+        </patches>
+
+        <requires>
+            <package name="autoconf" version=">= 2.64"/>
+            <package name="bison"/>
+            <package name="flex"/>
+            <package name="file"/>
+            <package name="zlib1g-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &binutils;
+    &binutils-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control>

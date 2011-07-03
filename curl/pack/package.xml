@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+<!ENTITY rules       SYSTEM "rules.xml">
+<!ENTITY libcurl3    SYSTEM "libcurl3.xml">
+<!ENTITY curl        SYSTEM "curl.xml">
+<!ENTITY libcurl3-dev SYSTEM "libcurl3-dev.xml">
+<!ENTITY changelog   SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR" value="curl-src"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+        <def name="XPACK_BUILD_DIR" value="build-openssl"/>
+    </defines>
+
+    <source name="curl" architecture-independent="false">
+        <description>
+            <summary>Multi-protocol file transfer library and utility</summary>
+        </description>
+
+        <sources>
+            <file src="curl-7.21.6.tar.bz2"/>
+        </sources>
+
+        <requires>
+            <package name="autoconf"/>
+            <package name="libtool"/>
+            <package name="automake"/>
+            <package name="binutils"/>
+            <package name="libssl-dev"/>
+            <package name="zlib1g-dev"/>
+            <package name="libidn11-dev"/>
+            <package name="libdb-dev"/>
+            <package name="libgcrypt11-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &curl;
+    &libcurl3;
+    &libcurl3-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control>

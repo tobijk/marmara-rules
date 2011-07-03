@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+<!ENTITY rules       SYSTEM "rules.xml">
+<!ENTITY libattr1    SYSTEM "libattr1.xml">
+<!ENTITY attr        SYSTEM "attr.xml">
+<!ENTITY libattr-dev SYSTEM "libattr-dev.xml">
+<!ENTITY changelog   SYSTEM "changelog.xml">
+<!ENTITY description SYSTEM "description.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR" value="attr-src"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="attr" architecture-independent="false">
+        &description;
+
+        <sources>
+            <file src="attr-2.4.46.src.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="libc6-dev"/>
+            <package name="autoconf"/>
+            <package name="automake"/>
+            <package name="libtool"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &attr;
+    &libattr1;
+    &libattr-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control>
