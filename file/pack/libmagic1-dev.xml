@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libmagic1-dev" section="libdevel">
+    <description>
+        <summary>File type determination library using "magic" numbers (development)</summary>
+        <p>
+        This library can be used to classify files according to magic number tests. It
+        implements the core functionality of the file command.
+        </p>
+        <p>
+        This package contains the development files.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/lib/*.so"/>
+        <file src="/usr/include"/>
+    </contents>
+
+</package>

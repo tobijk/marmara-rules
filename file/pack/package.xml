@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+<!ENTITY rules       SYSTEM "rules.xml">
+<!ENTITY file        SYSTEM "file.xml">
+<!ENTITY libmagic1   SYSTEM "libmagic1.xml">
+<!ENTITY libmagic1-dev SYSTEM "libmagic1-dev.xml">
+<!ENTITY description SYSTEM "description.xml">
+<!ENTITY changelog   SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR" value="file-src"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+        <def name="XPACK_BUILD_DIR" value="tmp-build"/>
+    </defines>
+
+    <source name="curl" architecture-independent="false">
+        &description;
+
+        <sources>
+            <file src="file-5.07.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="autotools-dev"/>
+            <package name="zlib1g-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &file;
+    &libmagic1;
+    &libmagic1-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control>
