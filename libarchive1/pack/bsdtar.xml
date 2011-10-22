@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="bsdtar" section="utils">
+    <description>
+        <summary>tar from FreeBSD, using libarchive</summary>
+        <p>
+          FreeBSD tar implementation using libarchive as the backend
+          for the archiving and extraction of data.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/bin/bsdtar"/>
+    </contents>
+</package>

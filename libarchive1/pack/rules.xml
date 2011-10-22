@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+CFLAGS=-g $XPACK_SOURCE_DIR/configure \
+    --prefix=/usr \
+    --enable-bsdcpio=shared \
+    --enable-bsdtar=shared
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make DESTDIR=$XPACK_INSTALL_DIR install
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_BUILD_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>

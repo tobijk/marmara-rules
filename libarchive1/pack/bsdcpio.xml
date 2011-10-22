@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="bsdcpio" section="utils">
+    <description>
+        <summary>cpio from FreeBSD, using libarchive</summary>
+        <p>
+          This package provides an interface similar to cpio, but using
+          libarchive as the backend for the archiving and extraction of data.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/bin/bsdcpio"/>
+    </contents>
+</package>

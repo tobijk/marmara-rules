@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libarchive1" section="libs">
+    <description>
+        <summary>Single library to read/write tar, cpio, pax, zip, iso9660, etc.</summary>
+        <p>
+        The libarchive library provides a flexible interface for reading and
+        writing streaming archive files such as tar and cpio.
+        </p>
+    </description>
+
+    <contents>
+        <file src="usr/lib/*.so.*"/>
+    </contents>
+</package>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libarchive1-dev SYSTEM "libarchive1-dev.xml">
+  <!ENTITY libarchive1 SYSTEM "libarchive1.xml">
+  <!ENTITY bsdtar SYSTEM "bsdtar.xml">
+  <!ENTITY bsdcpio SYSTEM "bsdcpio.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="libarchive-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="libarchive" architecture-independent="false">
+        <description>
+            <summary>Single library to read/write tar, cpio, pax, zip, iso9660, etc.</summary>
+            <p>
+            The libarchive library provides a flexible interface for reading and
+            writing streaming archive files such as tar and cpio.  The library is
+            inherently stream-oriented; readers serially iterate through the archive,
+            writers serially add things to the archive.  In particular, note that
+            there is no built-in support for random access nor for in-place
+            modification.
+            </p>
+            <p>
+            libarchive can read at least five tar formats, four cpio formats,
+            ISO9660 CD/DVD images (including RockRidge extensions), and ZIP
+            files.
+            </p>
+            <p>
+            libarchive can write two tar formats (ustar and pax), one cpio format
+            (odc/POSIX), and two types of shar files (with and without uuencoding).
+            </p>
+        </description>
+
+        <sources>
+            <file src="libarchive-2.8.5.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="autotools-dev"/>
+            <package name="libbz2-dev"/>
+            <package name="liblzma-dev"/>
+            <package name="libxml2-dev"/>
+            <package name="zlib1g-dev"/>
+            <package name="libacl1-dev"/>
+            <package name="e2fslibs-dev"/>
+            <package name="libattr1-dev"/>
+            <package name="bison"/>
+            <package name="libtool"/>
+            <package name="sharutils"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libarchive1-dev;
+    &libarchive1;
+    &bsdtar;
+    &bsdcpio;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
