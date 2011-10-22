@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY util-linux-essential SYSTEM "util-linux-essential.xml">
+  <!ENTITY util-linux-auxiliary SYSTEM "util-linux-auxiliary.xml">
+  <!ENTITY util-linux SYSTEM "util-linux.xml">
+  <!ENTITY libblkid1 SYSTEM "libblkid1.xml">
+  <!ENTITY libblkid1-dev SYSTEM "libblkid1-dev.xml">
+  <!ENTITY libuuid1 SYSTEM "libuuid1.xml">
+  <!ENTITY libuuid1-dev SYSTEM "libuuid1-dev.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="util-linux-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="util-linux" architecture-independent="false">
+        <description>
+            <summary>Miscellaneous system utilities</summary>
+            <p>
+            This package contains a number of important utilities, most of which
+            are oriented towards maintenance of your system.  Some of the more
+            important utilities included in this package allow you to partition
+            your hard disk, view kernel messages, and create new filesystems.
+            </p>
+        </description>
+
+        <sources>
+            <file src="util-linux-ng-2.17.2.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="libncurses5-dev"/>
+            <package name="libslang2-dev" version="&gt;= 2.0.4"/>
+            <package name="zlib1g-dev"/>
+            <package name="pkg-config"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &util-linux-essential;
+    &util-linux-auxiliary;
+    &util-linux;
+
+    &libblkid1;
+    &libblkid1-dev;
+    &libuuid1;
+    &libuuid1-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 

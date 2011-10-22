@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libuuid1-dev" section="libdevel">
+    <description>
+        <summary>universally unique id library - headers and static libraries</summary>
+        <p>
+        libuuid generates and parses 128-bit universally unique ids (UUIDs).
+        See RFC 4122 for more information.
+        </p>
+        <p>
+        This package contains the development environment for the uuid library.
+        </p>
+    </description>
+
+    <requires>
+        <package name="libuuid1" version="=="/>
+    </requires>
+
+    <contents>
+        <file src="/usr/include/uuid"/>
+        <file src="/usr/lib/libuuid.{so,a,la}"/>
+    </contents>
+</package>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="util-linux-essential" section="utils">
+    <description>
+        <summary>Essential system utilities</summary>
+        <p>
+        This package contains essential system utilities from the util-linux-ng
+        project.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/sbin/blkid"/>
+        <file src="/sbin/switch_root"/>
+        <file src="/sbin/fsck.cramfs"/>
+        <file src="/sbin/findfs"/>
+        <file src="/sbin/ctrlaltdel"/>
+        <file src="/sbin/fsck"/>
+        <file src="/sbin/losetup"/>
+        <file src="/sbin/mkfs.cramfs"/>
+        <file src="/sbin/swapoff"/>
+        <file src="/sbin/blockdev"/>
+        <file src="/sbin/mkswap"/>
+        <file src="/sbin/agetty"/>
+        <file src="/sbin/mkfs"/>
+        <file src="/sbin/hwclock"/>
+        <file src="/sbin/swapon"/>
+        <file src="/usr/sbin/uuidd"/>
+        <file src="/usr/bin/ipcs"/>
+        <file src="/usr/bin/logger"/>
+        <file src="/usr/bin/mcookie"/>
+        <file src="/usr/bin/uuidgen"/>
+        <file src="/usr/bin/taskset"/>
+        <file src="/usr/bin/ipcmk"/>
+        <file src="/usr/bin/ionice"/>
+        <file src="/usr/bin/setsid"/>
+        <file src="/usr/bin/flock"/>
+        <file src="/usr/bin/unshare"/>
+        <file src="/usr/bin/setterm"/>
+        <file src="/usr/bin/rename"/>
+        <file src="/usr/bin/renice"/>
+        <file src="/usr/bin/chrt"/>
+        <file src="/usr/bin/ipcrm"/>
+        <file src="/usr/bin/getopt"/>
+        <file src="/bin/dmesg"/>
+        <file src="/bin/umount"/>
+        <file src="/bin/more"/>
+        <file src="/bin/mount"/>
+    </contents>
+</package>

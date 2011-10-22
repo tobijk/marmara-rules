@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="util-linux" section="utils">
+    <description>
+        <summary>Miscellaneous system utilities</summary>
+        <p>
+        This meta package installs the full set of util-linux-ng utilities.
+        </p>
+    </description>
+
+    <requires>
+        <package name="util-linux-essential" version="=="/>
+        <package name="util-linux-auxiliary" version="=="/>
+    </requires>
+</package>

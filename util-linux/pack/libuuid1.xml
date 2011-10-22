@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libuuid1" section="libs">
+    <description>
+        <summary>Universally Unique ID library</summary>
+        <p>
+        The libuuid library generates and parses 128-bit universally unique
+        ids (UUIDs).  A UUID is an identifier that is unique across both
+        space and time, with respect to the space of all UUIDs.  A UUID can
+        be used for multiple purposes, from tagging objects with an extremely
+        short lifetime, to reliably identifying very persistent objects
+        across a network.
+        </p>
+        <p>
+        See RFC 4122 for more information.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/lib/libuuid.so.*"/>
+    </contents>
+</package>
