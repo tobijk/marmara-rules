@@ -4,6 +4,9 @@
     <prepare>
     <![CDATA[
 
+cd $XPACK_SOURCE_DIR
+autoreconf -i --force
+
 cd $XPACK_BUILD_DIR
 CFLAGS=-g $XPACK_SOURCE_DIR/configure \
     --prefix=/usr \
