@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY gawk SYSTEM "gawk.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="gawk-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="gawk" architecture-independent="false">
+        <description>
+            <summary>GNU awk, a pattern scanning and processing language</summary>
+            <p>
+            `awk', a program that you can use to select particular records in a
+            file and perform operations upon them.
+            </p>
+            <p>
+            Gawk is the GNU Project's implementation of the AWK programming language.
+            It conforms to the definition of the language in the POSIX 1003.2 Command
+            Language And Utilities Standard. This version in turn is based on the
+            description in The AWK Programming Language, by Aho, Kernighan, and
+            Weinberger, with the additional features defined in the System V Release
+            4 version of UNIX awk. Gawk also provides more recent Bell Labs awk
+            extensions, and some GNU-specific extensions.
+            </p>
+        </description>
+
+        <sources>
+            <file src="gawk-3.1.8.tar.bz2"/>
+        </sources>
+
+        <requires>
+            <package name="gettext"/>
+            <package name="bison"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &gawk;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
