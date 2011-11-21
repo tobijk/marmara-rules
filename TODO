@@ -1,0 +1,2 @@
+* double check dependencies for dev packages
+  - possibly scan for those dependencies automatically
