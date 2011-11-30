@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<package name="libcurl3" section="libs">
+<package name="libcurl4-nss" section="libs">
     <description>
-        <summary>Multi-protocol file transfer library (OpenSSL)</summary>
+        <summary>Multi-protocol file transfer library (NSS)</summary>
         <p>
         libcurl is designed to be a solid, usable, reliable and portable
         multi-protocol file transfer library.
         </p>
         <p>
-        SSL support is provided by OpenSSL.
+        SSL support is provided by NSS.
         </p>
         <p>
         This is the shared version of libcurl.
@@ -18,7 +18,7 @@
         <package name="ca-certificates"/>
     </requires>
 
-    <contents>
-        <file src="/usr/lib/lib*.so.*"/>
+    <contents subdir="nss">
+        <file src="/usr/lib/*.so.*"/>
     </contents>
 </package>

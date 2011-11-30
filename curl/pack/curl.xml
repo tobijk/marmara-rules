@@ -13,7 +13,7 @@
         </p>
     </description>
 
-    <contents>
+    <contents subdir="openssl">
         <file src="/usr/bin/curl"/>
     </contents>
 </package>

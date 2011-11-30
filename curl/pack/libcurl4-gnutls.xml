@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libcurl4-gnutls" section="libs">
+    <description>
+        <summary>Multi-protocol file transfer library (GnuTLS)</summary>
+        <p>
+        libcurl is designed to be a solid, usable, reliable and portable
+        multi-protocol file transfer library.
+        </p>
+        <p>
+        SSL support is provided by GnuTLS.
+        </p>
+        <p>
+        This is the shared version of libcurl.
+        </p>
+    </description>
+
+    <requires>
+        <package name="ca-certificates"/>
+    </requires>
+
+    <contents subdir="gnutls">
+        <file src="/usr/lib/*.so.*"/>
+    </contents>
+</package>

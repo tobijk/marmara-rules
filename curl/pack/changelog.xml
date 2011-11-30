@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
     <release version="7.21.6" revision="1" maintainer="Tobias Koch"
-     email="tobias.koch@gmail.com" date="2011-06-18 23:45:00 GMT+2">
+     email="tobias.koch@gmail.com" date="2011-11-22 21:31:52 EET">
         <changeset>
             <li>Initial packaging</li>
         </changeset>

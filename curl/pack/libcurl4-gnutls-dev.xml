@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libcurl4-gnutls-dev" section="libdevel">
+    <description>
+        <summary>Development files and documentation for libcurl (GnuTLS)</summary>
+        <p>
+        These files (ie. includes, static library, manual pages) allow to
+        build software which uses libcurl.
+        </p>
+        <p>
+        SSL support is provided by GnuTLS.
+        </p>
+        <p>
+        HTML and PDF versions of all the manual pages are also provided.
+        </p>
+    </description>
+
+    <requires>
+        <package name="libcurl4-gnutls" version="=="/>
+        <package name="libc6-dev"/>
+        <package name="libgnutls-dev"/>
+        <package name="zlib1g-dev"/>
+        <package name="libidn11-dev"/>
+        <package name="libkrb5-dev"/>
+        <package name="libldap2-dev"/>
+    </requires>
+
+    <conflicts>
+        <package name="libcurl4-dev"/>
+        <package name="libcurl4-nss-dev"/>
+    </conflicts>
+
+    <contents subdir="gnutls">
+        <file src="/usr/bin/curl-config"/>
+        <file src="/usr/lib/*.{so,a,la}"/>
+        <file src="/usr/include/"/>
+    </contents>
+</package>

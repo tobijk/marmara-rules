@@ -4,19 +4,37 @@
     <prepare>
     <![CDATA[
 
-cd $XPACK_SOURCE_DIR
-./buildconf
+# duplicate source tree
+for t in openssl gnutls nss
+do
+    cp -a $XPACK_SOURCE_DIR $XPACK_BUILD_DIR/$t
+done
 
-cd $XPACK_BUILD_DIR
-$XPACK_SOURCE_DIR/configure --prefix=/usr \
-    --mandir=/usr/share/man \
-    --disable-manual \
-    --disable-dependency-tracking \
-    --enable-ipv6 \
-    --with-lber-lib=lber \
-    --enable-versioned-symbol \
-    --with-gssapi=/usr \
-    --with-ca-path=/etc/ssl/certs
+
+# patch for non openssl builds
+for t in gnutls nss
+do
+    patch -f -p1 -d $XPACK_BUILD_DIR/$t -i $XPACK_BASE_DIR/patches/$t
+done
+
+
+# rebuild configuration
+for t in openssl gnutls nss
+do
+    cd $XPACK_BUILD_DIR/$t && ./buildconf
+done
+
+# run configure in all source trees
+CONFIGURE_ARGS="--prefix=/usr --mandir=/usr/share/man --disable-dependency-tracking --enable-ipv6 --with-lber-lib=lber --enable-manual --enable-versioned-symbols --with-gssapi=/usr"
+
+cd $XPACK_BUILD_DIR/openssl
+./configure $CONFIGURE_ARGS --with-ca-path=/etc/ssl/certs
+
+cd $XPACK_BUILD_DIR/gnutls
+./configure $CONFIGURE_ARGS --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt --without-ssl --with-gnutls --without-libssh2
+
+cd $XPACK_BUILD_DIR/nss
+./configure $CONFIGURE_ARGS --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt --without-ssl --with-nss --without-libssh2
 
     ]]>
     </prepare>
@@ -24,8 +42,10 @@ $XPACK_SOURCE_DIR/configure --prefix=/usr \
     <build>
     <![CDATA[
 
-cd $XPACK_BUILD_DIR
-make -j${XPACK_PARALLEL_JOBS}
+for t in openssl gnutls nss
+do
+    make -j$XPACK_PARALLEL_JOBS -C $XPACK_BUILD_DIR/$t
+done
 
     ]]>
     </build>
@@ -33,8 +53,11 @@ make -j${XPACK_PARALLEL_JOBS}
     <install>
     <![CDATA[
 
-cd $XPACK_BUILD_DIR
-make DESTDIR=$XPACK_INSTALL_DIR install
+for t in openssl gnutls nss
+do
+    mkdir -p $XPACK_INSTALL_DIR/$t
+    make -C $XPACK_BUILD_DIR/$t DESTDIR=$XPACK_INSTALL_DIR/$t install
+done
 
     ]]>
     </install>
@@ -42,7 +65,7 @@ make DESTDIR=$XPACK_INSTALL_DIR install
     <clean>
     <![CDATA[
 
-rm -fr "$XPACK_SOURCE_DIR" "$XPACK_INSTALL_DIR" "$XPACK_BUILD_DIR"
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_BUILD_DIR" "$XPACK_INSTALL_DIR"
 
     ]]>
     </clean>

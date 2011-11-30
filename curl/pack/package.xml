@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE control [
-<!ENTITY rules       SYSTEM "rules.xml">
-<!ENTITY libcurl3    SYSTEM "libcurl3.xml">
-<!ENTITY curl        SYSTEM "curl.xml">
-<!ENTITY libcurl3-dev SYSTEM "libcurl3-dev.xml">
-<!ENTITY changelog   SYSTEM "changelog.xml">
+  <!ENTITY curl SYSTEM "curl.xml">
+  <!ENTITY libcurl4 SYSTEM "libcurl4.xml">
+  <!ENTITY libcurl4-gnutls SYSTEM "libcurl4-gnutls.xml">
+  <!ENTITY libcurl4-nss SYSTEM "libcurl4-nss.xml">
+  <!ENTITY libcurl4-dev SYSTEM "libcurl4-dev.xml">
+  <!ENTITY libcurl4-gnutls-dev SYSTEM "libcurl4-gnutls-dev.xml">
+  <!ENTITY libcurl4-nss-dev SYSTEM "libcurl4-nss-dev.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
 ]>
 <control xmlns:xi="http://www.w3.org/2001/XInclude">
 
     <defines>
-        <def name="XPACK_SOURCE_DIR" value="curl-src"/>
+        <def name="XPACK_SOURCE_DIR"  value="curl-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
         <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
-        <def name="XPACK_BUILD_DIR" value="build-openssl"/>
     </defines>
 
     <source name="curl" architecture-independent="false">
         <description>
-            <summary>Multi-protocol file transfer library and utility</summary>
+            <summary>Get a file from an HTTP, HTTPS or FTP server</summary>
+            <p>
+            curl is a client to get files from servers using any of the supported
+            protocols. The command is designed to work without user interaction
+            or any kind of interactivity.
+            </p>
+            <p>
+            curl offers a busload of useful tricks like proxy support, user
+            authentication, ftp upload, HTTP post, file transfer resume and more.
+            </p>
         </description>
 
         <sources>
@@ -26,12 +39,18 @@
         <requires>
             <package name="autoconf"/>
             <package name="libtool"/>
-            <package name="automake"/>
+            <package name="automake1.9"/>
             <package name="binutils"/>
             <package name="libssl-dev"/>
+            <package name="libgnutls-dev"/>
+            <package name="libnss3-dev"/>
             <package name="zlib1g-dev"/>
+            <package name="libkrb5-dev"/>
             <package name="libidn11-dev"/>
-            <package name="libdb-dev"/>
+            <package name="groff-base"/>
+            <package name="libdb-dev" version="&gt;= 4.7"/>
+            <package name="libldap2-dev"/>
+            <package name="openssh-server"/>
             <package name="libgcrypt11-dev"/>
         </requires>
 
@@ -41,10 +60,14 @@
 
     <!-- package rules -->
     &curl;
-    &libcurl3;
-    &libcurl3-dev;
+    &libcurl4;
+    &libcurl4-gnutls;
+    &libcurl4-nss;
+    &libcurl4-dev;
+    &libcurl4-gnutls-dev;
+    &libcurl4-nss-dev;
 
     <!-- changelog -->
     &changelog;
 
-</control>
+</control> 
