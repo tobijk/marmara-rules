@@ -9,9 +9,6 @@
         <p>
         SSL support is provided by GnuTLS.
         </p>
-        <p>
-        HTML and PDF versions of all the manual pages are also provided.
-        </p>
     </description>
 
     <requires>
