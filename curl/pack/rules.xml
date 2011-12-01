@@ -57,6 +57,13 @@ for t in openssl gnutls nss
 do
     mkdir -p $XPACK_INSTALL_DIR/$t
     make -C $XPACK_BUILD_DIR/$t DESTDIR=$XPACK_INSTALL_DIR/$t install
+
+    # compatibility symlinks
+    if [ "$t" = "openssl" ]; then
+        ln -s libcurl.so.4 $XPACK_INSTALL_DIR/$t/usr/lib/libcurl.so.3
+    else
+        ln -s libcurl-$t.so.4 $XPACK_INSTALL_DIR/$t/usr/lib/libcurl-$t.so.3
+    fi
 done
 
     ]]>
