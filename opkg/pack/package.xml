@@ -23,8 +23,7 @@
         <requires>
             <package name="libc6-dev"/>
             <choice>
-                <package name="libcurl4-gnutls-dev"/>
-                <package name="libcurl4-openssl-dev"/>
+                <package name="libcurl4-dev"/>
             </choice>
             <package name="libgpgme11-dev"/>
             <package name="libgpg-error-dev"/>
