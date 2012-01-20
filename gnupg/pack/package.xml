@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY gnupg SYSTEM "gnupg.xml">
+  <!ENTITY gpgv SYSTEM "gpgv.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="gnupg-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="gnupg" architecture-independent="false">
+        <description>
+            <summary>GNU privacy guard - a free PGP replacement</summary>
+            <p>
+            GnuPG is GNU's tool for secure communication and data storage.
+            It can be used to encrypt data and to create digital signatures.
+            It includes an advanced key management facility and is compliant
+            with the proposed OpenPGP Internet standard as described in RFC 4880.
+            </p>
+            <p>
+            GnuPG 1.4 is the standalone, non-modularized series. In contrast to
+            the version 2 series, shipped with the gnupg2 package, it comes
+            with no support for S/MIME and some other tools useful for desktop
+            environments, but also with less dependencies.
+            </p>
+            <p>
+            The gnupg package is built without libcurl. So it does not support
+            HKPS keyservers. Install the gnupg-curl package if you want to use
+            the keyserver helper tools built with libcurl and supporting HKPS.
+            </p>
+            <p>
+            GnuPG does not use any patented algorithms. This means it cannot be
+            compatible with PGP2, because that uses IDEA (which is patented in
+            a number of countries).
+            </p>
+        </description>
+
+        <sources>
+            <file src="gnupg-1.4.11.tar.bz2"/>
+        </sources>
+
+        <requires>
+            <package name="libz-dev"/>
+            <package name="libbz2-dev"/>
+            <package name="libusb-dev"/>
+            <package name="libreadline-dev"/>
+            <package name="file"/>
+            <package name="libcurl4-gnutls-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &gnupg;
+    &gpgv;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
