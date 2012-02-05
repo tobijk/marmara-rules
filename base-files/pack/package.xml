@@ -15,7 +15,7 @@
         &description;
 
         <sources>
-            <file src="base-files-20110703.1.tar.gz"/>
+            <file src="base-files-20120205.1.tar.gz"/>
         </sources>
 
         &rules;
