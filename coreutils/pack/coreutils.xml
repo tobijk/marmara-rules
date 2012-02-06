@@ -3,9 +3,7 @@
     &description;
 
     <contents>
-        <file src="/bin/*"/>
-        <file src="/usr/bin/*"/>
-        <file src="/usr/sbin/*"/>
-        <file src="/usr/lib"/>
+        <file src="/usr/bin/"/>
+        <file src="/usr/lib/"/>
     </contents>
 </package>
