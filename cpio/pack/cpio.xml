@@ -3,6 +3,6 @@
     &description;
 
     <contents>
-        <file src="/bin/cpio"/>
+        <file src="/usr/bin/cpio"/>
     </contents>
 </package>

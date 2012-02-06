@@ -5,6 +5,6 @@
     </description>
 
     <contents>
-        <file src="/bin/mt"/>
+        <file src="/usr/bin/mt"/>
     </contents>
 </package>
