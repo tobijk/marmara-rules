@@ -10,7 +10,7 @@ export CC='gcc -g'
 
 cd $XPACK_SOURCE_DIR
 autoconf
-./configure --prefix=/usr --libexecdir=/lib --libdir=/lib
+./configure --prefix=/usr --libexecdir=/usr/lib --libdir=/usr/lib
 
     ]]>
     </prepare>

@@ -20,6 +20,6 @@
 
     <contents>
         <file src="/usr/include/"/>
-        <file src="/lib/*.{so,a,la}"/>
+        <file src="/usr/lib/*.{so,a,la}"/>
     </contents>
 </package>

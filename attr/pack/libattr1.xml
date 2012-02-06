@@ -3,6 +3,6 @@
     &description;
 
     <contents>
-        <file src="/lib/lib*.so.*"/>
+        <file src="/usr/lib/lib*.so.*"/>
     </contents>
 </package>
