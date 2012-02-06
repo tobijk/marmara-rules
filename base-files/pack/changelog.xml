@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
-    <release epoch="0" version="20120205.1" revision="1" maintainer="Tobias Koch"
-     email="tobias.koch@gmail.com" date="2012-02-05 11:13:00 GMT+3">
+    <release epoch="0" version="20120206.1" revision="1" maintainer="Tobias Koch"
+     email="tobias.koch@gmail.com" date="2012-02-06 15:27:00 GMT+3">
         <changeset>
             <li>Implement /usr merge</li>
             <li>Rename splash_version to marmara_version</li>
