@@ -18,7 +18,6 @@
     </description>
 
     <contents>
-        <file src="/sbin/ldconfig"/>
         <file src="/usr/bin/catchsegv"/>
         <file src="/usr/bin/getconf"/>
         <file src="/usr/bin/getent"/>
@@ -27,7 +26,10 @@
         <file src="/usr/bin/localedef"/>
         <file src="/usr/bin/locale"/>
         <file src="/usr/bin/tzselect"/>
+
         <file mode="04755" src="/usr/lib/pt_chown"/>
+
+        <file src="/usr/sbin/ldconfig"/>
         <file src="/usr/sbin/iconvconfig"/>
         <file src="/usr/sbin/rpcinfo"/>
         <file src="/usr/sbin/zdump"/>

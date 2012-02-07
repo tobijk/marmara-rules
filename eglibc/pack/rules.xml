@@ -11,14 +11,18 @@ mv ports libc
 
 # configure
 cd "$XPACK_BUILD_DIR"
-BASH_SHELL="/bin/sh" CC="gcc -fno-stack-protector -U_FORTIFY_SOURCE" $XPACK_SOURCE_DIR/libc/configure --prefix=/usr \
-        --sysconfdir=/etc --libexecdir=/usr/lib
+BASH_SHELL="/bin/sh" CC="gcc -fno-stack-protector -U_FORTIFY_SOURCE" $XPACK_SOURCE_DIR/libc/configure \
+        --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib
 
     ]]>
     </prepare>
 
     <build>
     <![CDATA[
+
+# create configparams
+echo "slibdir=/usr/lib" >> "$XPACK_BUILD_DIR/configparms"
+echo "rootsbindir=/usr/sbin" >> "$XPACK_BUILD_DIR/configparms"
 
 cd "$XPACK_BUILD_DIR"
 make PARALLELMFLAGS="-j${XPACK_PARALLEL_JOBS}"

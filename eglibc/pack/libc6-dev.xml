@@ -7,6 +7,7 @@
         and link programs which use the standard C library.
         </p>
     </description>
+
     <requires>
         <package name="libc6-dev-bin" version="=="/>
         <package name="libc6" version="=="/>
@@ -15,7 +16,25 @@
     <contents>
         <file src="/usr/lib/*.a"/>
         <file src="/usr/lib/*.o"/>
-        <file src="/usr/lib/*.so"/>
         <file src="/usr/include/*"/>
+
+        <!-- those are the symlinks -->
+        <file src="/usr/lib/libcidn.so"/>
+        <file src="/usr/lib/libthread_db.so"/>
+        <file src="/usr/lib/libBrokenLocale.so"/>
+        <file src="/usr/lib/libanl.so"/>
+        <file src="/usr/lib/libnss_hesiod.so"/>
+        <file src="/usr/lib/librt.so"/>
+        <file src="/usr/lib/libnsl.so"/>
+        <file src="/usr/lib/libnss_compat.so"/>
+        <file src="/usr/lib/libnss_nis.so"/>
+        <file src="/usr/lib/libutil.so"/>
+        <file src="/usr/lib/libresolv.so"/>
+        <file src="/usr/lib/libnss_dns.so"/>
+        <file src="/usr/lib/libdl.so"/>
+        <file src="/usr/lib/libcrypt.so"/>
+        <file src="/usr/lib/libnss_files.so"/>
+        <file src="/usr/lib/libm.so"/>
+        <file src="/usr/lib/libnss_nisplus.so"/>
     </contents>
 </package>

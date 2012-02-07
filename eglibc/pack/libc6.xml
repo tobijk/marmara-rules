@@ -17,8 +17,35 @@
     <contents>
         <dir src="/etc/ld.so.conf.d"/>
         <file src="/etc/gai.conf"/>
-        <file src="/lib/*.so*"/>
         <file src="/usr/lib/gconv/"/>
+        <file src="/usr/lib/*.so.*"/>
+        
+        <!-- those are not symlinks -->
+        <file src="/usr/lib/libresolv-2.12.1.so"/>
+        <file src="/usr/lib/libnss_nisplus-2.12.1.so"/>
+        <file src="/usr/lib/libpthread-2.12.1.so"/>
+        <file src="/usr/lib/libm-2.12.1.so"/>
+        <file src="/usr/lib/libnss_hesiod-2.12.1.so"/>
+        <file src="/usr/lib/libthread_db-1.0.so"/>
+        <file src="/usr/lib/libmemusage.so"/>
+        <file src="/usr/lib/libnss_files-2.12.1.so"/>
+        <file src="/usr/lib/libcidn-2.12.1.so"/>
+        <file src="/usr/lib/libpthread.so"/>
+        <file src="/usr/lib/libdl-2.12.1.so"/>
+        <file src="/usr/lib/ld-2.12.1.so"/>
+        <file src="/usr/lib/libc.so"/>
+        <file src="/usr/lib/libc-2.12.1.so"/>
+        <file src="/usr/lib/libnss_dns-2.12.1.so"/>
+        <file src="/usr/lib/libnsl-2.12.1.so"/>
+        <file src="/usr/lib/libanl-2.12.1.so"/>
+        <file src="/usr/lib/libpcprofile.so"/>
+        <file src="/usr/lib/libutil-2.12.1.so"/>
+        <file src="/usr/lib/libnss_compat-2.12.1.so"/>
+        <file src="/usr/lib/libSegFault.so"/>
+        <file src="/usr/lib/libnss_nis-2.12.1.so"/>
+        <file src="/usr/lib/libcrypt-2.12.1.so"/>
+        <file src="/usr/lib/librt-2.12.1.so"/>
+        <file src="/usr/lib/libBrokenLocale-2.12.1.so"/>
     </contents>
 
     <maintainer-scripts>

@@ -8,6 +8,10 @@
         </p>
     </description>
 
+    <requires>
+        <package name="perl"/>
+    </requires>
+
     <contents>
         <file src="/usr/bin/gencat"/>
         <file src="/usr/bin/mtrace"/>
