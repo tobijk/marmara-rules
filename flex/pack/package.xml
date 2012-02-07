@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY flex SYSTEM "flex.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="flex-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="flex" architecture-independent="false">
+        <description>
+            <summary>A fast lexical analyzer generator.</summary>
+            <p>
+            Flex is a tool for generating scanners: programs which recognized lexical
+            patterns in text. It reads the given input files for a description of a
+            scanner to generate. The description is in the form of pairs of regular
+            expressions and C code, called rules. Flex generates as output a C source
+            file, lex.yy.c, which defines a routine yylex().  This file is compiled
+            and linked with the -lfl library to produce an executable. When the
+            executable is run, it analyzes its input for occurrences of the regular
+            expressions. Whenever it finds one, it executes the corresponding C code.
+            </p>
+        </description>
+
+        <sources>
+            <file src="flex-2.5.35.tar.bz2"/>
+        </sources>
+
+        <requires>
+            <package name="bison"/>
+            <package name="file"/>
+            <package name="autoconf"/>
+            <package name="automake"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &flex;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
