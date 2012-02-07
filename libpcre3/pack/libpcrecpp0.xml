@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libpcrecpp0" section="libs">
+    <description>
+        <summary>Perl 5 Compatible Regular Expression Library - C++ runtime files</summary>
+        <p>
+        This is a C++ library of functions to support regular expressions whose syntax 
+        and semantics are as close as possible to those of the Perl 5 language.
+        </p>
+        <p>
+        This package contains the C++ runtime library.
+        </p>
+    </description>
+
+    <requires>
+    </requires>
+
+    <contents>
+        <file src="/usr/lib/libpcrecpp.so.*"/>
+    </contents>
+</package>
