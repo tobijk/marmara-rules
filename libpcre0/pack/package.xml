@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE control [
-  <!ENTITY libpcre3 SYSTEM "libpcre3.xml">
+  <!ENTITY libpcre0 SYSTEM "libpcre0.xml">
   <!ENTITY libpcrecpp0 SYSTEM "libpcrecpp0.xml">
-  <!ENTITY libpcre3-dev SYSTEM "libpcre3-dev.xml">
+  <!ENTITY libpcre0-dev SYSTEM "libpcre0-dev.xml">
   <!ENTITY pcregrep SYSTEM "pcregrep.xml">
   <!ENTITY rules SYSTEM "rules.xml">
   <!ENTITY changelog SYSTEM "changelog.xml">
@@ -10,12 +10,12 @@
 <control xmlns:xi="http://www.w3.org/2001/XInclude">
 
     <defines>
-        <def name="XPACK_SOURCE_DIR"  value="pcre3-src"/>
+        <def name="XPACK_SOURCE_DIR"  value="pcre0-src"/>
         <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
         <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
     </defines>
 
-    <source name="pcre3" architecture-independent="false">
+    <source name="pcre0" architecture-independent="false">
         <description>
             <summary>Perl 5 Compatible Regular Expression Library - runtime files</summary>
             <p>
@@ -36,9 +36,9 @@
     </source>
 
     <!-- package rules -->
-    &libpcre3;
+    &libpcre0;
     &libpcrecpp0;
-    &libpcre3-dev;
+    &libpcre0-dev;
     &pcregrep;
 
     <!-- changelog -->

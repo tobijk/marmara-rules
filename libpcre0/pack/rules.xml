@@ -6,7 +6,10 @@
 
 cd $XPACK_BUILD_DIR
 CXXFLAGS="-g -O2" CFLAGS="-g -O2" $XPACK_SOURCE_DIR/configure \
-    --prefix=/usr
+    --prefix=/usr \
+    --enable-unicode-properties \
+    --enable-utf8 \
+    --enable-newline-is-any
 
     ]]>
     </prepare>
