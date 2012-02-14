@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<package name="libgdbm4-dev" section="libdevel">
+<package name="libgdbm-dev" section="libdevel">
     <description>
         <summary>GNU dbm database routines (development files)</summary>
         <p>
@@ -15,7 +15,7 @@
     </requires>
 
     <contents>
-        <file src="/usr/lib/*.{so,la,a}"/>
         <file src="/usr/include/"/>
+        <file src="/usr/lib/*.so"/>
     </contents>
 </package>

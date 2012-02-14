@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE control [
   <!ENTITY libgdbm4 SYSTEM "libgdbm4.xml">
-  <!ENTITY libgdbm4-dev SYSTEM "libgdbm4-dev.xml">
+  <!ENTITY libgdbm-dev SYSTEM "libgdbm-dev.xml">
   <!ENTITY rules SYSTEM "rules.xml">
   <!ENTITY changelog SYSTEM "changelog.xml">
 ]>
 <control xmlns:xi="http://www.w3.org/2001/XInclude">
 
     <defines>
-        <def name="XPACK_SOURCE_DIR"  value="gdbm-src"/>
+        <def name="XPACK_SOURCE_DIR"  value="gdbm4-src"/>
         <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
         <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
     </defines>
 
-    <source name="gdbm" architecture-independent="false">
+    <source name="gdbm4" architecture-independent="false">
         <description>
             <summary>GNU dbm database routines (runtime version)</summary>
             <p>
@@ -44,7 +44,7 @@
 
     <!-- package rules -->
     &libgdbm4;
-    &libgdbm4-dev;
+    &libgdbm-dev;
 
     <!-- changelog -->
     &changelog;

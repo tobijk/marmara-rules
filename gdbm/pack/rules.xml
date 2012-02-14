@@ -7,6 +7,8 @@
 cd $XPACK_BUILD_DIR
 CFLAGS=-g $XPACK_SOURCE_DIR/configure \
     --prefix=/usr \
+    --disable-silent-rules \
+    --enable-libgdbm-compat \
     --disable-nls
 
     ]]>
@@ -16,7 +18,7 @@ CFLAGS=-g $XPACK_SOURCE_DIR/configure \
     <![CDATA[
 
 cd $XPACK_BUILD_DIR
-make
+make -j$XPACK_PARALLEL_JOBS
 
     ]]>
     </build>
@@ -26,6 +28,7 @@ make
 
 cd $XPACK_BUILD_DIR
 make DESTDIR=$XPACK_INSTALL_DIR install
+ln -s ndbm.h $XPACK_INSTALL_DIR/usr/include/gdbm-ndbm.h
 
     ]]>
     </install>
