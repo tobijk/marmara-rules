@@ -5,7 +5,8 @@
     <![CDATA[
 
 cd $XPACK_BUILD_DIR
-CFLAGS='-g -O2' CPIO_MT_PROG=mt $XPACK_SOURCE_DIR/configure\
+CPIO_MT_PROG=mt $XPACK_SOURCE_DIR/configure\
+    --disable-silent-rules \
     --prefix=/usr \
     --mandir=/usr/share/man \
     --infodir=/usr/share/info \
