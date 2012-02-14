@@ -13,3 +13,5 @@
 * create an nssswitch.conf during bootstrap
 
 * check maintainer info and package descriptions
+
+* lib dev files should not append version (with exceptions)
