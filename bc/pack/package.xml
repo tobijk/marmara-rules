@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY bc SYSTEM "bc.xml">
+  <!ENTITY dc SYSTEM "dc.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="bc-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="bc" architecture-independent="false">
+        <description>
+            <summary>The GNU bc arbitrary precision calculator language</summary>
+            <p>
+            GNU bc is an interactive algebraic language with arbitrary precision which
+            follows the POSIX 1003.2 draft standard, with several extensions including
+            multi-character variable names, an `else' statement and full Boolean 
+            expressions.  GNU bc does not require the separate GNU dc program.
+            Home page: http://directory.fsf.org/GNU/bc.html
+            </p>
+        </description>
+
+        <sources>
+            <file src="bc-1.06.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="bison"/>
+            <package name="file"/>
+            <package name="flex"/>
+            <package name="libreadline-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &bc;
+    &dc;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
