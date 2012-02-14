@@ -1,2 +1,15 @@
+* make sure all compiles use -g -O?
+
+* script to set/change timezone
+
 * double check dependencies for dev packages
   - possibly scan for those dependencies automatically
+
+* put in place 'alternatives' for
+  - automake
+
+* an init script for nscd, uuidd
+
+* create an nssswitch.conf during bootstrap
+
+* check maintainer info and package descriptions
