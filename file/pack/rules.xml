@@ -9,7 +9,7 @@ $XPACK_SOURCE_DIR/configure --prefix=/usr \
     --datadir=\${prefix}/share \
     --mandir=\${prefix}/share/man \
     --enable-fsect-man5 \
-    CFLAGS="-DHOWMANY=0x18000"
+    CFLAGS="$CFLAGS -DHOWMANY=0x18000"
 
     ]]>
     </prepare>

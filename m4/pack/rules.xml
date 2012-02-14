@@ -14,7 +14,7 @@ cd $XPACK_SOURCE_DIR
     <![CDATA[
 
 cd $XPACK_BUILD_DIR
-make CFLAGS='-g -Wall -O2'
+make -j$XPACK_PARALLEL_JOBS
 
     ]]>
     </build>

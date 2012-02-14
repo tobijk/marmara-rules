@@ -5,7 +5,8 @@
     <![CDATA[
 
 cd $XPACK_BUILD_DIR
-CFLAGS=-g $XPACK_SOURCE_DIR/configure \
+$XPACK_SOURCE_DIR/configure \
+    --disable-silent-rules \
     --prefix=/usr \
     --disable-nls \
     --disable-use-tty-group
@@ -17,7 +18,7 @@ CFLAGS=-g $XPACK_SOURCE_DIR/configure \
     <![CDATA[
 
 cd $XPACK_BUILD_DIR
-make
+make -j$XPACK_PARALLEL_JOBS
 
     ]]>
     </build>

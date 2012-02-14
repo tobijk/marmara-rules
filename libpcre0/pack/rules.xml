@@ -5,7 +5,7 @@
     <![CDATA[
 
 cd $XPACK_BUILD_DIR
-CXXFLAGS="-g -O2" CFLAGS="-g -O2" $XPACK_SOURCE_DIR/configure \
+$XPACK_SOURCE_DIR/configure \
     --prefix=/usr \
     --enable-unicode-properties \
     --enable-utf8 \

@@ -5,7 +5,7 @@
     <![CDATA[
 
 cd $XPACK_SOURCE_DIR
-AWK=awk EMACS=no CFLAGS='-g -O2' ./configure --prefix=/usr --with-lispdir=
+AWK=awk EMACS=no ./configure --prefix=/usr --with-lispdir=
 
     ]]>
     </prepare>
