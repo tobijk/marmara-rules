@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
-    <release version="1.06.95" revision="1" maintainer="Tobias Koch"
+    <release version="1.06" revision="1" maintainer="Tobias Koch"
      email="tobias.koch@gmail.com" date="2012-02-14 13:46:37 EET">
         <changeset>
             <li>Initial packaging</li>
