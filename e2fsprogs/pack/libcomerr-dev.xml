@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libcomerr-dev" section="libdevel">
+    <description>
+        <summary>common error description library - headers and static libraries</summary>
+        <p>
+        libcom_err is an attempt to present a common error-handling mechanism to
+        manipulate the most common form of error code in a fashion that does not
+        have the problems identified with mechanisms commonly in use.
+        </p>
+        <p>
+        This package contains the development environment for the com_err library.
+        </p>
+    </description>
+
+    <requires>
+        <package name="libc6-dev"/>
+        <package name="libcomerr2" version="=="/>
+    </requires>
+
+    <contents>
+        <file src="/usr/include/et/"/>
+        <file src="/usr/share/et/"/>
+        <file src="/usr/include/com_err.h"/>
+        <file src="/usr/bin/compile_et"/>
+        <file src="/usr/lib/libcom_err.{so,a}"/>
+        <file src="/usr/lib/pkgconfig/com_err.pc"/>
+    </contents>
+</package>

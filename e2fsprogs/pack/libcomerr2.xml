@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libcomerr2" section="libs">
+    <description>
+        <summary>common error description library</summary>
+        <p>
+        libcomerr is an attempt to present a common error-handling mechanism to
+        manipulate the most common form of error code in a fashion that does not
+        have the problems identified with mechanisms commonly in use.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/lib/libcom_err.so.*"/>
+    </contents>
+</package>

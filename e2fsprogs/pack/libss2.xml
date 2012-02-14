@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libss2" section="libs">
+    <description>
+        <summary>command-line interface parsing library</summary>
+        <p>
+        This package includes a tool that parses a command table to generate
+        a simple command-line interface parser, the include files needed to
+        compile and use it, and the static libs.
+        </p>
+        <p>
+        It was originally inspired by the Multics SubSystem library.
+        </p>
+    </description>
+
+    <requires>
+        <package name="libcomerr2"/>
+    </requires>
+
+    <contents>
+        <file src="/usr/lib/libss.so.*"/>
+    </contents>
+</package>

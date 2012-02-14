@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="e2fslibs-dev" section="libdevel">
+    <description>
+        <summary>ext2/ext3/ext4 file system libraries - headers and static libraries</summary>
+        <p>
+        The ext2, ext3 and ext4 file systems are successors of the original ext
+        (&quot;extended&quot;) file system. They are the main file system types used for
+        hard disks on Debian and other Linux systems.
+        </p>
+        <p>
+        This package contains the development environment for the ext2fs and e2p 
+        libraries.
+        </p>
+    </description>
+
+    <requires>
+        <package name="libc6-dev"/>
+        <package name="libcomerr-dev"/>
+        <package name="e2fslibs" version="=="/>
+    </requires>
+
+    <contents>
+        <file src="/usr/lib/libext2fs.{so,a}"/>
+        <file src="/usr/lib/libe2p.{so,a}"/>
+        <file src="/usr/lib/pkgconfig/e2p.pc"/>
+        <file src="/usr/lib/pkgconfig/ext2fs.pc"/>
+        <file src="/usr/include/ext2fs/"/>
+        <file src="/usr/include/e2p/"/>
+    </contents>
+</package>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libcomerr2 SYSTEM "libcomerr2.xml">
+  <!ENTITY libcomerr-dev SYSTEM "libcomerr-dev.xml">
+  <!ENTITY libss2 SYSTEM "libss2.xml">
+  <!ENTITY libss-dev SYSTEM "libss-dev.xml">
+  <!ENTITY e2fslibs SYSTEM "e2fslibs.xml">
+  <!ENTITY e2fslibs-dev SYSTEM "e2fslibs-dev.xml">
+  <!ENTITY e2fsprogs SYSTEM "e2fsprogs.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="e2fsprogs-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="e2fsprogs" architecture-independent="false">
+        <description>
+            <summary>ext2/ext3/ext4 file system utilities</summary>
+            <p>
+            The ext2, ext3 and ext4 file systems are successors of the original ext
+            (&quot;extended&quot;) file system. They are the main file system types used for
+            hard disks on Debian and other Linux systems.
+            </p>
+        </description>
+
+        <sources>
+            <file src="e2fsprogs-1.42.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="dc"/>
+            <package name="pkg-config"/>
+            <package name="m4"/>
+            <package name="libblkid-dev"/>
+            <package name="uuid-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libcomerr2;
+    &libcomerr-dev;
+    &libss2;
+    &libss-dev;
+    &e2fslibs;
+    &e2fslibs-dev;
+    &e2fsprogs;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 

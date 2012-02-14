@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="e2fsprogs" section="">
+    <description>
+        <summary>ext2/ext3/ext4 file system utilities</summary>
+        <p>
+        The ext2, ext3 and ext4 file systems are successors of the original ext
+        (&quot;extended&quot;) file system. They are the main file system types used for
+        hard disks on Debian and other Linux systems.
+        </p>
+        <p>
+        This package contains programs for creating, checking, and maintaining
+        ext2/3/4-based file systems.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/sbin/e2fsck"/>
+        <file src="/usr/sbin/fsck.ext2"/>
+        <file src="/usr/sbin/fsck.ext3"/>
+        <file src="/usr/sbin/fsck.ext4"/>
+        <file src="/usr/sbin/fsck.ext4dev"/>
+        <file src="/usr/sbin/debugfs"/>
+        <file src="/usr/sbin/mke2fs"/>
+        <file src="/usr/sbin/badblocks"/>
+        <file src="/usr/sbin/tune2fs"/>
+        <file src="/usr/sbin/dumpe2fs"/>
+        <file src="/usr/sbin/logsave"/>
+        <file src="/usr/sbin/e2image"/>
+        <file src="/usr/sbin/e2undo"/>
+        <file src="/usr/sbin/mkfs.ext2"/>
+        <file src="/usr/sbin/mkfs.ext3"/>
+        <file src="/usr/sbin/mkfs.ext4"/>
+        <file src="/usr/sbin/mkfs.ext4dev"/>
+        <file src="/usr/sbin/e2label"/>
+        <file src="/usr/sbin/resize2fs"/>
+        <file src="/usr/sbin/mklost+found"/>
+        <file src="/usr/sbin/filefrag"/>
+        <file src="/usr/sbin/e2freefrag"/>
+        <file src="/usr/bin/chattr"/>
+        <file src="/usr/bin/lsattr"/>
+        <file src="/usr/lib/e2initrd_helper"/>
+        <file src="/etc/mke2fs.conf"/>
+    </contents>
+</package>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libss-dev" section="libdevel">
+    <description>
+        <summary>command-line interface parsing library - headers and static libraries</summary>
+        <p>
+        This package includes a tool that parses a command table to generate
+        a simple command-line interface parser, the include files needed to
+        compile and use it, and the static libs.
+        </p>
+        <p>
+        It was originally inspired by the Multics SubSystem library.
+        </p>
+        <p>
+        This package contains the development environment for the ss library.
+        </p>
+    </description>
+
+    <requires>
+        <package name="libc6-dev"/>
+        <package name="libss2" version="=="/>
+        <package name="libcomerr-dev"/>
+    </requires>
+
+    <contents>
+        <file src="/usr/include/ss/"/>
+        <file src="/usr/share/ss/"/>
+        <file src="/usr/bin/mk_cmds"/>
+        <file src="/usr/lib/libss.{so,a}"/>
+        <file src="/usr/lib/pkgconfig/ss.pc"/>
+    </contents>
+</package>
