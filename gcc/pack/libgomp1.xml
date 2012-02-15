@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libgomp1" section="libs">
+    <description>
+        <summary>GCC OpenMP (GOMP) support library</summary>
+        <p>
+        GOMP is an implementation of OpenMP for the C, C++, and Fortran 95 compilers
+        in the GNU Compiler Collection.
+        </p>
+    </description>
+
+    <requires>
+        <package name="gcc-4.5-base" version="=="/>
+    </requires>
+
+    <contents>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libgomp.so.*"/>
+    </contents>
+</package>

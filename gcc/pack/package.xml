@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY gcc-4.5-base SYSTEM "gcc-4.5-base.xml">
+  <!ENTITY libgcc1 SYSTEM "libgcc1.xml">
+  <!ENTITY gcc-4.5 SYSTEM "gcc-4.5.xml">
+  <!ENTITY cpp-4.5 SYSTEM "cpp-4.5.xml">
+  <!ENTITY gpp-4.5 SYSTEM "g++-4.5.xml">
+  <!ENTITY libgomp1 SYSTEM "libgomp1.xml">
+  <!ENTITY gobjcpp-4.5 SYSTEM "gobjc++-4.5.xml">
+  <!ENTITY gobjc-4.5 SYSTEM "gobjc-4.5.xml">
+  <!ENTITY libobjc2 SYSTEM "libobjc2.xml">
+  <!ENTITY libstdcpp6 SYSTEM "libstdc++6.xml">
+  <!ENTITY libstdcpp6-4.5-dev SYSTEM "libstdc++6-4.5-dev.xml">
+  <!ENTITY fixincludes SYSTEM "fixincludes.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="gcc-4.5-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="gcc-4.5" architecture-independent="false">
+        <description>
+            <summary>The GNU Compiler Collection (base package)</summary>
+            <p>
+            This package contains files common to all languages and libraries
+            contained in the GNU Compiler Collection (GCC).
+            </p>
+        </description>
+
+        <sources>
+            <file src="gcc-4.5.3.tar.bz2"/>
+        </sources>
+
+        <requires>
+            <package name="libc6-dev"/>
+            <package name="m4"/>
+            <package name="libtool"/>
+            <package name="autoconf"/>
+            <package name="automake"/>
+            <package name="libunwind7-dev"/>
+            <package name="libatomic-ops-dev"/>
+            <package name="zlib1g-dev"/>
+            <package name="gawk"/>
+            <package name="lzma"/>
+            <package name="xz-utils"/>
+            <package name="patchutils"/>
+            <package name="binutils"/>
+            <package name="gperf" version="&gt;= 3.0.1"/>
+            <package name="bison" version="&gt;= 1:2.3"/>
+            <package name="flex"/>
+            <package name="procps"/>
+            <package name="sharutils"/>
+            <package name="libcloog-ppl-dev" version="&gt;= 0.15.9-2~"/>
+            <package name="libmpc-dev"/>
+            <package name="libmpfr-dev"/>
+            <package name="libgmp3-dev"/>
+            <package name="libelfg0-dev" version="&gt;= 0.8.12"/>
+            <package name="dejagnu"/>
+            <package name="autogen"/>
+            <package name="realpath" version="&gt;= 1.9.12"/>
+            <package name="chrpath"/>
+            <package name="make"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &gcc-4.5-base;
+    &libgcc1;
+    &gcc-4.5;
+    &cpp-4.5;
+    &gpp-4.5;
+    &libgomp1;
+    &gobjcpp-4.5;
+    &gobjc-4.5;
+    &libobjc2;
+    &libstdcpp6;
+    &libstdcpp6-4.5-dev;
+    &fixincludes;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 

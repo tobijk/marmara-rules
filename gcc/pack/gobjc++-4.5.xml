@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="gobjc++-4.5" section="">
+    <description>
+        <summary>The GNU Objective-C++ compiler</summary>
+        <p>
+        This is the GNU Objective-C++ compiler, which compiles
+        Objective-C++ on platforms supported by the gcc compiler. It uses the
+        gcc backend to generate optimized code.
+        </p>
+    </description>
+
+    <requires>
+        <package name="gcc-4.5-base" version="=="/>
+        <package name="gobjc-4.5" version="=="/>
+        <package name="g++-4.5" version="=="/>
+        <package name="libobjc2" version="&gt;="/>
+    </requires>
+
+    <contents>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/cc1objplus"/>
+    </contents>
+</package>

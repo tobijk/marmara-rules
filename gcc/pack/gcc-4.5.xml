@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="gcc-4.5" section="devel">
+    <description>
+        <summary>The GNU C compiler</summary>
+        <p>
+        This is the GNU C compiler, a fairly portable optimizing compiler for C.
+        </p>
+    </description>
+
+    <requires>
+        <package name="gcc-4.5-base" version="=="/>
+        <package name="cpp-4.5" version="=="/>
+        <package name="binutils"/>
+
+        <!--
+        <package name="${dep:libgcc}"/>
+        <package name="${dep:libssp}"/>
+        <package name="${dep:libgomp}"/>
+        <package name="${dep:libunwinddev}"/>
+        -->
+    </requires>
+
+    <contents>
+        <file src="/usr/bin/gcc-4.5"/>
+        <file src="/usr/bin/i686-pc-linux-gnu-gcc-4.5*"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/cc1"/>
+
+        <file src="/usr/bin/gcov-4.5"/>
+
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/include/*"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/collect2"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/crt*.o"/>
+
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libgcc.a"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libgcc_eh.a"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libgcc_s.so"/>
+
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libgcov.a"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/lto1"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/lto-wrapper"/>
+
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libgomp.{a,so,spec}"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libssp.{a,so}"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libssp_nonshared.a"/>
+
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libmudflapth.{a,so}"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libmudflap.{a,so}"/>
+    </contents>
+</package>

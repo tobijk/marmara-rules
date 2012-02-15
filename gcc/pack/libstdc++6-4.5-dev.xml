@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libstdc++6-4.5-dev" section="libdevel">
+    <description>
+        <summary>The GNU Standard C++ Library v3 (development files)</summary>
+        <p>
+        This package contains the headers and static library files necessary for
+        building C++ programs which use libstdc++.
+        </p>
+        <p>
+        libstdc++-v3 is a complete rewrite from the previous libstdc++-v2, which
+        was included up to g++-2.95. The first version of libstdc++-v3 appeared
+        in g++-3.0.
+        </p>
+    </description>
+
+    <requires>
+        <package name="gcc-4.5-base" version="=="/>
+        <package name="g++-4.5" version="=="/>
+        <package name="libstdc++6" version="&gt;="/>
+    </requires>
+
+    <contents>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/include/c++/"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libstdc++.{a,so}"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libsupc++.a"/>
+    </contents>
+</package>

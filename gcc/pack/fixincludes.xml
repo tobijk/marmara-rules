@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="fixincludes" section="devel">
+    <description>
+        <summary>Fix non-ANSI header files</summary>
+        <p>
+        FixIncludes was created to fix non-ANSI system header files. Many
+        system manufacturers supply proprietary headers that are not ANSI compliant.
+        The GNU compilers cannot compile non-ANSI headers. Consequently, the
+        FixIncludes shell script was written to fix the header files.
+        </p>
+    </description>
+
+    <requires>
+        <package name="gcc-4.5-base" version="=="/>
+        <package name="gcc-4.5" version="=="/>
+    </requires>
+
+    <contents>
+        <!-- TODO: provide wrapper
+        <file src="/usr/bin/fixincludes"/>
+        -->
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/install-tools/"/>
+    </contents>
+</package>

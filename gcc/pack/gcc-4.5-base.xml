@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="gcc-4.5-base" section="libs">
+    <description>
+        <summary>The GNU Compiler Collection (base package)</summary>
+        <p>
+        This package contains files common to all languages and libraries
+        contained in the GNU Compiler Collection (GCC).
+        </p>
+    </description>
+
+    <contents>
+        <dir src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3"/>
+    </contents>
+</package>

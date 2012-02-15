@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libstdc++6" section="libs">
+    <description>
+        <summary>The GNU Standard C++ Library v3</summary>
+        <p>
+        This package contains an additional runtime library for C++ programs
+        built with the GNU compiler.
+        </p>
+        <p>
+        libstdc++-v3 is a complete rewrite from the previous libstdc++-v2, which
+        was included up to g++-2.95. The first version of libstdc++-v3 appeared
+        in g++-3.0.
+        </p>
+    </description>
+
+    <requires>
+        <package name="gcc-4.5-base" version="=="/>
+    </requires>
+
+    <contents>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libstdc++.so.*"/>
+    </contents>
+</package>
