@@ -4,9 +4,7 @@
     <prepare>
     <![CDATA[
 
-export OPTIMIZER=-O
 export DEBUG=-DNDEBUG
-export CC='gcc -g'
 
 cd $XPACK_SOURCE_DIR
 autoconf

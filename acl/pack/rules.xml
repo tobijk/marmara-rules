@@ -6,10 +6,8 @@
 
 export INSTALL_USER=root
 export INSTALL_GROUP=root
-export OPTIMIZER=-O
 export DEBUG=-DNDEBUG
-export DISTRIBUTION=splash
-export CC='gcc -g'
+export DISTRIBUTION=marmara
 
 cd $XPACK_SOURCE_DIR
 autoconf
