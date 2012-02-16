@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libtool SYSTEM "libtool.xml">
+  <!ENTITY libltdl7 SYSTEM "libltdl7.xml">
+  <!ENTITY libltdl-dev SYSTEM "libltdl-dev.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="libtool-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="libtool" architecture-independent="false">
+        <description>
+            <summary>Generic library support script</summary>
+            <p>
+            This is GNU libtool, a generic library support script.  Libtool hides
+            the complexity of generating special library types (such as shared
+            libraries) behind a consistent interface.  To use libtool, add the
+            new generic library building commands to your Makefile, Makefile.in,
+            or Makefile.am.  See the documentation for details.  Libtool supports
+            building static libraries on all platforms.
+            </p>
+            <p>
+            Libtool supports generation of C, C++, Fortran and Java libraries.
+            </p>
+        </description>
+
+        <sources>
+            <file src="libtool-2.2.10.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="file"/>
+            <package name="automake"/>
+            <package name="autoconf"/>
+            <package name="autotools-dev"/>
+            <package name="zlib1g-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libtool;
+    &libltdl7;
+    &libltdl-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
