@@ -18,7 +18,7 @@
         &description;
 
         <sources>
-            <file src="binutils-2.21.tar.bz2"/>
+            <file src="binutils-2.22.tar.bz2"/>
         </sources>
 
         <patches>
