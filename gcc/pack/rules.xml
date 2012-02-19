@@ -4,6 +4,9 @@
     <prepare>
     <![CDATA[
 
+cd $XPACK_SOURCE_DIR
+echo '4.5' > gcc/BASE-VER
+
 cd $XPACK_BUILD_DIR
 $XPACK_SOURCE_DIR/configure \
     --prefix=/usr \

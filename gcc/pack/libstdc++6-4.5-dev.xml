@@ -20,8 +20,8 @@
     </requires>
 
     <contents>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/include/c++/"/>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libstdc++.{a,so}"/>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libsupc++.a"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/include/c++/"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/libstdc++.{a,so}"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/libsupc++.a"/>
     </contents>
 </package>

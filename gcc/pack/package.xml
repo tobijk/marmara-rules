@@ -33,7 +33,7 @@
         </description>
 
         <sources>
-            <file src="gcc-4.5.3.tar.bz2"/>
+            <file src="gcc-linaro-4.5-2012.01.tar.bz2"/>
         </sources>
 
         <requires>

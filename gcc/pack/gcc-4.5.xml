@@ -23,27 +23,27 @@
     <contents>
         <file src="/usr/bin/gcc-4.5"/>
         <file src="/usr/bin/i686-pc-linux-gnu-gcc-4.5*"/>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/cc1"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/cc1"/>
 
         <file src="/usr/bin/gcov-4.5"/>
 
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/include/*"/>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/collect2"/>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/crt*.o"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/include/*"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/collect2"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/crt*.o"/>
 
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libgcc.a"/>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libgcc_eh.a"/>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libgcc_s.so"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/libgcc.a"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/libgcc_eh.a"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/libgcc_s.so"/>
 
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libgcov.a"/>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/lto1"/>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/lto-wrapper"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/libgcov.a"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/lto1"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/lto-wrapper"/>
 
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libgomp.{a,so,spec}"/>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libssp.{a,so}"/>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libssp_nonshared.a"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/libgomp.{a,so,spec}"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/libssp.{a,so}"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/libssp_nonshared.a"/>
 
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libmudflapth.{a,so}"/>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libmudflap.{a,so}"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/libmudflapth.{a,so}"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/libmudflap.{a,so}"/>
     </contents>
 </package>

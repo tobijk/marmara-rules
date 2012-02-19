@@ -12,7 +12,7 @@
     </requires>
 
     <contents>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libobjc.so.*"/>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/libobjc_gc.so.*"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/libobjc.so.*"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/libobjc_gc.so.*"/>
     </contents>
 </package>

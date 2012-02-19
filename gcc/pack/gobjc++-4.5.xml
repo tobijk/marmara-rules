@@ -17,6 +17,6 @@
     </requires>
 
     <contents>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5.3/cc1objplus"/>
+        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/cc1objplus"/>
     </contents>
 </package>
