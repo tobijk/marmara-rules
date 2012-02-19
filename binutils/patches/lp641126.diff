@@ -1,0 +1,38 @@
+Index: bfd/elf32-arm.c
+===================================================================
+--- a/bfd/elf32-arm.c	2011-09-07 13:51:18.000000000 +0100
++++ b/bfd/elf32-arm.c	2011-09-07 14:01:56.128934365 +0100
+@@ -8226,9 +8226,13 @@ elf32_arm_final_link_relocate (reloc_how
+ 							 rel, globals,
+ 							 stub_type);
+ 		  if (stub_entry != NULL)
+-		    value = (stub_entry->stub_offset
+-			     + stub_entry->stub_sec->output_offset
+-			     + stub_entry->stub_sec->output_section->vma);
++		    {
++		      value = (stub_entry->stub_offset
++			       + stub_entry->stub_sec->output_offset
++			       + stub_entry->stub_sec->output_section->vma);
++		      if (plt_offset != (bfd_vma) -1)
++			*unresolved_reloc_p = FALSE;
++		    }
+ 		}
+ 	      else
+ 		{
+@@ -8653,9 +8657,13 @@ elf32_arm_final_link_relocate (reloc_how
+ 						       rel, globals,
+ 						       stub_type);
+ 		if (stub_entry != NULL)
+-		  value = (stub_entry->stub_offset
+-			   + stub_entry->stub_sec->output_offset
+-			   + stub_entry->stub_sec->output_section->vma);
++		  {
++		    value = (stub_entry->stub_offset
++			     + stub_entry->stub_sec->output_offset
++			     + stub_entry->stub_sec->output_section->vma);
++		    if (plt_offset != (bfd_vma) -1)
++		      *unresolved_reloc_p = FALSE;
++		  }
+ 
+ 		/* If this call becomes a call to Arm, force BLX.  */
+ 		if (globals->use_blx && (r_type == R_ARM_THM_CALL))

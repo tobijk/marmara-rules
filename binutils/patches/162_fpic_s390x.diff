@@ -1,0 +1,26 @@
+# DP: Fix s390x build.
+
+2011-07-23  Aurelien Jarno  <aurelien@aurel32.net>
+
+	* configure.ac: Use -fPIC instead of -fpic on s390x.
+
+--- a/libiberty/configure.ac
++++ b/libiberty/configure.ac
+@@ -216,6 +216,7 @@
+ 			  *-fpic* ) PICFLAG=-fpic ;;
+ 			  * ) PICFLAG=-fPIC ;;
+ 			esac ;;
++    s390x*-*-*)		PICFLAG=-fPIC ;;
+     s390*-*-*)		PICFLAG=-fpic ;;
+     sh*-*-*)		PICFLAG=-fPIC ;;
+   esac
+--- a/libiberty/configure
++++ b/libiberty/configure
+@@ -4865,6 +4865,7 @@
+ 			  *-fpic* ) PICFLAG=-fpic ;;
+ 			  * ) PICFLAG=-fPIC ;;
+ 			esac ;;
++    s390x*-*-*)		PICFLAG=-fPIC ;;
+     s390*-*-*)		PICFLAG=-fpic ;;
+     sh*-*-*)		PICFLAG=-fPIC ;;
+   esac

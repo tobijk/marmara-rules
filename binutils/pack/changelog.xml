@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
+    <release version="2.21.53.20110810" revision="1" maintainer="Tobias Koch"
+     email="tobias.koch@gmail.com" date="2012-02-19 23:17:00 GMT+2">
+        <changeset>
+            <li>Use binutils 2.21 plus Ubuntu patches</li>
+        </changeset>
+    </release>
     <release version="2.22" revision="1" maintainer="Tobias Koch"
      email="tobias.koch@gmail.com" date="2012-02-17 09:23:00 GMT+2">
         <changeset>

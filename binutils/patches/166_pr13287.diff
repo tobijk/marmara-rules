@@ -1,0 +1,62 @@
+# DP: Fix PR ld/13287, taken from the trunk
+
+	PR ld/13287
+	* plugin.c (plugin_should_reload): New function.
+	* plugin.h (plugin_should_reload): Declare.
+	* ldlang.c (open_input_bfds): Use above function.
+
+Index: ld/ldlang.c
+===================================================================
+RCS file: /cvs/src/src/ld/ldlang.c,v
+retrieving revision 1.378
+diff -u -p -r1.378 ldlang.c
+--- a/ld/ldlang.c	20 Sep 2011 04:58:56 -0000	1.378
++++ b/ld/ldlang.c	20 Oct 2011 09:30:02 -0000
+@@ -3282,7 +3282,8 @@ open_input_bfds (lang_statement_union_ty
+ 		       && plugin_insert == NULL
+ 		       && s->input_statement.loaded
+ 		       && s->input_statement.add_DT_NEEDED_for_regular
+-		       && ((s->input_statement.the_bfd->flags) & DYNAMIC) != 0)
++		       && ((s->input_statement.the_bfd->flags) & DYNAMIC) != 0
++		       && plugin_should_reload (s->input_statement.the_bfd))
+ 		{
+ 		  s->input_statement.loaded = FALSE;
+ 		  s->input_statement.reload = TRUE;
+Index: ld/plugin.c
+===================================================================
+RCS file: /cvs/src/src/ld/plugin.c,v
+retrieving revision 1.42
+diff -u -p -r1.42 plugin.c
+--- a/ld/plugin.c	10 Oct 2011 12:43:14 -0000	1.42
++++ b/ld/plugin.c	20 Oct 2011 09:30:02 -0000
+@@ -1014,3 +1014,14 @@ plugin_notice (struct bfd_link_info *inf
+ 				      abfd, section, value, flags, string);
+   return TRUE;
+ }
++
++/* Return true if bfd is a dynamic library that should be reloaded.  */
++
++bfd_boolean
++plugin_should_reload (bfd *abfd)
++{
++  return ((abfd->flags & DYNAMIC) != 0
++	  && bfd_get_flavour (abfd) == bfd_target_elf_flavour
++	  && bfd_get_format (abfd) == bfd_object
++	  && (elf_dyn_lib_class (abfd) & DYN_AS_NEEDED) != 0);
++}
+Index: ld/plugin.h
+===================================================================
+RCS file: /cvs/src/src/ld/plugin.h,v
+retrieving revision 1.9
+diff -u -p -r1.9 plugin.h
+--- a/ld/plugin.h	20 Apr 2011 00:22:08 -0000	1.9
++++ b/ld/plugin.h	20 Oct 2011 09:30:02 -0000
+@@ -66,4 +66,7 @@ extern void plugin_call_cleanup (void);
+    add_symbols hook has been called so that it can be read when linking.  */
+ extern bfd *plugin_get_ir_dummy_bfd (const char *name, bfd *template);
+ 
++/* Return true if bfd is a dynamic library that should be reloaded.  */
++extern bfd_boolean plugin_should_reload (bfd *);
++
+ #endif /* !def GLD_PLUGIN_H */
+
