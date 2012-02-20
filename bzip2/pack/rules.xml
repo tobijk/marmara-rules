@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+cd $XPACK_SOURCE_DIR
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+cd $XPACK_SOURCE_DIR
+make PREFIX=/usr -j$XPACK_PARALLEL_JOBS
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+mkdir -p $XPACK_INSTALL_DIR/usr
+
+cd $XPACK_SOURCE_DIR
+make PREFIX=$XPACK_INSTALL_DIR/usr install
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libbz2 SYSTEM "libbz2.xml">
+  <!ENTITY libbz2-dev SYSTEM "libbz2-dev.xml">
+  <!ENTITY bzip2 SYSTEM "bzip2.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="bzip2-src"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="bzip2" architecture-independent="false">
+        <description>
+            <summary>high-quality block-sorting file compressor</summary>
+            <p>
+            This package contains libbzip2 and the bzip2 compressor tool.
+            </p>
+            <p>
+            bzip2 is a freely available, patent free, high-quality data compressor. 
+            It typically compresses files to within 10% to 15% of the best available
+            techniques, whilst being around twice as fast at compression and six
+            times faster at decompression.
+            </p>
+            <p>
+            bzip2 compresses files using the Burrows-Wheeler block-sorting text
+            compression algorithm, and Huffman coding. Compression is generally
+            considerably better than that achieved by more conventional
+            LZ77/LZ78-based compressors, and approaches the performance of the PPM
+            family of statistical compressors.
+            </p>
+            <p>
+            The archive file format of bzip2 (.bz2) is incompatible with that of its
+            predecessor, bzip (.bz).
+            </p>
+        </description>
+
+        <sources>
+            <file src="bzip2-1.0.6.tar.gz"/>
+        </sources>
+
+        <patches>
+            <patchset>
+                <file src="patches/shared-lib-makefile.patch"/>
+            </patchset>
+        </patches>
+
+        <requires>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libbz2;
+    &libbz2-dev;
+    &bzip2;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 

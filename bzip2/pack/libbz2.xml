@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libbz2-1.0" section="libs">
+    <description>
+        <summary>high-quality block-sorting file compressor library - runtime</summary>
+        <p>
+        This package contains libbzip2 which is used by the bzip2 compressor.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/lib/libbz2.so.*"/>
+    </contents>
+</package>
