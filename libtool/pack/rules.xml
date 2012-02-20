@@ -6,8 +6,7 @@
 
 cd $XPACK_BUILD_DIR
 $XPACK_SOURCE_DIR/configure \
-    --prefix=/usr \
-    --disable-nls
+    --prefix=/usr
 
     ]]>
     </prepare>
