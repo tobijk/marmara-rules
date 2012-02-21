@@ -1,0 +1,26 @@
+diff -urN a/src/Makefile.am b/src/Makefile.am
+--- a/src/Makefile.am	2012-02-20 16:23:04.000000000 +0200
++++ b/src/Makefile.am	2012-02-20 16:23:53.000000000 +0200
+@@ -22,10 +22,9 @@
+ # and installation would be much simpler (just two directories,
+ # $prefix/bin and $prefix/sbin, no install-data hacks...)
+ 
+-bin_PROGRAMS   = groups login su
+-sbin_PROGRAMS  = nologin
+-ubin_PROGRAMS  = faillog lastlog chage chfn chsh expiry gpasswd newgrp passwd
++ubin_PROGRAMS  = groups login su faillog lastlog chage chfn chsh expiry gpasswd newgrp passwd
+ usbin_PROGRAMS = \
++        nologin \
+ 	cppw \
+ 	chgpasswd \
+ 	chpasswd \
+@@ -49,8 +48,7 @@
+ # id and groups are from gnu, sulogin from sysvinit
+ noinst_PROGRAMS = id sulogin
+ 
+-suidbins       = su
+-suidubins      = chage chfn chsh expiry gpasswd newgrp passwd
++suidubins      = su chage chfn chsh expiry gpasswd newgrp passwd
+ if ACCT_TOOLS_SETUID
+ 	suidubins += chage chgpasswd chpasswd groupadd groupdel groupmod newusers useradd userdel usermod
+ endif

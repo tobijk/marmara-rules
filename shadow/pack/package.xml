@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY passwd SYSTEM "passwd.xml">
+  <!ENTITY login SYSTEM "login.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="shadow-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="shadow" architecture-independent="false">
+        <description>
+            <summary>change and administer password and group data</summary>
+            <p>
+            This package includes passwd, chsh, chfn, and many other programs to
+            maintain password and group data.
+            </p>
+            <p>
+            Shadow passwords are supported.
+            </p>
+        </description>
+
+        <sources>
+            <file src="shadow-4.1.5.tar.bz2"/>
+        </sources>
+
+        <patches>
+            <patchset>
+                <file src="patches/401_cppw_src.dpatch"/>
+                <file src="patches/402_cppw_selinux"/>
+                <file src="patches/include-stdarg-incopydir.patch"/>
+                <file src="patches/install-all-progs-to-usr.patch"/>
+                <file src="patches/login-defs-defaults.patch"/>
+                <file src="patches/useradd-defaults.patch"/>
+            </patchset>
+        </patches>
+
+        <requires>
+            <package name="autoconf"/>
+            <package name="automake"/>
+            <package name="libtool"/>
+            <package name="libpam0g-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &passwd;
+    &login;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 

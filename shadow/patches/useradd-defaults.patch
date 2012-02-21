@@ -1,0 +1,11 @@
+--- a/etc/useradd	2012-02-21 11:36:57.000000000 +0200
++++ b/etc/useradd	2012-02-21 10:54:37.000000000 +0200
+@@ -3,6 +3,6 @@
+ HOME=/home
+ INACTIVE=-1
+ EXPIRE=
+-SHELL=/bin/bash
++SHELL=/bin/zsh
+ SKEL=/etc/skel
+-CREATE_MAIL_SPOOL=yes
++CREATE_MAIL_SPOOL=no

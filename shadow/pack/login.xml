@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="login" section="">
+    <description>
+        <summary>system login tools</summary>
+        <p>
+        These tools are required to be able to login and use your system. The
+        login program invokes your user shell and enables command execution. The
+        newgrp program is used to change your effective group ID (useful for
+        workgroup type situations). The su program allows changing your effective
+        user ID (useful being able to execute commands as another user).
+        </p>
+    </description>
+
+    <requires>
+    </requires>
+
+    <contents>
+        <file src="/usr/sbin/nologin"/>
+        <file src="/usr/bin/faillog"/>
+        <file src="/usr/bin/lastlog"/>
+        <file src="/usr/bin/newgrp"/>
+        <file src="/usr/bin/login"/>
+        <file src="/usr/bin/su"/>
+
+        <file src="/etc/pam.d/login"/>
+        <file src="/etc/pam.d/su"/>
+        <file src="/etc/login.defs"/>
+    </contents>
+</package>

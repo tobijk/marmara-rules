@@ -1,0 +1,326 @@
+--- a/etc/login.defs	2012-02-21 11:36:57.000000000 +0200
++++ b/etc/login.defs	2012-02-21 11:35:50.000000000 +0200
+@@ -5,13 +5,6 @@
+ #
+ 
+ #
+-# Delay in seconds before being allowed another attempt after a login failure
+-# Note: When PAM is used, some modules may enfore a minimal delay (e.g.
+-#       pam_unix enforces a 2s delay)
+-#
+-FAIL_DELAY		3
+-
+-#
+ # Enable logging and display of /var/log/faillog login failure info.
+ #
+ FAILLOG_ENAB		yes
+@@ -27,34 +20,6 @@
+ LOG_OK_LOGINS		no
+ 
+ #
+-# Enable logging and display of /var/log/lastlog login time info.
+-#
+-LASTLOG_ENAB		yes
+-
+-#
+-# Enable checking and display of mailbox status upon login.
+-#
+-# Disable if the shell startup files already check for mail
+-# ("mailx -e" or equivalent).
+-#
+-MAIL_CHECK_ENAB		yes
+-
+-#
+-# Enable additional checks upon password changes.
+-#
+-OBSCURE_CHECKS_ENAB	yes
+-
+-#
+-# Enable checking of time restrictions specified in /etc/porttime.
+-#
+-PORTTIME_CHECKS_ENAB	yes
+-
+-#
+-# Enable setting of ulimit, umask, and niceness from passwd gecos field.
+-#
+-QUOTAS_ENAB		yes
+-
+-#
+ # Enable "syslog" logging of su activity - in addition to sulog file logging.
+ # SYSLOG_SG_ENAB does the same for newgrp and sg.
+ #
+@@ -66,7 +31,7 @@
+ # a ":" delimited list of device names.  Root logins will be allowed only
+ # upon these devices.
+ #
+-CONSOLE		/etc/securetty
++#CONSOLE	/etc/securetty
+ #CONSOLE	console:tty01:tty02:tty03:tty04
+ 
+ #
+@@ -75,18 +40,6 @@
+ #SULOG_FILE	/var/log/sulog
+ 
+ #
+-# If defined, ":" delimited list of "message of the day" files to
+-# be displayed upon login.
+-#
+-MOTD_FILE	/etc/motd
+-#MOTD_FILE	/etc/motd:/usr/lib/news/news-motd
+-
+-#
+-# If defined, this file will be output before each login prompt.
+-#
+-#ISSUE_FILE	/etc/issue
+-
+-#
+ # If defined, file which maps tty line to TERM environment parameter.
+ # Each line of the file is in a format something like "vt100  tty01".
+ #
+@@ -99,13 +52,6 @@
+ FTMP_FILE	/var/log/btmp
+ 
+ #
+-# If defined, name of file whose presence which will inhibit non-root
+-# logins.  The contents of this file should be a message indicating
+-# why logins are inhibited.
+-#
+-NOLOGINS_FILE	/etc/nologin
+-
+-#
+ # If defined, the command name to display when running "su -".  For
+ # example, if this is defined as "su" then a "ps" will display the
+ # command is "-su".  If not defined, then "ps" would display the
+@@ -118,7 +64,7 @@
+ #   Directory where mailboxes reside, _or_ name of file, relative to the
+ #   home directory.  If you _do_ define both, MAIL_DIR takes precedence.
+ #
+-MAIL_DIR	/var/spool/mail
++MAIL_DIR	/var/mail
+ #MAIL_FILE	.mail
+ 
+ #
+@@ -138,19 +84,11 @@
+ #ENV_TZ		/etc/tzname
+ 
+ #
+-# If defined, an HZ environment parameter spec.
+-#
+-# for Linux/x86
+-ENV_HZ		HZ=100
+-# For Linux/Alpha...
+-#ENV_HZ		HZ=1024
+-
+-#
+ # *REQUIRED*  The default PATH settings, for superuser and normal users.
+ #
+ # (they are minimal, add the rest in the shell startup files)
+-ENV_SUPATH	PATH=/sbin:/bin:/usr/sbin:/usr/bin
+-ENV_PATH	PATH=/bin:/usr/bin
++ENV_SUPATH	PATH=/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin
++ENV_PATH	PATH=/usr/local/bin:/usr/bin
+ 
+ #
+ # Terminal permissions
+@@ -171,7 +109,7 @@
+ #
+ #	ERASECHAR	Terminal ERASE character ('\010' = backspace).
+ #	KILLCHAR	Terminal KILL character ('\025' = CTRL/U).
+-#	ULIMIT		Default "ulimit" value.
++#	ULIMIT		Default "ulimit" value (obsoleted by PAM).
+ #
+ # The ERASECHAR and KILLCHAR are used only on System V machines.
+ # The ULIMIT is used only if the system supports it.
+@@ -181,7 +119,6 @@
+ #
+ ERASECHAR	0177
+ KILLCHAR	025
+-#ULIMIT		2097152
+ 
+ # Default initial "umask" value used by login on non-PAM enabled systems.
+ # Default "umask" value for pam_umask on PAM enabled systems.
+@@ -197,28 +134,14 @@
+ #
+ #	PASS_MAX_DAYS	Maximum number of days a password may be used.
+ #	PASS_MIN_DAYS	Minimum number of days allowed between password changes.
+-#	PASS_MIN_LEN	Minimum acceptable password length.
++#	PASS_MIN_LEN	Minimum acceptable password length (obsoleted by PAM).
+ #	PASS_WARN_AGE	Number of days warning given before a password expires.
+ #
+ PASS_MAX_DAYS	99999
+ PASS_MIN_DAYS	0
+-PASS_MIN_LEN	5
+ PASS_WARN_AGE	7
+ 
+ #
+-# If "yes", the user must be listed as a member of the first gid 0 group
+-# in /etc/group (called "root" on most Linux systems) to be able to "su"
+-# to uid 0 accounts.  If the group doesn't exist or is empty, no one
+-# will be able to "su" to uid 0.
+-#
+-SU_WHEEL_ONLY	no
+-
+-#
+-# If compiled with cracklib support, where are the dictionaries
+-#
+-CRACKLIB_DICTPATH	/var/cache/cracklib/cracklib_dict
+-
+-#
+ # Min/max values for automatic uid selection in useradd
+ #
+ UID_MIN			 1000
+@@ -247,23 +170,6 @@
+ LOGIN_TIMEOUT		60
+ 
+ #
+-# Maximum number of attempts to change password if rejected (too easy)
+-#
+-PASS_CHANGE_TRIES	5
+-
+-#
+-# Warn about weak passwords (but still allow them) if you are root.
+-#
+-PASS_ALWAYS_WARN	yes
+-
+-#
+-# Number of significant characters in the password for crypt().
+-# Default is 8, don't change unless your crypt() is better.
+-# Ignored if MD5_CRYPT_ENAB set to "yes".
+-#
+-#PASS_MAX_LEN		8
+-
+-#
+ # Require password before chfn/chsh can make any changes.
+ #
+ CHFN_AUTH		yes
+@@ -309,7 +215,7 @@
+ # Note: If you use PAM, it is recommended to use a value consistent with
+ # the PAM modules configuration.
+ #
+-#ENCRYPT_METHOD DES
++ENCRYPT_METHOD SHA512
+ 
+ #
+ # Only works if ENCRYPT_METHOD is set to SHA256 or SHA512.
+@@ -345,12 +251,6 @@
+ DEFAULT_HOME	yes
+ 
+ #
+-# If this file exists and is readable, login environment will be
+-# read from it.  Every line should be in the form name=value.
+-#
+-ENVIRON_FILE	/etc/environment
+-
+-#
+ # If defined, this command is run when removing a user.
+ # It should remove any at/cron/print jobs etc. owned by
+ # the user to be removed (passed as the first argument).
+@@ -383,5 +283,107 @@
+ # This option is overridden with the -M or -m flags on the useradd command
+ # line.
+ #
+-#CREATE_HOME     yes
++CREATE_HOME     yes
++
++###############################################################################
++############################ OBSOLETED BY PAM #################################
++###############################################################################
++
++#
++# Delay in seconds before being allowed another attempt after a login failure
++# Note: When PAM is used, some modules may enfore a minimal delay (e.g.
++#       pam_unix enforces a 2s delay)
++#
++#FAIL_DELAY		3
++
++#
++# Enable logging and display of /var/log/lastlog login time info.
++#
++#LASTLOG_ENAB		yes
++
++#
++# Enable checking and display of mailbox status upon login.
++#
++# Disable if the shell startup files already check for mail
++# ("mailx -e" or equivalent).
++#
++#MAIL_CHECK_ENAB		yes
++
++#
++# Enable additional checks upon password changes.
++#
++#OBSCURE_CHECKS_ENAB	yes
++
++#
++# Enable checking of time restrictions specified in /etc/porttime.
++#
++#PORTTIME_CHECKS_ENAB	yes
++
++#
++# Enable setting of ulimit, umask, and niceness from passwd gecos field.
++#
++#QUOTAS_ENAB		yes
++
++#
++# If defined, ":" delimited list of "message of the day" files to
++# be displayed upon login.
++#
++#MOTD_FILE	/etc/motd
++#MOTD_FILE	/etc/motd:/usr/lib/news/news-motd
++
++#
++# If defined, this file will be output before each login prompt.
++#
++#ISSUE_FILE	/etc/issue
++
++#
++# If defined, name of file whose presence which will inhibit non-root
++# logins.  The contents of this file should be a message indicating
++# why logins are inhibited.
++#
++#NOLOGINS_FILE	/etc/nologin
++
++#
++# If defined, an HZ environment parameter spec.
++#
++# for Linux/x86
++#ENV_HZ		HZ=100
++# For Linux/Alpha...
++#ENV_HZ		HZ=1024
++
++#
++# If "yes", the user must be listed as a member of the first gid 0 group
++# in /etc/group (called "root" on most Linux systems) to be able to "su"
++# to uid 0 accounts.  If the group doesn't exist or is empty, no one
++# will be able to "su" to uid 0.
++#
++#SU_WHEEL_ONLY	no
++
++#
++# If compiled with cracklib support, where are the dictionaries
++#
++#CRACKLIB_DICTPATH	/var/cache/cracklib/cracklib_dict
++
++#
++# Maximum number of attempts to change password if rejected (too easy)
++#
++#PASS_CHANGE_TRIES	5
++
++#
++# Warn about weak passwords (but still allow them) if you are root.
++#
++#PASS_ALWAYS_WARN	yes
++
++#
++# Number of significant characters in the password for crypt().
++# Default is 8, don't change unless your crypt() is better.
++# Ignored if MD5_CRYPT_ENAB set to "yes".
++#
++#PASS_MAX_LEN		8
++
++#
++# If this file exists and is readable, login environment will be
++# read from it.  Every line should be in the form name=value.
++#
++#ENVIRON_FILE	/etc/environment
+ 

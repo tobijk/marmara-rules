@@ -1,0 +1,11 @@
+diff -ur a/libmisc/copydir.c b/libmisc/copydir.c
+--- a/libmisc/copydir.c	2011-12-10 00:23:15.000000000 +0200
++++ b/libmisc/copydir.c	2012-02-20 14:49:51.000000000 +0200
+@@ -55,6 +55,7 @@
+ #include <attr/libattr.h>
+ #endif				/* WITH_ATTR */
+ 
++#include <stdarg.h>
+ 
+ static /*@null@*/const char *src_orig;
+ static /*@null@*/const char *dst_orig;

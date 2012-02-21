@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="passwd" section="">
+    <description>
+        <summary>change and administer password and group data</summary>
+        <p>
+        This package includes passwd, chsh, chfn, and many other programs to
+        maintain password and group data.
+        </p>
+        <p>
+        Shadow passwords are supported.
+        </p>
+    </description>
+
+    <requires>
+        <package name="libpam-modules"/>
+    </requires>
+
+    <contents>
+        <file src="/usr/bin/chage"/>
+        <file src="/usr/bin/chfn"/>
+        <file src="/usr/bin/chsh"/>
+        <file src="/usr/bin/expiry"/>
+        <file src="/usr/bin/gpasswd"/>
+        <file src="/usr/bin/passwd"/>
+
+        <file src="/usr/sbin/chpasswd"/>
+        <file src="/usr/sbin/chgpasswd"/>
+        <file src="/usr/sbin/cppw"/>
+        <file src="/usr/sbin/groupadd"/>
+        <file src="/usr/sbin/groupdel"/>
+        <file src="/usr/sbin/groupmod"/>
+        <file src="/usr/sbin/grpck"/>
+        <file src="/usr/sbin/grpconv"/>
+        <file src="/usr/sbin/grpunconv"/>
+        <file src="/usr/sbin/newusers"/>
+        <file src="/usr/sbin/pwck"/>
+        <file src="/usr/sbin/pwconv"/>
+        <file src="/usr/sbin/pwunconv"/>
+        <file src="/usr/sbin/useradd"/>
+        <file src="/usr/sbin/userdel"/>
+        <file src="/usr/sbin/usermod"/>
+        <file src="/usr/sbin/vipw"/>
+        <file src="/usr/sbin/vigr"/>
+
+        <file src="/etc/default/useradd"/>
+        <file src="/etc/pam.d/chfn"/>
+        <file src="/etc/pam.d/chsh"/>
+        <file src="/etc/pam.d/groupmems"/>
+        <file src="/etc/pam.d/passwd"/>
+    </contents>
+</package>
