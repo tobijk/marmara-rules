@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+$XPACK_SOURCE_DIR/configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --enable-etcdir=/etc/zsh \
+    --enable-pcre \
+    --enable-cap \
+    --enable-multibyte \
+    --enable-function-subdirs \
+    --enable-custom-patchlevel=marmara
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make -j$XPACK_PARALLEL_JOBS
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make DESTDIR=$XPACK_INSTALL_DIR install
+
+mkdir -p $XPACK_INSTALL_DIR/etc
+cp -a $XPACK_BASE_DIR/etc/* $XPACK_INSTALL_DIR/etc
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_BUILD_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>

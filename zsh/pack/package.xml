@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY zsh SYSTEM "zsh.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="zsh-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="zsh" architecture-independent="false">
+        <description>
+            <summary>A shell with lots of features</summary>
+            <p>
+            Zsh is a UNIX command interpreter (shell) usable as an
+            interactive login shell and as a shell script command
+            processor. Of the standard shells, zsh most closely resembles
+            ksh but includes many enhancements. Zsh has command-line editing,
+            built-in spelling correction, programmable command completion,
+            shell functions (with autoloading), a history mechanism, and a
+            host of other features.
+            </p>
+        </description>
+
+        <sources>
+            <file src="zsh-4.3.15.tar.bz2"/>
+        </sources>
+
+        <requires>
+            <package name="libncursesw5-dev"/>
+            <package name="libcap-dev"/>
+            <package name="util-linux"/>
+            <package name="libpcre-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &zsh;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
