@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="tar" section="">
+    <description>
+        <summary>GNU version of the tar archiving utility</summary>
+        <p>
+        Tar is a program for packaging a set of files as a single archive in tar
+        format.  The function it performs is conceptually similar to cpio, and to
+        things like PKZIP in the DOS world.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/bin/tar"/>
+    </contents>
+</package>
