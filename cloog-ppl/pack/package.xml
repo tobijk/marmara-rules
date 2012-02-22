@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libcloog-ppl-dev SYSTEM "libcloog-ppl-dev.xml">
+  <!ENTITY libcloog-ppl0 SYSTEM "libcloog-ppl0.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="cloog-ppl-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="cloog-ppl" architecture-independent="false">
+        <description>
+            <summary>the Chunky Loop Generator (development files)</summary>
+            <p>
+            CLooG is a software which generates loops for scanning Z-polyhedra. That is,
+            CLooG finds the code or pseudo-code where each integral point of one or more
+            parametrized polyhedron or parametrized polyhedra union is reached. CLooG is
+            designed to avoid control overhead and to produce a very efficient code.
+            </p>
+            <p>
+            This package contains the development files and the cloog binary.
+            </p>
+        </description>
+
+        <sources>
+            <file src="cloog-ppl-0.15.9.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="autotools-dev"/>
+            <package name="libppl0.10-dev"/>
+            <package name="libgmp3-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libcloog-ppl-dev;
+    &libcloog-ppl0;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
