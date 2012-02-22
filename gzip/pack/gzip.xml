@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="gzip" section="utils">
+    <description>
+        <summary>GNU compression utilities</summary>
+        <p>
+        This package provides the standard GNU file compression utilities. They
+        typically operate on files with names ending in '.gz', but can also
+        decompress files ending in '.Z' created with 'compress'.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/bin/"/>
+    </contents>
+</package>
