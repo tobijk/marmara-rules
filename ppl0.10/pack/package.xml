@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libppl7 SYSTEM "libppl7.xml">
+  <!ENTITY libppl0.10-dev SYSTEM "libppl0.10-dev.xml">
+  <!ENTITY libppl-c2 SYSTEM "libppl-c2.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="ppl0.10-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="ppl0.10" architecture-independent="false">
+        <description>
+            <summary>Parma Polyhedra Library (runtime library)</summary>
+            <p>
+            The Parma Polyhedra Library (PPL) is a C++ library for the
+            manipulation of (not necessarily closed) convex polyhedra and other
+            numerical abstractions.  The applications of convex polyhedra include
+            program analysis, optimized compilation, integer and combinatorial
+            optimization and statistical data-editing.  The Parma Polyhedra
+            Library is user friendly (you write `x + 2*y + 5*z &lt;= 7' when you
+            mean it), fully dynamic (available virtual memory is the only
+            limitation to the dimension of anything), written in standard C++,
+            exception-safe, rather efficient and thoroughly documented.
+            </p>
+        </description>
+
+        <sources>
+            <file src="ppl-0.10.2.tar.bz2"/>
+        </sources>
+
+        <patches>
+            <patchset>
+                <file src="patches/dfff7e13e8817970647c38289b1f4e8d94999ea2"/>
+                <file src="patches/b52a2d273f4f96eec4a2ac5bb453756906e52a88"/>
+                <file src="patches/325ba80abd8c06c5dd740d35064302bbe65e251b"/>
+                <file src="patches/21c69b39730e0fb032395b07467b2ac3936ca124"/>
+                <file src="patches/7ba6445b1c5adb835e27d2f005779d4343721d21"/>
+                <file src="patches/bad1f4e90af2d1368fee383f08c59316182de8dc"/>
+                <file src="patches/9ba82c5fb51ff9f63818fa8c6f006a1900a70894"/>
+                <file src="patches/f0cd7dc9899fc7dac2580a97da69e6282bfc0576"/>
+                <file src="patches/9bdd6617be52573d3252687844d32001e671a126.debian"/>
+                <file src="patches/8ac2c64c2e9fa2da2d02428fe51c34b8dca3d6ff.debian"/>
+                <file src="patches/eab6ab2fd4e44c8e7348c26112e4c9e4190e88ee"/>
+                <file src="patches/777f298702f1005f6c4f026fb7a4663bb8dadd0e.debian"/>
+                <file src="patches/1fa465112d1f5519310f47de08494b765c420b8f.debian"/>
+                <file src="patches/9b0ba93300fb829608d40e766b9f3f95c81962e1.debian"/>
+                <file src="patches/3bbfa4bc9da9558d0b538c95c00607b2928bb9d1"/>
+                <file src="patches/9a89bb0a926a098a6e06a18c36881786f45d678b.debian"/>
+                <file src="patches/debian-changes-0.10.2-5"/>
+                <file src="patches/debian-changes-0.10.2-6"/>
+                <file src="patches/debian-changes-0.10.2-7"/>
+                <file src="patches/debian-changes-0.10.2-10"/>
+            </patchset>
+        </patches>
+
+        <requires>
+            <package name="libgmp3-dev"/>
+            <package name="autoconf"/>
+            <package name="automake"/>
+            <package name="libtool"/>
+            <package name="autotools-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libppl7;
+    &libppl0.10-dev;
+    &libppl-c2;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
