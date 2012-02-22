@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY perl-dev SYSTEM "perl-dev.xml">
+  <!ENTITY perl SYSTEM "perl.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR" value="perl-src"/>
+        <def name="XPACK_BUILD_DIR" value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="perl" architecture-independent="false">
+        <description>
+            <summary>minimal Perl system</summary>
+            <p>
+            Perl is a scripting language used in many system scripts and utilities.
+            </p>
+        </description>
+
+        <sources>
+            <file src="perl-5.14.2.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="file"/>
+            <package name="cpio"/>
+            <package name="libdb-dev"/>
+            <package name="libgdbm-dev"/>
+            <package name="procps"/>
+            <package name="zlib1g-dev"/>
+            <package name="libbz2-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &perl-dev;
+    &perl;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 

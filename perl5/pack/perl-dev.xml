@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="perl-dev" section="libdevel">
+    <description>
+        <summary>Perl library: development files</summary>
+        <p>
+        Files for developing applications which embed a Perl interpreter and for
+        programs compiled with perlcc.
+        </p>
+    </description>
+
+    <requires>
+        <package name="perl" version="=="/>
+    </requires>
+
+    <contents>
+        <file src="/usr/bin/c2ph"/>
+        <file src="/usr/bin/dprofpp"/>
+        <file src="/usr/bin/enc2xs"/>
+        <file src="/usr/bin/h2ph"/>
+        <file src="/usr/bin/h2xs"/>
+        <file src="/usr/bin/perlbug"/>
+        <file src="/usr/bin/perlivp"/>
+        <file src="/usr/bin/perlthanks"/>
+        <file src="/usr/bin/pl2pm"/>
+        <file src="/usr/bin/prove"/>
+        <file src="/usr/bin/pstruct"/>
+        <file src="/usr/bin/splain"/>
+        <file src="/usr/bin/xsubpp"/>
+
+        <file src="/usr/lib/libperl.{so,a}"/>
+
+        <!-- header files -->
+        <file src="/usr/lib/perl/5.14/CORE/"/>
+    </contents>
+</package>

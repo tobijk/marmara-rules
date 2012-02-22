@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+###############################################################################
+# set some variables for convenience
+###############################################################################
+cd $XPACK_SOURCE_DIR
+
+ARCH="`gcc -v 2>&1|grep Target:|cut -d' ' -f2`"
+
+MAJOR_MINOR="`echo '#include \"./patchlevel.h\"
+SET PERL_REVISION.PERL_VERSION' | gcc -E -DPERL_PATCHLEVEL_H_IMPLICIT -  | sed -n '/^SET /{s///;s/ //gp;}'`"
+
+PATCHLEVEL="`echo '#include \"./patchlevel.h\"
+SET PERL_SUBVERSION' | gcc -E -DPERL_PATCHLEVEL_H_IMPLICIT -  | sed -n '/^SET/{s///;s/ //gp;}'`"
+
+FULL_VERSION="$MAJOR_MINOR.$PATCHLEVEL"
+
+###############################################################################
+# build against system libbz2
+###############################################################################
+export BUILD_BZIP2=0
+export BZIP2_INCLUDE=/usr/include
+export BZIP2_LIB=/usr/lib
+
+###############################################################################
+# configure duplicate source trees for shared and static build
+###############################################################################
+for variant in shared static; do
+    cp -a $XPACK_SOURCE_DIR $XPACK_BUILD_DIR/$variant
+
+    OPTS="-Uuseshrplib"
+
+    if [ "$variant" = "shared" ]; then
+        OPTS="-Duseshrplib -Dlibperl=libperl.so.$FULL_VERSION -Dplibpth=/usr/lib"
+    fi
+
+    ###########################################################################
+    # run configuration script
+    ###########################################################################
+    cd $XPACK_BUILD_DIR/$variant
+    ./Configure \
+        -Dusethreads                                  \
+        -Duselargefiles                               \
+        -Dccflags=""                                  \
+        -Dcccdlflags="-fPIC"                          \
+        -Darchname=$ARCH                              \
+        -Dprefix=/usr                                 \
+        -Dprivlib=/usr/share/perl/$MAJOR_MINOR        \
+        -Darchlib=/usr/lib/perl/$MAJOR_MINOR          \
+        -Dvendorprefix=/usr                           \
+        -Dvendorlib=/usr/share/perl5                  \
+        -Dvendorarch=/usr/lib/perl5                   \
+        -Dsiteprefix=/usr/local                       \
+        -Dsitelib=/usr/local/share/perl/$FULL_VERSION \
+        -Dsitearch=/usr/local/lib/perl/$FULL_VERSION  \
+        -Dman1dir=/usr/share/man/man1                 \
+        -Dman3dir=/usr/share/man/man3                 \
+        -Dsiteman1dir=/usr/local/man/man1             \
+        -Dsiteman3dir=/usr/local/man/man3             \
+        -Dman1ext=1                                   \
+        -Dman3ext=3perl                               \
+        -Dpager=/usr/bin/pager                        \
+        -Uafs                                         \
+        -Ud_csh                                       \
+        -Ud_ualarm                                    \
+        -Uusesfio                                     \
+        -Uusenm                                       \
+        -DDEBUGGING="-g"                              \
+        -Doptimize="-O2"                              \
+        $OPTS -des
+
+done
+
+###############################################################################
+# disable rpath, libperl will be moved to /usr/lib
+###############################################################################
+sed -i "/^CCDLFLAGS/{s/-Wl,-rpath,\/usr[^ ]\+//g}" $XPACK_BUILD_DIR/shared/Makefile
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+###############################################################################
+# set some variables for convenience
+###############################################################################
+cd $XPACK_SOURCE_DIR
+
+MAJOR_MINOR="`echo '#include \"./patchlevel.h\"
+SET PERL_REVISION.PERL_VERSION' | gcc -E -DPERL_PATCHLEVEL_H_IMPLICIT -  | sed -n '/^SET /{s///;s/ //gp;}'`"
+
+PATCHLEVEL="`echo '#include \"./patchlevel.h\"
+SET PERL_SUBVERSION' | gcc -E -DPERL_PATCHLEVEL_H_IMPLICIT -  | sed -n '/^SET/{s///;s/ //gp;}'`"
+
+FULL_VERSION="$MAJOR_MINOR.$PATCHLEVEL"
+
+###############################################################################
+# run build
+###############################################################################
+for variant in shared static; do
+    make -C $XPACK_BUILD_DIR/$variant -j$XPACK_PARALLEL_JOBS
+done
+
+###############################################################################
+# regenerate shared library and add soname
+###############################################################################
+cd $XPACK_BUILD_DIR/shared/
+rm -f libperl.so.$FULL_VERSION
+make SHRPLDFLAGS="\$(LDDLFLAGS) -Wl,-soname,libperl.so.$MAJOR_MINOR" libperl.so.$FULL_VERSION
+ln -s libperl.so.$FULL_VERSION $XPACK_BUILD_DIR/shared/libperl.so.$MAJOR_MINOR
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+###############################################################################
+# set some variables for convenience
+###############################################################################
+cd $XPACK_SOURCE_DIR
+
+MAJOR_MINOR="`echo '#include \"./patchlevel.h\"
+SET PERL_REVISION.PERL_VERSION' | gcc -E -DPERL_PATCHLEVEL_H_IMPLICIT -  | sed -n '/^SET /{s///;s/ //gp;}'`"
+
+PATCHLEVEL="`echo '#include \"./patchlevel.h\"
+SET PERL_SUBVERSION' | gcc -E -DPERL_PATCHLEVEL_H_IMPLICIT -  | sed -n '/^SET/{s///;s/ //gp;}'`"
+
+FULL_VERSION="$MAJOR_MINOR.$PATCHLEVEL"
+
+###############################################################################
+# install the shared version
+###############################################################################
+cd $XPACK_BUILD_DIR/shared
+make DESTDIR=$XPACK_INSTALL_DIR install
+
+mv -v $XPACK_INSTALL_DIR/usr/lib/perl/$MAJOR_MINOR/CORE/libperl.so.$FULL_VERSION $XPACK_INSTALL_DIR/usr/lib/
+ln -s libperl.so.$FULL_VERSION $XPACK_INSTALL_DIR/usr/lib/libperl.so.$MAJOR_MINOR
+ln -s libperl.so.$FULL_VERSION $XPACK_INSTALL_DIR/usr/lib/libperl.so
+chmod 644 $XPACK_INSTALL_DIR/usr/lib/libperl.so.$FULL_VERSION
+
+###############################################################################
+# copy the static library
+###############################################################################
+cp -va $XPACK_BUILD_DIR/static/libperl.a $XPACK_INSTALL_DIR/usr/lib/
+
+###############################################################################
+# fix permissions
+###############################################################################
+find $XPACK_INSTALL_DIR/ -exec chmod u+w {} ';'
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_BUILD_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>
