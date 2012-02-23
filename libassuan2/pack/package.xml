@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libassuan2-dev SYSTEM "libassuan2-dev.xml">
+  <!ENTITY libassuan2-0 SYSTEM "libassuan2-0.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="libassuan2-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="libassuan2" architecture-independent="false">
+        <description>
+            <summary>IPC library for GnuPG components - Development files</summary>
+            <p>
+            Libassuan is a small library implementing the so-called Assuan
+            protocol. This protocol is used for IPC between most newer GnuPG
+            components. Both, server and client side functions are provided.
+            </p>
+            <p>
+            This package contains the development header file.
+            </p>
+        </description>
+
+        <sources>
+            <file src="libassuan-2.0.3.tar.bz2"/>
+        </sources>
+
+        <requires>
+            <package name="libgpg-error-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libassuan2-dev;
+    &libassuan2-0;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
