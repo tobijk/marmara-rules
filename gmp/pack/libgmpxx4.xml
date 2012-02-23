@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libgmpxx4" section="libs">
+    <description>
+        <summary>Multiprecision arithmetic library (C++ bindings, 32bit)</summary>
+        <p>
+        GNU MP is a programmer's library for arbitrary precision
+        arithmetic (ie, a bignum package).  It can operate on signed
+        integer, rational, and floating point numeric types.  This
+        package includes a 32 bit version of the shared library.
+        </p>
+    </description>
+
+    <requires>
+    </requires>
+
+    <contents>
+        <file src="/usr/lib/libgmpxx.so.*"/>
+    </contents>
+</package>
