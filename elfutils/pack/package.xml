@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY elfutils SYSTEM "elfutils.xml">
+  <!ENTITY libelf1 SYSTEM "libelf1.xml">
+  <!ENTITY libelf-dev SYSTEM "libelf-dev.xml">
+  <!ENTITY libdw-dev SYSTEM "libdw-dev.xml">
+  <!ENTITY libdw1 SYSTEM "libdw1.xml">
+  <!ENTITY libasm1 SYSTEM "libasm1.xml">
+  <!ENTITY libasm-dev SYSTEM "libasm-dev.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="elfutils-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="elfutils" architecture-independent="false">
+        <description>
+            <summary>collection of utilities to handle ELF objects</summary>
+            <p>
+            Elfutils is a collection of utilities, including eu-ld (a linker),
+            eu-nm (for listing symbols from object files), eu-size (for listing the
+            section sizes of an object or archive file), eu-strip (for discarding
+            symbols), eu-readelf (to see the raw ELF file structures), and eu-elflint
+            (to check for well-formed ELF files).
+            </p>
+        </description>
+
+        <sources>
+            <file src="elfutils-0.152.tar.bz2"/>
+        </sources>
+
+        <requires>
+            <package name="autotools-dev"/>
+            <package name="bzip2"/>
+            <package name="zlib1g-dev"/>
+            <package name="libbz2-dev"/>
+            <package name="liblzma-dev"/>
+            <package name="m4"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &elfutils;
+    &libelf1;
+    &libelf-dev;
+    &libdw-dev;
+    &libdw1;
+    &libasm1;
+    &libasm-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 

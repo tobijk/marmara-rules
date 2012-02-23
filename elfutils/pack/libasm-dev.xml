@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libasm-dev" section="libdevel">
+    <description>
+        <summary>libasm development libraries and header files</summary>
+        <p>
+        libasm1 allows you to create ELF files on a low level.
+        </p>
+        <p>
+        This package contains development libraries and header files for libasm1.
+        </p>
+    </description>
+
+    <requires>
+        <package name="libasm1" version="=="/>
+        <package name="libelf-dev"/>
+    </requires>
+
+    <contents>
+        <file src="/usr/include/elfutils/libasm.h"/>
+        <file src="/usr/lib/libasm.{a,so}"/>
+    </contents>
+</package>

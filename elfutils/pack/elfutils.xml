@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="elfutils" section="utils">
+    <description>
+        <summary>collection of utilities to handle ELF objects</summary>
+        <p>
+        Elfutils is a collection of utilities, including eu-ld (a linker),
+        eu-nm (for listing symbols from object files), eu-size (for listing the
+        section sizes of an object or archive file), eu-strip (for discarding
+        symbols), eu-readelf (to see the raw ELF file structures), and eu-elflint
+        (to check for well-formed ELF files).
+        </p>
+    </description>
+
+    <requires>
+        <package name="libdw1" version="=="/>
+    </requires>
+
+    <contents>
+        <file src="/usr/bin/"/>
+    </contents>
+</package>

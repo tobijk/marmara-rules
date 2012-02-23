@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libdw1" section="">
+    <description>
+        <summary>library that provides access to the DWARF debug information</summary>
+        <p>
+        libdw1 provides a library that provides access to DWARF debug information
+        stored inside ELF files.
+        </p>
+        <p>
+        This library is part of elfutils.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/lib/libdw.so.1"/>
+        <file src="/usr/lib/libdw-0.*.so"/>
+        <file src="/usr/lib/elfutils/"/>
+    </contents>
+</package>

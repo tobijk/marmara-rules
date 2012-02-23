@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libasm1" section="libs">
+    <description>
+        <summary>library with a programmable assembler interface</summary>
+        <p>
+        The libasm1 package provides a library with a programmable assembler
+        interface.  It allows you to create ELF files on a low level.
+        </p>
+        <p>
+        This library is part of elfutils.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/lib/libasm.so.1"/>
+        <file src="/usr/lib/libasm-*.so"/>
+    </contents>
+</package>

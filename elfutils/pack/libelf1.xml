@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libelf1" section="libs">
+    <description>
+        <summary>library to read and write ELF files</summary>
+        <p>
+        The libelf1 package provides a shared library which allows reading and
+        writing ELF files on a high level.  Third party programs depend on
+        this package to read internals of ELF files.  The programs of the
+        elfutils package use it also to generate new ELF files.
+        </p>
+        <p>
+        This library is part of elfutils.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/lib/libelf.so.1"/>
+        <file src="/usr/lib/libelf-*.so"/>
+    </contents>
+</package>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libdw-dev" section="libdevel">
+    <description>
+        <summary>libdw1 development libraries and header files</summary>
+        <p>
+        libdw1 provides a library that provides access to DWARF debug information
+        stored inside ELF files.
+        </p>
+        <p>
+        This package contains development libraries and header files for libdw1.
+        </p>
+        <p>
+        It also contains a static version of libdw.  Only link to the static version
+        for special cases and when you don't need anything from the ebl backends.
+        </p>
+    </description>
+
+    <requires>
+        <package name="libelf-dev"/>
+        <package name="libdw1" version="=="/>
+    </requires>
+
+    <contents>
+        <file src="/usr/include/dwarf.h"/>
+        <file src="/usr/include/elfutils/libdw.h"/>
+        <file src="/usr/include/elfutils/libdwfl.h"/>
+        <file src="/usr/lib/libdw.{a,so}"/>
+    </contents>
+</package>

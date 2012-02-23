@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<changelog>
+    <release version="0.152" revision="1" maintainer="Tobias Koch"
+     email="tobias.koch@gmail.com" date="2012-02-23 11:00:11 EET">
+        <changeset>
+            <li>Initial packaging</li>
+        </changeset>
+    </release>
+</changelog>
