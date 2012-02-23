@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libgpgme-dev" section="libdevel">
+    <description>
+        <summary>GPGME - GnuPG Made Easy</summary>
+        <p>
+        GPGME is a wrapper library which provides a C API to access some of the 
+        GnuPG functions, such as encrypt, decrypt, sign, verify, ...
+        </p>
+        <p>
+         This package contains the headers and other files needed to compile 
+        against this library.
+        </p>
+    </description>
+
+    <requires>
+        <package name="libgpgme11" version="=="/>
+        <package name="libc6-dev"/>
+        <package name="libgpg-error-dev"/>
+        <package name="libpth-dev"/>
+    </requires>
+
+    <contents>
+        <file src="/usr/include/"/>
+        <file src="/usr/lib/lib*.{a,la,so}"/>
+        <file src="/usr/bin/gpgme-config"/>
+        <file src="/usr/share/aclocal/*"/>
+    </contents>
+</package>

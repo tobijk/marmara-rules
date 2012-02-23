@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libgpgme11-dev SYSTEM "libgpgme11-dev.xml">
+  <!ENTITY libgpgme11 SYSTEM "libgpgme11.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="gpgme1.0-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="gpgme" architecture-independent="false">
+        <description>
+            <summary>GPGME - GnuPG Made Easy</summary>
+            <p>
+            GPGME is a wrapper library which provides a C API to access some of the 
+            GnuPG functions, such as encrypt, decrypt, sign, verify, ...
+            </p>
+            <p>
+             This package contains the headers and other files needed to compile 
+            against this library.
+            </p>
+        </description>
+
+        <sources>
+            <file src="gpgme-1.3.1.tar.bz2"/>
+        </sources>
+
+        <requires>
+            <package name="libgpg-error-dev"/>
+            <package name="libpth-dev"/>
+            <package name="libassuan2-dev"/>
+            <package name="gnupg2"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libgpgme11-dev;
+    &libgpgme11;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
