@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY zlib1 SYSTEM "zlib1.xml">
+  <!ENTITY zlib-dev SYSTEM "zlib-dev.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="zlib-src"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="zlib" architecture-independent="false">
+        <description>
+            <summary>compression library - runtime</summary>
+            <p>
+            zlib is a library implementing the deflate compression method found
+            in gzip and PKZIP.
+            </p>
+        </description>
+
+        <sources>
+            <file src="zlib-1.2.6.tar.gz"/>
+        </sources>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &zlib1;
+    &zlib-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
