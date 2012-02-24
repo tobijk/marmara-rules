@@ -11,7 +11,7 @@
     </description>
 
     <requires>
-        <package name="libssl0" version="=="/>
+        <package name="libssl0.9.8" version="=="/>
         <package name="zlib-dev"/>
     </requires>
 
