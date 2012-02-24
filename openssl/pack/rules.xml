@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+$XPACK_SOURCE_DIR/config \
+    --prefix=/usr \
+    --openssldir=/usr/lib/ssl \
+    no-idea no-mdc2 no-rc5 no-sslv2 \
+    zlib enable-tlsext shared threads
+
+make depend
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make INSTALL_PREFIX=$XPACK_INSTALL_DIR install
+
+mkdir -p $XPACK_INSTALL_DIR/etc/ssl
+for item in certs openssl.cnf private; do
+    mv $XPACK_INSTALL_DIR/usr/lib/ssl/$item $XPACK_INSTALL_DIR/etc/ssl/
+    ln -s /etc/ssl/$item $XPACK_INSTALL_DIR/usr/lib/ssl/
+done
+
+find $XPACK_INSTALL_DIR -name '*.so*' -exec chmod u+w "{}" ';'
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>

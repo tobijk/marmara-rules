@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="openssl" section="">
+    <description>
+        <summary>Secure Socket Layer (SSL) binary and related cryptographic tools</summary>
+        <p>
+        This package contains the openssl binary and related tools.
+        </p>
+        <p>
+        It is part of the OpenSSL implementation of SSL.
+        </p>
+        <p>
+        You need it to perform certain cryptographic actions like:
+         -  Creation of RSA, DH and DSA key parameters;
+         -  Creation of X.509 certificates, CSRs and CRLs;
+         -  Calculation of message digests;
+         -  Encryption and decryption with ciphers;
+         -  SSL/TLS client and server tests;
+         -  Handling of S/MIME signed or encrypted mail.
+        </p>
+    </description>
+
+    <requires>
+        <package name="perl"/>
+    </requires>
+
+    <contents>
+        <file src="/usr/bin/"/>
+        <file src="/usr/lib/ssl/"/>
+        <file src="/etc/ssl/"/>
+    </contents>
+</package>

@@ -1,0 +1,126 @@
+Description: disallow SSLv2 initialization, and force it disabled even in
+ compatibility modes.
+Author: Kees Cook <kees@ubuntu.com>
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=589706
+
+Index: openssl-0.9.8o/ssl/ssl_lib.c
+===================================================================
+--- openssl-0.9.8o.orig/ssl/ssl_lib.c	2010-02-17 20:43:08.000000000 +0100
++++ openssl-0.9.8o/ssl/ssl_lib.c	2010-07-19 22:10:51.885282388 +0200
+@@ -986,8 +986,10 @@
+ 		return 1;
+ 
+ 	case SSL_CTRL_OPTIONS:
++		larg|=SSL_OP_NO_SSLv2;
+ 		return(s->options|=larg);
+ 	case SSL_CTRL_CLEAR_OPTIONS:
++		larg&=~SSL_OP_NO_SSLv2;
+ 		return(s->options&=~larg);
+ 	case SSL_CTRL_MODE:
+ 		return(s->mode|=larg);
+@@ -1096,8 +1098,10 @@
+ 	case SSL_CTRL_SESS_CACHE_FULL:
+ 		return(ctx->stats.sess_cache_full);
+ 	case SSL_CTRL_OPTIONS:
++		larg|=SSL_OP_NO_SSLv2;
+ 		return(ctx->options|=larg);
+ 	case SSL_CTRL_CLEAR_OPTIONS:
++		larg&=~SSL_OP_NO_SSLv2;
+ 		return(ctx->options&=~larg);
+ 	case SSL_CTRL_MODE:
+ 		return(ctx->mode|=larg);
+@@ -1444,7 +1448,7 @@
+ 	{
+ 	SSL_CTX *ret=NULL;
+ 	
+-	if (meth == NULL)
++	if (meth == NULL || meth->version <= SSL2_VERSION)
+ 		{
+ 		SSLerr(SSL_F_SSL_CTX_NEW,SSL_R_NULL_SSL_METHOD_PASSED);
+ 		return(NULL);
+@@ -1603,6 +1607,9 @@
+ 	 */
+ 	ret->options |= SSL_OP_LEGACY_SERVER_CONNECT;
+ 
++	/* Force no SSLv2 for all methods */
++	ret->options |= SSL_OP_NO_SSLv2;
++
+ 	return(ret);
+ err:
+ 	SSLerr(SSL_F_SSL_CTX_NEW,ERR_R_MALLOC_FAILURE);
+Index: openssl-0.9.8o/test/testssl
+===================================================================
+--- openssl-0.9.8o.orig/test/testssl	2005-02-02 00:48:36.000000000 +0100
++++ openssl-0.9.8o/test/testssl	2010-07-19 22:10:51.885282388 +0200
+@@ -33,17 +33,17 @@
+ #############################################################################
+ 
+ echo test sslv2
+-$ssltest -ssl2 $extra || exit 1
++$ssltest -ssl2 $extra && exit 1
+ 
+ echo test sslv2 with server authentication
+-$ssltest -ssl2 -server_auth $CA $extra || exit 1
++$ssltest -ssl2 -server_auth $CA $extra && exit 1
+ 
+ if [ $dsa_cert = NO ]; then
+   echo test sslv2 with client authentication
+-  $ssltest -ssl2 -client_auth $CA $extra || exit 1
++  $ssltest -ssl2 -client_auth $CA $extra && exit 1
+ 
+   echo test sslv2 with both client and server authentication
+-  $ssltest -ssl2 -server_auth -client_auth $CA $extra || exit 1
++  $ssltest -ssl2 -server_auth -client_auth $CA $extra && exit 1
+ fi
+ 
+ echo test sslv3
+@@ -71,17 +71,17 @@
+ $ssltest -server_auth -client_auth $CA $extra || exit 1
+ 
+ echo test sslv2 via BIO pair
+-$ssltest -bio_pair -ssl2 $extra || exit 1
++$ssltest -bio_pair -ssl2 $extra && exit 1
+ 
+ echo test sslv2 with server authentication via BIO pair
+-$ssltest -bio_pair -ssl2 -server_auth $CA $extra || exit 1
++$ssltest -bio_pair -ssl2 -server_auth $CA $extra && exit 1
+ 
+ if [ $dsa_cert = NO ]; then
+   echo test sslv2 with client authentication via BIO pair
+-  $ssltest -bio_pair -ssl2 -client_auth $CA $extra || exit 1
++  $ssltest -bio_pair -ssl2 -client_auth $CA $extra && exit 1
+ 
+   echo test sslv2 with both client and server authentication via BIO pair
+-  $ssltest -bio_pair -ssl2 -server_auth -client_auth $CA $extra || exit 1
++  $ssltest -bio_pair -ssl2 -server_auth -client_auth $CA $extra && exit 1
+ fi
+ 
+ echo test sslv3 via BIO pair
+Index: openssl-0.9.8o/doc/ssl/SSL_CTX_new.pod
+===================================================================
+--- openssl-0.9.8o.orig/doc/ssl/SSL_CTX_new.pod	2010-07-19 22:35:59.305282967 +0200
++++ openssl-0.9.8o/doc/ssl/SSL_CTX_new.pod	2010-07-19 22:39:09.324088083 +0200
+@@ -30,6 +30,9 @@
+ and will also indicate that it only understand SSLv2. A server will only
+ understand SSLv2 client hello messages.
+ 
++Note: these methods are disabled. The SSLv2 protocol is considered unsafe,
++and all attempts to use it will result in the error "null ssl method passed".
++
+ =item SSLv3_method(void), SSLv3_server_method(void), SSLv3_client_method(void)
+ 
+ A TLS/SSL connection established with these methods will only understand the
+Index: openssl-0.9.8o/doc/ssl/SSL_CTX_set_options.pod
+===================================================================
+--- openssl-0.9.8o.orig/doc/ssl/SSL_CTX_set_options.pod	2010-07-19 22:39:31.044042368 +0200
++++ openssl-0.9.8o/doc/ssl/SSL_CTX_set_options.pod	2010-07-19 22:40:34.534120783 +0200
+@@ -202,6 +202,9 @@
+ 
+ Do not use the SSLv2 protocol.
+ 
++Note: this option is always set and cannot be disabled. SSLv2 is never
++available.
++
+ =item SSL_OP_NO_SSLv3
+ 
+ Do not use the SSLv3 protocol.

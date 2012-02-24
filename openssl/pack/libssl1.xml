@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libssl0" section="libs">
+    <description>
+        <summary>SSL shared libraries</summary>
+        <p>
+        libssl and libcrypto shared libraries needed by programs like
+        apache-ssl, telnet-ssl and openssh.
+        </p>
+        <p>
+        It is part of the OpenSSL implementation of SSL.
+        </p>
+    </description>
+
+    <requires>
+    </requires>
+
+    <contents>
+        <file src="/usr/lib/*.so.*.*.*"/>
+        <file src="/usr/lib/cmov/*.so.*.*.*"/>
+        <file src="/usr/lib/ssl/engines/"/>
+    </contents>
+</package>

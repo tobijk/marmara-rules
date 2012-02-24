@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY openssl SYSTEM "openssl.xml">
+  <!ENTITY libssl1 SYSTEM "libssl1.xml">
+  <!ENTITY libssl-dev SYSTEM "libssl-dev.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="openssl-src"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="openssl" architecture-independent="false">
+        <description>
+            <summary>Secure Socket Layer (SSL) libraries and related cryptographic tools</summary>
+            <p>
+            OpenSSL allows you to perform certain cryptographic actions like:
+             -  Creation of RSA, DH and DSA key parameters;
+             -  Creation of X.509 certificates, CSRs and CRLs;
+             -  Calculation of message digests;
+             -  Encryption and decryption with ciphers;
+             -  SSL/TLS client and server tests;
+             -  Handling of S/MIME signed or encrypted mail.
+            </p>
+        </description>
+
+        <sources>
+            <file src="openssl-0.9.8o.tar.gz"/>
+        </sources>
+
+        <patches>
+            <patchset>
+                <file src="patches/ca.patch"/>
+                <file src="patches/config-hurd.patch"/>
+                <file src="patches/debian-targets.patch"/>
+                <file src="patches/engines-path.patch"/>
+                <file src="patches/kfreebsd-pipe.patch"/>
+                <file src="patches/make-targets.patch"/>
+                <file src="patches/man-dir.patch"/>
+                <file src="patches/man-section.patch"/>
+                <file src="patches/no-rpath.patch"/>
+                <file src="patches/no-symbolic.patch"/>
+                <file src="patches/pic.patch"/>
+                <file src="patches/pkg-config.patch"/>
+                <file src="patches/valgrind.patch"/>
+                <file src="patches/rc4-amd64.patch"/>
+                <file src="patches/rehash-crt.patch"/>
+                <file src="patches/rehash_pod.patch"/>
+                <file src="patches/shared-lib-ext.patch"/>
+                <file src="patches/stddef.patch"/>
+                <file src="patches/version-script.patch"/>
+                <file src="patches/perl-path.diff"/>
+                <file src="patches/CVE-2010-2939.patch"/>
+                <file src="patches/CVE-2010-3864.patch"/>
+                <file src="patches/CVE-2010-4180.patch"/>
+                <file src="patches/CVE-2011-0014.patch"/>
+                <file src="patches/CVE-2011-1945.patch"/>
+                <file src="patches/CVE-2011-3210.patch"/>
+                <file src="patches/CVE-2011-4108.patch"/>
+                <file src="patches/CVE-2011-4109.patch"/>
+                <file src="patches/CVE-2011-4576.patch"/>
+                <file src="patches/CVE-2011-4577.patch"/>
+                <file src="patches/CVE-2011-4619.patch"/>
+                <file src="patches/CVE-2012-0050.patch"/>
+                <file src="patches/aesni.patch"/>
+                <file src="patches/perlpath-quilt.patch"/>
+                <file src="patches/Bsymbolic-functions.patch"/>
+                <file src="patches/no-sslv2.patch"/>
+            </patchset>
+        </patches>
+
+        <requires>
+            <package name="zlib-dev"/>
+            <package name="m4"/>
+            <package name="bc"/>
+            <package name="perl"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &openssl;
+    &libssl1;
+    &libssl-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
