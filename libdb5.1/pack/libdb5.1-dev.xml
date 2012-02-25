@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libdb5.1-dev" section="libdevel">
+    <description>
+        <summary>Berkeley v5.1 Database Libraries [development]</summary>
+        <p>
+        This is the development package which contains headers and static
+        libraries for the Berkeley v5.1 database library.
+        </p>
+    </description>
+
+    <requires>
+        <package name="libdb5.1" version="=="/>
+    </requires>
+
+    <contents>
+        <file src="/usr/include/db.h"/>
+        <file src="/usr/include/db_185.h"/>
+        <file src="/usr/lib/libdb-5.1.{a,la}"/>
+        <file src="/usr/lib/libdb.{a,so}"/>
+    </contents>
+</package>

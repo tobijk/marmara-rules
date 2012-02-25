@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libdb5.1-dev SYSTEM "libdb5.1-dev.xml">
+  <!ENTITY libdb5.1 SYSTEM "libdb5.1.xml">
+  <!ENTITY db5.1-util SYSTEM "db5.1-util.xml">
+  <!ENTITY libdb5.1pp SYSTEM "libdb5.1++.xml">
+  <!ENTITY libdb5.1pp-dev SYSTEM "libdb5.1++-dev.xml">
+  <!ENTITY libdb5.1-sql-dev SYSTEM "libdb5.1-sql-dev.xml">
+  <!ENTITY libdb5.1-sql SYSTEM "libdb5.1-sql.xml">
+  <!ENTITY libdb5.1-stl-dev SYSTEM "libdb5.1-stl-dev.xml">
+  <!ENTITY libdb5.1-stl SYSTEM "libdb5.1-stl.xml">
+  <!ENTITY libdb5.1-tcl SYSTEM "libdb5.1-tcl.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="db-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="db" architecture-independent="false">
+        <description>
+            <summary>Berkeley v5.1 Database Documentation [html]</summary>
+            <p>
+            This package contains documentation in HTML format for all of
+            the APIs (C, C++, C#, STL, Java, Tcl) and utilities provided
+            by version 5.1 of Berkeley DB.
+            </p>
+        </description>
+
+        <sources>
+            <file src="db-5.1.19.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="tcl8.5-dev"/>
+            <package name="procps"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libdb5.1-dev;
+    &libdb5.1;
+    &db5.1-util;
+    &libdb5.1pp;
+    &libdb5.1pp-dev;
+    &libdb5.1-sql-dev;
+    &libdb5.1-sql;
+    &libdb5.1-stl-dev;
+    &libdb5.1-stl;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
