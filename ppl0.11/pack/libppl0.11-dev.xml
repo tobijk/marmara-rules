@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libppl0.11-dev" section="libdevel">
+    <description>
+        <summary>Parma Polyhedra Library (development)</summary>
+        <p>
+        The Parma Polyhedra Library (PPL) is a C++ library for the
+        manipulation of (not necessarily closed) convex polyhedra and other
+        numerical abstractions.  The applications of convex polyhedra include
+        program analysis, optimized compilation, integer and combinatorial
+        optimization and statistical data-editing.  The Parma Polyhedra
+        Library is user friendly (you write `x + 2*y + 5*z &lt;= 7' when you
+        mean it), fully dynamic (available virtual memory is the only
+        limitation to the dimension of anything), written in standard C++,
+        exception-safe, rather efficient and thoroughly documented.
+        </p>
+        <p>
+        This package provides the header files and static libraries for the
+        C and C++ interfaces.
+        </p>
+    </description>
+
+    <requires>
+        <package name="libppl9" version="=="/>
+        <package name="libppl-c4" version="=="/>
+    </requires>
+
+    <contents>
+        <file src="/usr/include/ppl.hh"/>
+        <file src="/usr/include/ppl_c.h"/>
+        <file src="/usr/lib/libppl.{a,so}"/>
+        <file src="/usr/lib/libppl_c.{a,so}"/>
+        <file src="/usr/share/aclocal/ppl.m4"/>
+        <file src="/usr/share/aclocal/ppl_c.m4"/>
+    </contents>
+</package>

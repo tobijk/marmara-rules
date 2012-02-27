@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libppl9 SYSTEM "libppl9.xml">
+  <!ENTITY libppl0.11-dev SYSTEM "libppl0.11-dev.xml">
+  <!ENTITY libppl-c4 SYSTEM "libppl-c4.xml">
+  <!ENTITY libpwl5 SYSTEM "libpwl5.xml">
+  <!ENTITY libpwl-dev SYSTEM "libpwl-dev.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="ppl-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="ppl0.11" architecture-independent="false">
+        <description>
+            <summary>Parma Polyhedra Library (runtime library)</summary>
+            <p>
+            The Parma Polyhedra Library (PPL) is a C++ library for the
+            manipulation of (not necessarily closed) convex polyhedra and other
+            numerical abstractions.  The applications of convex polyhedra include
+            program analysis, optimized compilation, integer and combinatorial
+            optimization and statistical data-editing.  The Parma Polyhedra
+            Library is user friendly (you write `x + 2*y + 5*z &lt;= 7' when you
+            mean it), fully dynamic (available virtual memory is the only
+            limitation to the dimension of anything), written in standard C++,
+            exception-safe, rather efficient and thoroughly documented.
+            </p>
+        </description>
+
+        <sources>
+            <file src="ppl-0.11.2.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="libgmp3-dev"/>
+            <package name="autoconf"/>
+            <package name="libtool"/>
+            <package name="autotools-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libppl9;
+    &libppl0.11-dev;
+    &libppl-c4;
+    &libpwl5;
+    &libpwl-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 

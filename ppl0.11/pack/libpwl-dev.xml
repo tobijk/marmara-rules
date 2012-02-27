@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libpwl-dev" section="libdevel">
+    <description>
+        <summary>Parma Watchdog Library (Watchdog timers - development)</summary>
+        <p>
+        The Parma Watchdog Library (PWL) provides support for multiple,
+        concurrent watchdog timers on systems providing setitimer(2).  The
+        PWL is currently distributed with the Parma Polyhedra Library (PPL),
+        but is totally independent from it.
+        </p>
+        <p>
+        This package provides the header files and static libraries.
+        </p>
+    </description>
+
+    <requires>
+        <package name="libpwl5" version="=="/>
+    </requires>
+
+    <contents>
+        <file src="/usr/include/pwl.hh"/>
+        <file src="/usr/lib/libpwl.{a,so}"/>
+    </contents>
+</package>

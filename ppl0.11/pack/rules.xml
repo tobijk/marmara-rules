@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+export CPPFLAGS="$CPPFLAGS -fexceptions"
+
+cd $XPACK_BUILD_DIR
+$XPACK_SOURCE_DIR/configure \
+    --prefix=/usr \
+    --enable-interfaces=c,cxx \
+    --disable-ppl_lpsol \
+    --disable-ppl_lcdd
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make -j$XPACK_PARALLEL_JOBS
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make DESTDIR=$XPACK_INSTALL_DIR install
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_BUILD_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>
