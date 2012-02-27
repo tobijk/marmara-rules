@@ -9,10 +9,16 @@ cd "$XPACK_SOURCE_DIR"
 mv linuxthreads/* libc
 mv ports libc
 
+export CFLAGS="$CFLAGS -fno-stack-protector -U_FORTIFY_SOURCE"
+export BASH_SHELL=/bin/sh
+
 # configure
 cd "$XPACK_BUILD_DIR"
-BASH_SHELL="/bin/sh" CC="gcc -fno-stack-protector -U_FORTIFY_SOURCE" $XPACK_SOURCE_DIR/libc/configure \
-        --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib
+$XPACK_SOURCE_DIR/libc/configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --libexecdir=/usr/lib \
+        --disable-profile
 
     ]]>
     </prepare>
