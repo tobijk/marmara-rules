@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libgpg-error0" section="">
+    <description>
+        <summary>library for common error values and messages in GnuPG components</summary>
+        <p>
+        Library that defines common error values for all GnuPG
+        components.  Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt,
+        pinentry, SmartCard Daemon and possibly more in the future.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/lib/*.so.*"/>
+    </contents>
+</package>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libgpg-error-dev SYSTEM "libgpg-error-dev.xml">
+  <!ENTITY libgpg-error0 SYSTEM "libgpg-error0.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="libgpg-error-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="libgpg-error" architecture-independent="false">
+        <description>
+            <summary>library for common error values and messages in GnuPG components (development)</summary>
+            <p>
+            Library that defines common error values for all GnuPG
+            components.  Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt,
+            pinentry, SmartCard Daemon and possibly more in the future.
+            </p>
+        </description>
+
+        <sources>
+            <file src="libgpg-error-1.10.tar.bz2"/>
+        </sources>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libgpg-error-dev;
+    &libgpg-error0;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
