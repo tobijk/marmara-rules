@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+MY_CURSES_BUILD_OPTS="--prefix=/usr
+    --mandir=/usr/share/man
+    --without-profile
+    --without-debug
+    --disable-rpath
+    --enable-echo
+    --enable-const
+    --without-ada
+    --without-tests
+    --enable-symlinks
+    --disable-lp64
+    --with-chtype=long
+    --with-mmask-t=long
+    --disable-termcap
+    --with-default-terminfo-dir=/usr/share/terminfo
+    --with-terminfo-dirs=/etc/terminfo:/lib/terminfo:/usr/share/terminfo
+    --with-ticlib
+    --with-install-prefix=$XPACK_INSTALL_DIR
+    --disable-nls"
+
+for variant in shared sharedw static staticw; do
+
+    mkdir -p $XPACK_BUILD_DIR/$variant
+    cd $XPACK_BUILD_DIR/$variant
+
+    case "$variant" in
+        shared)
+            $XPACK_SOURCE_DIR/configure $MY_CURSES_BUILD_OPTS --with-shared --enable-overwrite
+            ;;
+        static)
+            $XPACK_SOURCE_DIR/configure $MY_CURSES_BUILD_OPTS --without-shared --enable-overwrite --without-dlsym
+            ;;
+        sharedw)
+            $XPACK_SOURCE_DIR/configure $MY_CURSES_BUILD_OPTS --with-shared --disable-overwrite --enable-widec
+            ;;
+        staticw)
+            $XPACK_SOURCE_DIR/configure $MY_CURSES_BUILD_OPTS --without-shared --disable-overwrite --without-dlsym --enable-widec
+            ;;
+    esac
+done
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+for variant in shared sharedw static staticw; do
+
+    cd $XPACK_BUILD_DIR/$variant
+    make -j$XPACK_PARALLEL_JOBS
+
+done
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+for variant in shared sharedw static staticw; do
+
+    cd $XPACK_BUILD_DIR/$variant
+    make install
+
+done
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_BUILD_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>

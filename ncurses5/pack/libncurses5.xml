@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libncurses5" section="">
+    <description>
+        <summary>shared libraries for terminal handling</summary>
+        <p>
+        The ncurses library routines are a terminal-independent method of
+        updating character screens with reasonable optimization.
+        </p>
+        <p>
+        This package contains the shared libraries necessary to run programs
+        compiled with ncurses.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/lib/libncurses.so.*"/>
+        <file src="/usr/lib/libtic.so.*"/>
+        <file src="/usr/lib/libpanel.so.*"/>
+        <file src="/usr/lib/libform.so.*"/>
+        <file src="/usr/lib/libmenu.so.*"/>
+    </contents>
+</package>

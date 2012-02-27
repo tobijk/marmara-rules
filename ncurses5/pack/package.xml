@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libncurses5 SYSTEM "libncurses5.xml">
+  <!ENTITY libncurses5-dev SYSTEM "libncurses5-dev.xml">
+  <!ENTITY libncursesw5 SYSTEM "libncursesw5.xml">
+  <!ENTITY libncursesw5-dev SYSTEM "libncursesw5-dev.xml">
+  <!ENTITY ncurses-bin SYSTEM "ncurses-bin.xml">
+  <!ENTITY ncurses-base SYSTEM "ncurses-base.xml">
+  <!ENTITY ncurses-term SYSTEM "ncurses-term.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="ncurses-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="ncurses" architecture-independent="false">
+        <description>
+            <summary>shared libraries for terminal handling</summary>
+            <p>
+            The ncurses library routines are a terminal-independent method of
+            updating character screens with reasonable optimization.
+            </p>
+        </description>
+
+        <sources>
+            <file src="ncurses-5.9.tar.gz"/>
+        </sources>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libncurses5;
+    &libncurses5-dev;
+    &libncursesw5;
+    &libncursesw5-dev;
+    &ncurses-bin;
+    &ncurses-base;
+    &ncurses-term;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 

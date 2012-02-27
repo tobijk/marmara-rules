@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libncursesw5-dev" section="libdevel">
+    <description>
+        <summary>developer's libraries for ncursesw</summary>
+        <p>
+        The ncurses library routines are a terminal-independent method of
+        updating character screens with reasonable optimization.
+        </p>
+        <p>
+        This package contains the header files, static libraries
+        and symbolic links that developers using ncursesw will need.
+        </p>
+        <p>
+        This package includes support for wide characters.
+        </p>
+    </description>
+
+    <requires>
+        <package name="libncursesw5" version="=="/>
+        <package name="ncurses-bin" version="=="/>
+        <package name="libc-dev"/>
+    </requires>
+
+    <contents>
+        <file src="/usr/include/ncursesw/"/>
+        <file src="/usr/lib/libncursesw.so"/>
+        <file src="/usr/lib/libticw.so"/>
+        <file src="/usr/lib/libformw.so"/>
+        <file src="/usr/lib/libmenuw.so"/>
+        <file src="/usr/lib/libpanelw.so"/>
+        <file src="/usr/lib/*w.a"/>
+    </contents>
+</package>
