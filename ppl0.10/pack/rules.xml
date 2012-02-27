@@ -4,6 +4,8 @@
     <prepare>
     <![CDATA[
 
+export CPPFLAGS="$CPPFLAGS -fexceptions"
+
 cd $XPACK_BUILD_DIR
 $XPACK_SOURCE_DIR/configure \
     --prefix=/usr \
