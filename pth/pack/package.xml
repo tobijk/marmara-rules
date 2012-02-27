@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libpth20 SYSTEM "libpth20.xml">
+  <!ENTITY libpth-dev SYSTEM "libpth-dev.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="pth-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="pth" architecture-independent="false">
+        <description>
+            <summary>The GNU Portable Threads</summary>
+            <p>
+            Pth is a very portable POSIX/ANSI-C based library for Unix platforms which
+            provides non-preemptive priority-based scheduling for multiple threads of
+            execution (&quot;multithreading&quot;) inside server applications. All threads run in the
+            same address space of the server application, but each thread has its own
+            individual program-counter, run-time stack, signal mask and errno variable.
+            </p>
+        </description>
+
+        <sources>
+            <file src="pth-2.0.7.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="autotools-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libpth20;
+    &libpth-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
