@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="gnupg2" section="">
+    <description>
+        <summary>GNU privacy guard - a free PGP replacement (new v2.x)</summary>
+        <p>
+        GnuPG is GNU's tool for secure communication and data storage.
+        It can be used to encrypt data and to create digital signatures.
+        It includes an advanced key management facility and is compliant
+        with the proposed OpenPGP Internet standard as described in RFC2440.
+        </p>
+        <p>
+        GnuPG 2.x is the new modularized version of GnuPG supporting OpenPGP
+        and S/MIME.
+        </p>
+        <p>
+        GnuPG does not use any patented algorithms so it cannot be compatible
+        with PGP2 because it uses IDEA (which is patented worldwide).
+        </p>
+    </description>
+
+    <requires>
+        <package name="gnupg-agent" version="=="/>
+    </requires>
+
+    <contents>
+        <file src="/usr/bin/kbxutil"/>
+        <file src="/usr/bin/gpg2"/>
+        <file src="/usr/bin/gpgv2"/>
+        <file src="/usr/bin/gpgconf"/>
+        <file src="/usr/bin/watchgnupg"/>
+
+        <file src="/usr/share/gnupg2/*.{pem,skel}"/>
+        <file src="/usr/share/gnupg2/qualified.txt"/>
+
+        <file src="/usr/lib/gnupg2/gpg-preset-passphrase"/>
+        <file src="/usr/lib/gnupg2/gpg2keys*"/>
+        <file src="/usr/sbin/addgnupghome"/>
+    </contents>
+</package>

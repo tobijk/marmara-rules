@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="gpgsm" section="">
+    <description>
+        <summary>GNU privacy guard - S/MIME version</summary>
+        <p>
+        GnuPG is GNU's tool for secure communication and data storage.
+        It can be used to encrypt data and to create digital signatures.
+        It includes an advanced key management facility and is compliant
+        with the proposed OpenPGP Internet standard as described in RFC2440.
+        </p>
+        <p>
+        This package contains the gpgsm program. gpgsm is a tool to provide
+        digital encryption and signing services on X.509 certificates and the
+        CMS protocol. gpgsm includes complete certificate management.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/bin/gpgsm"/>
+        <file src="/usr/bin/sc*"/>
+        <file src="/usr/bin/gpgsm-gencert.sh"/>
+        <file src="/usr/lib/gnupg2/gpg-protect-tool"/>
+        <file src="/usr/lib/gnupg2/gnupg-pcsc-wrapper"/>
+    </contents>
+</package>

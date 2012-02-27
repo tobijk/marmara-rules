@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY gnupg-agent SYSTEM "gnupg-agent.xml">
+  <!ENTITY gpgsm SYSTEM "gpgsm.xml">
+  <!ENTITY gnupg2 SYSTEM "gnupg2.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="gnupg2-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="gnupg2" architecture-independent="false">
+        <description>
+            <summary>GNU privacy guard - password agent</summary>
+            <p>
+            GnuPG is GNU's tool for secure communication and data storage.
+            It can be used to encrypt data and to create digital signatures.
+            It includes an advanced key management facility and is compliant
+            with the proposed OpenPGP Internet standard as described in RFC2440.
+            </p>
+            <p>
+            This package contains the agent program gpg-agent which keeps a
+            temporary secure storage of your passphrases.
+            </p>
+        </description>
+
+        <sources>
+            <file src="gnupg-2.0.18.tar.bz2"/>
+        </sources>
+
+        <requires>
+            <package name="libz-dev"/>
+            <package name="file"/>
+            <package name="libbz2-dev"/>
+            <package name="libgpg-error-dev"/>
+            <package name="libassuan-dev"/>
+            <package name="libgcrypt11-dev"/>
+            <package name="libksba-dev"/>
+            <package name="libpth-dev"/>
+            <package name="libusb-dev"/>
+            <package name="libreadline-dev"/>
+            <package name="libcurl4-gnutls-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &gnupg-agent;
+    &gpgsm;
+    &gnupg2;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 

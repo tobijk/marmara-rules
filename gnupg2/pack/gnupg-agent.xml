@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="gnupg-agent" section="">
+    <description>
+        <summary>GNU privacy guard - password agent</summary>
+        <p>
+        GnuPG is GNU's tool for secure communication and data storage.
+        It can be used to encrypt data and to create digital signatures.
+        It includes an advanced key management facility and is compliant
+        with the proposed OpenPGP Internet standard as described in RFC2440.
+        </p>
+        <p>
+        This package contains the agent program gpg-agent which keeps a
+        temporary secure storage of your passphrases.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/bin/gpg-agent"/>
+        <file src="/usr/bin/gpg-connect-agent"/>
+        <file src="/usr/bin/gpgkey2ssh"/>
+        <file src="/usr/bin/symcryptrun"/>
+    </contents>
+</package>

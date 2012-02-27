@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+$XPACK_SOURCE_DIR/configure \
+    --enable-maintainer-mode \
+    --prefix=/usr \
+    --with-zlib=/usr \
+    --infodir=/usr/share/info/ \
+    --mandir=/usr/share/man \
+    --libexecdir=/usr/lib/gnupg2 \
+    --sysconfdir=/etc \
+    --enable-gpg \
+    --enable-symcryptrun \
+    --disable-rpath \
+    --disable-nls
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make -j$XPACK_PARALLEL_JOBS
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make DESTDIR=$XPACK_INSTALL_DIR install
+
+mv -v $XPACK_INSTALL_DIR/usr/share/gnupg $XPACK_INSTALL_DIR/usr/share/gnupg2
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_BUILD_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>
