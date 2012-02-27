@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="texinfo" section="text">
+    <description>
+        <summary>Documentation system for on-line information and printed output</summary>
+        <p>
+        Texinfo is a documentation system that uses a single source file to
+        produce both on-line information and printed output.
+        </p>
+        <p>
+        Using Texinfo, you can create a printed document with the normal features
+        of a book, including chapters, sections, cross references, and indices. 
+        From the same Texinfo source file, you can create a menu-driven, on-line
+        Info file with nodes, menus, cross references, and indices.
+        </p>
+    </description>
+
+    <requires>
+    </requires>
+
+    <contents>
+        <file src="/usr/bin/"/>
+        <file src="/usr/share/texinfo/"/>
+    </contents>
+</package>
