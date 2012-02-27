@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="xz-lzma" section="">
+    <description>
+        <summary>XZ-format compression utilities - compatibility commands</summary>
+        <p>
+        XZ is the successor to the Lempel-Ziv/Markov-chain Algorithm
+        compression format, which provides memory-hungry but powerful
+        compression (often better than bzip2) and fast, easy decompression.
+        </p>
+        <p>
+        This package provides symbolic links allowing xz-utils to provide the
+        same interface for manipulating LZMA files as the lzma package. The
+        xz-utils package can handle LZMA files on its own; this package is
+        only necessary when using scripts or other programs that require the
+        older command names.
+        </p>
+    </description>
+
+    <requires>
+        <package name="xz-utils"/>
+    </requires>
+
+    <contents>
+        <file src="/usr/bin/lzma"/>
+        <file src="/usr/bin/unlzma"/>
+        <file src="/usr/bin/lzcat"/>
+        <file src="/usr/bin/lzmore"/>
+        <file src="/usr/bin/lzless"/>
+        <file src="/usr/bin/lzdiff"/>
+        <file src="/usr/bin/lzcmp"/>
+        <file src="/usr/bin/lz*grep"/>
+    </contents>
+</package>

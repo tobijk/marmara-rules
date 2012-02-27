@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY liblzma2 SYSTEM "liblzma2.xml">
+  <!ENTITY xz-utils SYSTEM "xz-utils.xml">
+  <!ENTITY xz-lzma SYSTEM "xz-lzma.xml">
+  <!ENTITY xzdec SYSTEM "xzdec.xml">
+  <!ENTITY liblzma-dev SYSTEM "liblzma-dev.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="xz-utils-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="xz-utils" architecture-independent="false">
+        <description>
+            <summary>XZ-format compression library and tools</summary>
+            <p>
+            XZ is the successor to the Lempel-Ziv/Markov-chain Algorithm
+            compression format, which provides memory-hungry but powerful
+            compression (often better than bzip2) and fast, easy decompression.
+            </p>
+            <p>
+            The native format of liblzma is XZ; it also supports raw (headerless)
+            streams and the older LZMA format used by lzma. (For 7-Zip's related
+            format, use the p7zip package instead.)
+            </p>
+        </description>
+
+        <sources>
+            <file src="xz-5.0.3.tar.xz"/>
+        </sources>
+
+        <requires>
+            <package name="perl"/>
+            <package name="autoconf"/>
+            <package name="automake"/>
+            <package name="libtool"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &liblzma2;
+    &xz-utils;
+    &xz-lzma;
+    &xzdec;
+    &liblzma-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
