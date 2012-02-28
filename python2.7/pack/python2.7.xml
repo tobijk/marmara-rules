@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<package name="python2.7" section="">
+<package name="python2.7" section="interpreters">
     <description>
         <summary>An interactive high-level object-oriented language (version 2.7)</summary>
         <p>
