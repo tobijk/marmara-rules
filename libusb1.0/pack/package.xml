@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libusb-1.0-0 SYSTEM "libusb-1.0-0.xml">
+  <!ENTITY libusb-1.0-dev SYSTEM "libusb-1.0-dev.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="libusb-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="libusb" architecture-independent="false">
+        <description>
+            <summary>userspace USB programming library</summary>
+            <p>
+            Library for programming USB applications without the knowledge
+            of Linux kernel internals.
+            </p>
+        </description>
+
+        <sources>
+            <file src="libusb-1.0.8.tar.bz2"/>
+        </sources>
+
+        <requires>
+            <package name="autotools-dev"/>
+            <package name="pkg-config"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libusb-1.0-0;
+    &libusb-1.0-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 

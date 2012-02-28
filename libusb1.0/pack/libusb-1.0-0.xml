@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libusb-1.0-0" section="libs">
+    <description>
+        <summary>userspace USB programming library</summary>
+        <p>
+        Library for programming USB applications without the knowledge
+        of Linux kernel internals.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/lib/libusb-*.so.*"/>
+    </contents>
+</package>

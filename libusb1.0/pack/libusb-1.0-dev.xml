@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libusb-1.0-dev" section="libdevel">
+    <description>
+        <summary>userspace USB programming library development files</summary>
+        <p>
+        Library for programming USB applications without the knowledge
+        of Linux kernel internals.
+        </p>
+    </description>
+
+    <requires>
+        <package name="libusb-1.0-0" version="=="/>
+    </requires>
+
+    <contents>
+        <file src="/usr/include/"/>
+        <file src="/usr/lib/libusb-*.{a,la,so}"/>
+        <file src="/usr/lib/pkgconfig/"/>
+    </contents>
+</package>
