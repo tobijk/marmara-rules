@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="python2.7" section="">
+    <description>
+        <summary>An interactive high-level object-oriented language (version 2.7)</summary>
+        <p>
+        Version 2.7 of the high-level, interactive object oriented language,
+        includes an extensive class library with lots of goodies for
+        network programming, system administration, sounds and graphics.
+        </p>
+    </description>
+
+    <requires>
+        <package name="mime-support"/>
+    </requires>
+
+    <contents>
+        <file src="/usr/bin/python2.7"/>
+        <file src="/usr/lib/libpython2.7.so.*"/>
+
+        <file src="/usr/lib/python2.7/*.{py,doc}"/>
+        <file src="/usr/lib/python2.7/importlib"/>
+
+        <dir src="/usr/lib/python2.7/bsddb"/>
+        <file src="/usr/lib/python2.7/bsddb/*"/>
+
+        <file src="/usr/lib/python2.7/xml/"/>
+        <file src="/usr/lib/python2.7/compiler/"/>
+
+        <file src="/usr/lib/python2.7/json"/>
+        <file src="/usr/lib/python2.7/json/*"/>
+
+        <file src="/usr/lib/python2.7/lib-dynload/"/>
+
+        <file src="/usr/lib/python2.7/encodings/"/>
+
+        <dir src="/usr/lib/python2.7/sqlite3"/>
+        <file src="/usr/lib/python2.7/sqlite3/*"/>
+
+        <file src="/usr/lib/python2.7/plat-linux2/"/>
+        <file src="/usr/lib/python2.7/wsgiref/"/>
+
+        <dir src="/usr/lib/python2.7/email"/>
+        <file src="/usr/lib/python2.7/email/*"/>
+        <file src="/usr/lib/python2.7/email/mime/"/>
+
+        <file src="/usr/lib/python2.7/multiprocessing"/>
+
+        <dir src="/usr/lib/python2.7/ctypes"/>
+        <file src="/usr/lib/python2.7/ctypes/*"/>
+        <file src="/usr/lib/python2.7/ctypes/macholib/"/>
+
+        <dir src="/usr/lib/python2.7/distutils"/>
+        <file src="/usr/lib/python2.7/distutils/*"/>
+        <file src="/usr/lib/python2.7/distutils/command/"/>
+
+        <dir src="/usr/lib/python2.7/unittest/"/>
+        <file src="/usr/lib/python2.7/unittest/*"/>
+
+        <file src="/usr/lib/python2.7/pydoc_data/"/>
+        <file src="/usr/lib/python2.7/hotshot/"/>
+
+        <dir src="/usr/lib/python2.7/site-packages"/>
+
+        <dir src="/usr/lib/python2.7/lib2to3"/>
+        <file src="/usr/lib/python2.7/lib2to3/*"/>
+        <file src="/usr/lib/python2.7/lib2to3/fixes/"/>
+    </contents>
+</package>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY python2.7 SYSTEM "python2.7.xml">
+  <!ENTITY python2.7-dev SYSTEM "python2.7-dev.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="python2.7-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="python2.7" architecture-independent="false">
+        <description>
+            <summary>An interactive high-level object-oriented language (version 2.7)</summary>
+            <p>
+            Version 2.7 of the high-level, interactive object oriented language,
+            includes an extensive class library with lots of goodies for
+            network programming, system administration, sounds and graphics.
+            </p>
+        </description>
+
+        <sources>
+            <file src="Python-2.7.2.tar.xz"/>
+        </sources>
+
+        <requires>
+            <package name="autoconf"/>
+            <package name="libreadline-dev"/>
+            <package name="libncursesw5-dev"/>
+            <package name="zlib1g-dev"/>
+            <package name="libssl-dev"/>
+            <package name="libexpat1-dev"/>
+            <package name="sharutils"/>
+            <package name="libbz2-dev"/>
+            <package name="locales"/>
+            <package name="libsqlite3-dev"/>
+            <package name="libffi-dev"/>
+            <package name="mime-support"/>
+            <package name="libdb5.1-dev"/>
+            <package name="gdb"/>
+            <package name="python"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &python2.7;
+    &python2.7-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 

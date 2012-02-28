@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+$XPACK_SOURCE_DIR/configure \
+    --prefix=/usr \
+    --enable-ipv6 \
+    --enable-unicode=ucs4 \
+    --with-dbmliborder=bdb \
+    --with-system-expat \
+    --with-system-ffi \
+    --enable-shared
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make -j$XPACK_PARALLEL_JOBS
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make DESTDIR=$XPACK_INSTALL_DIR install
+
+find "$XPACK_INSTALL_DIR" -name '*.pyc' -exec rm -f '{}' ';'
+find "$XPACK_INSTALL_DIR" -name '*.pyo' -exec rm -f '{}' ';'
+find "$XPACK_INSTALL_DIR" -type f -exec chmod u+w '{}' ';'
+
+mv $XPACK_INSTALL_DIR/usr/bin/2to3 $XPACK_INSTALL_DIR/usr/bin/2to3-2.7
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_BUILD_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>
