@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libreadline6 SYSTEM "libreadline6.xml">
+  <!ENTITY readline-common SYSTEM "readline-common.xml">
+  <!ENTITY libreadline-dev SYSTEM "libreadline-dev.xml">
+  <!ENTITY rlfe SYSTEM "rlfe.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="readline6-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="readline6" architecture-independent="false">
+        <description>
+            <summary>GNU readline and history libraries, run-time libraries</summary>
+            <p>
+            The GNU readline library aids in the consistency of user interface
+            across discrete programs that need to provide a command line
+            interface.
+            </p>
+            <p>
+            The GNU history library provides a consistent user interface for
+            recalling lines of previously typed input.
+            </p>
+        </description>
+
+        <sources>
+            <file src="readline-6.2.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="libncurses5-dev"/>
+            <package name="gawk"/>
+            <package name="autotools-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libreadline6;
+    &readline-common;
+    &libreadline-dev;
+    &rlfe;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+$XPACK_SOURCE_DIR/configure \
+    --prefix=/usr \
+    --with-curses
+
+cp -a $XPACK_SOURCE_DIR/examples/rlfe $XPACK_BUILD_DIR/examples/
+ln -sf ../../.. $XPACK_BUILD_DIR/examples/rlfe/readline
+
+cd $XPACK_BUILD_DIR/examples/rlfe
+./configure --prefix=/usr
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+make -C$XPACK_BUILD_DIR -j$XPACK_PARALLEL_JOBS
+make -C$XPACK_BUILD_DIR/examples/rlfe -j$XPACK_PARALLEL_JOBS
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+make -C$XPACK_BUILD_DIR DESTDIR=$XPACK_INSTALL_DIR install
+
+install -m 755 $XPACK_BUILD_DIR/examples/rlfe/rlfe $XPACK_INSTALL_DIR/usr/bin/
+install -m 644 $XPACK_BASE_DIR/misc/inputrc $XPACK_INSTALL_DIR/usr/share/readline/
+
+find $XPACK_INSTALL_DIR/usr/lib -name '*.so.*' -exec chmod 755 '{}' ';'
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_BUILD_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>
