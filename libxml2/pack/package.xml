@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libxml2 SYSTEM "libxml2.xml">
+  <!ENTITY libxml2-utils SYSTEM "libxml2-utils.xml">
+  <!ENTITY libxml2-dev SYSTEM "libxml2-dev.xml">
+  <!ENTITY python-libxml2 SYSTEM "python-libxml2.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="libxml2-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="libxml2" architecture-independent="false">
+        <description>
+            <summary>GNOME XML library</summary>
+            <p>
+            XML is a metalanguage to let you design your own markup language.
+            A regular markup language defines a way to describe information in
+            a certain class of documents (eg HTML). XML lets you define your
+            own customized markup languages for many classes of document. It
+            can do this because it's written in SGML, the international standard
+            metalanguage for markup languages.
+            </p>
+            <p>
+            This package provides a library providing an extensive API to handle
+            such XML data files.
+            </p>
+        </description>
+
+        <sources>
+            <file src="libxml2-sources-2.7.8.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="libz-dev"/>
+            <package name="python-dev"/>
+            <package name="autotools-dev"/>
+            <package name="libreadline-dev"/>
+            <package name="binutils"/>
+            <package name="perl"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libxml2;
+    &libxml2-utils;
+    &libxml2-dev;
+    &python-libxml2;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
