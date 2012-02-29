@@ -65,4 +65,26 @@
         <file src="/usr/lib/python2.7/lib2to3/*"/>
         <file src="/usr/lib/python2.7/lib2to3/fixes/"/>
     </contents>
+
+    <maintainer-scripts>
+        <postinst>
+        <![CDATA[
+
+echo -n "Pre-compiling Python source files..."
+find /usr/lib/python2.7 -name '*.py' -exec python -c "import py_compile; py_compile.compile('{}')" ';'
+echo "done."
+
+        ]]>
+        </postinst>
+        <prerm>
+        <![CDATA[
+
+echo -n "Deleting Python byte code files..."
+find /usr/lib/python2.7 -name '*.pyc' -exec rm -f '{}' ';'
+find /usr/lib/python2.7 -name '*.pyo' -exec rm -f '{}' ';'
+echo "done."
+
+        ]]>
+        </prerm>
+    </maintainer-scripts>
 </package>
