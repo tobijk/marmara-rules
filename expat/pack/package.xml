@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libexpat-dev SYSTEM "libexpat-dev.xml">
+  <!ENTITY libexpat1 SYSTEM "libexpat1.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="expat-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="expat" architecture-independent="false">
+        <description>
+            <summary>XML parsing C library</summary>
+            <p>
+            Expat is a C library for parsing XML.  Expat is a stream oriented XML
+            parser.  This means that you register handlers with the parser prior
+            to starting the parse.  These handlers are called when the parser
+            discovers the associated structures in the document being parsed.  A
+            start tag is an example of the kind of structures for which you may
+            register handlers.
+            </p>
+        </description>
+
+        <sources>
+            <file src="expat-2.0.1.tar.gz"/>
+        </sources>
+
+        <patches>
+            <patchset>
+                <file src="patches/302191_install_expat_config_h.dpatch"/>
+                <file src="patches/485129_fix_underquotation_in_m4.dpatch"/>
+                <file src="patches/551936_CVE_2009_2625.dpatch"/>
+                <file src="patches/560901_CVE_2009_3560.dpatch"/>
+                <file src="patches/82763_xmlwf_error_out_2.dpatch"/>
+            </patchset>
+        </patches>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libexpat-dev;
+    &libexpat1;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libexpat-dev" section="libdevel">
+    <description>
+        <summary>XML parsing C library - development kit</summary>
+        <p>
+        This package contains the header file and development libraries of
+        expat, the C library for parsing XML.  Expat is a stream oriented XML
+        parser.  This means that you register handlers with the parser prior
+        to starting the parse.  These handlers are called when the parser
+        discovers the associated structures in the document being parsed.  A
+        start tag is an example of the kind of structures for which you may
+        register handlers.
+        </p>
+    </description>
+
+    <requires>
+        <package name="libexpat" version="=="/>
+    </requires>
+
+    <contents>
+        <file src="/usr/include/"/>
+        <file src="/usr/lib/*.{a,la,so}"/>
+        <file src="/usr/share/aclocal/"/>
+    </contents>
+</package>
