@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libxslt1 SYSTEM "libxslt1.xml">
+  <!ENTITY libxslt-dev SYSTEM "libxslt-dev.xml">
+  <!ENTITY xsltproc SYSTEM "xsltproc.xml">
+  <!ENTITY python-libxslt1 SYSTEM "python-libxslt1.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="libxslt-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="libxslt" architecture-independent="false">
+        <description>
+            <summary>XSLT 1.0 processing library - runtime library</summary>
+            <p>
+            XSLT is an XML language for defining transformations of XML files from
+            XML to some other arbitrary format, such as XML, HTML, plain text, etc.
+            using standard XSLT stylesheets. libxslt is a C library which
+            implements XSLT version 1.0.
+            </p>
+            <p>
+            This package contains the libxslt library used by applications for XSLT
+            transformations.
+            </p>
+        </description>
+
+        <sources>
+            <file src="libxslt-1.1.26.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="libxml2-dev"/>
+            <package name="python-dev"/>
+            <package name="libgcrypt11-dev"/>
+            <package name="autotools-dev"/>
+            <package name="binutils"/>
+            <package name="perl"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libxslt1;
+    &libxslt-dev;
+    &xsltproc;
+    &python-libxslt1;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
