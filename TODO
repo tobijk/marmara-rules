@@ -15,3 +15,6 @@
 * check maintainer info and package descriptions
 
 * lib dev files should not append version (with exceptions)
+
+* separate manually installed site packages and packaged
+  modules for Perl, Python, Ruby
