@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+export CFLAGS="$CFLAGS -fno-strict-aliasing -DSQLITE_SECURE_DELETE -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_RTREE=1 -DSQLITE_SOUNDEX=1 -DSQLITE_ENABLE_UNLOCK_NOTIFY"
+
+cd $XPACK_BUILD_DIR
+$XPACK_SOURCE_DIR/configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib/sqlite3 \
+    --enable-threadsafe
+
+#mkdir -p $XPACK_BUILD_DIR/tea
+#cd $XPACK_BUILD_DIR/tea
+#$XPACK_SOURCE_DIR/tea/configure \
+#    --prefix=/usr \
+#    --libexecdir=/usr/lib/sqlite3 \
+#    --with-tcl=/usr/lib/tcl8.5
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+make -C$XPACK_BUILD_DIR -j$XPACK_PARALLEL_JOBS
+#make -C$XPACK_BUILD_DIR/tea -j$XPACK_PARALLEL_JOBS
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+make -C$XPACK_BUILD_DIR DESTDIR=$XPACK_INSTALL_DIR install
+#make -C$XPACK_BUILD_DIR/tea DESTDIR=$XPACK_INSTALL_DIR install
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_BUILD_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>
