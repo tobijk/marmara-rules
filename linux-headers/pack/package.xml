@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+<!ENTITY rules       SYSTEM "rules.xml">
+<!ENTITY linux-headers SYSTEM "linux-headers-2.6.32.xml">
+<!ENTITY changelog   SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR" value="linux-src"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="linux-2.6.32" architecture-independent="false">
+        <description>
+            <summary>Utilities and libraries for manipulating access control lists</summary>
+        </description>
+
+        <sources>
+            <file src="linux-2.6.32.57.tar.bz2"/>
+        </sources>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &linux-headers;
+
+    <!-- changelog -->
+    &changelog;
+
+</control>

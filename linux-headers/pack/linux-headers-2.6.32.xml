@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="linux-headers-2.6.32" section="devel">
+    <description>
+        <summary>The Linux kernel headers for user-space programs</summary>
+        <p>
+          This package contains the sanitized Linux kernel headers for
+          user-space programs. In particular the C library needs these
+          at compile time, in order to provide available system calls.
+        </p>
+    </description>
+
+    <provides>
+        <package name="linux-headers"/>
+    </provides>
+
+    <contents>
+        <file src="/usr/include/"/>
+    </contents>
+</package>

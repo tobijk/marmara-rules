@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+make -C $XPACK_SOURCE_DIR mrproper
+
+    ]]>
+    </prepare>
+
+    <install>
+    <![CDATA[
+
+mkdir -p $XPACK_INSTALL_DIR/usr
+make -C $XPACK_SOURCE_DIR headers_check
+make -C $XPACK_SOURCE_DIR INSTALL_HDR_PATH=$XPACK_INSTALL_DIR/usr headers_install
+
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>
