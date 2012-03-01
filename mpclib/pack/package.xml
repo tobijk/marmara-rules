@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libmpc-dev SYSTEM "libmpc-dev.xml">
+  <!ENTITY libmpc2 SYSTEM "libmpc2.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="mpclib-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="mpclib" architecture-independent="false">
+        <description>
+            <summary>multiple precision complex floating-point library development package</summary>
+            <p>
+            MPC is a portable library written in C for arbitrary precision
+            arithmetic on complex numbers providing correct rounding. For the time
+            being, it contains all arithmetic operations over complex numbers, the
+            exponential and the logarithm functions, the trigonometric and
+            hyperbolic functions.
+            </p>
+            <p>
+            Ultimately, it should implement a multiprecision equivalent of the ISO
+            C99 standard.
+            </p>
+            <p>
+            It builds upon the GNU MP and the MPFR libraries.
+            </p>
+        </description>
+
+        <sources>
+            <file src="mpc-0.9.tar.gz"/>
+        </sources>
+
+        <patches>
+            <patchset>
+                <file src="patches/unbreak-configure-debian.patch"/>
+            </patchset>
+        </patches>
+
+        <requires>
+            <package name="libmpfr-dev"/>
+            <package name="libgmp-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libmpc-dev;
+    &libmpc2;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
