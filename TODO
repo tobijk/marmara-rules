@@ -18,3 +18,7 @@
 
 * separate manually installed site packages and packaged
   modules for Perl, Python, Ruby
+
+* review procps packaging
+  - needs postinst
+  - what's in sysctl.d?
