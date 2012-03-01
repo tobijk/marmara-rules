@@ -1,0 +1,71 @@
+Description: Upstream changes introduced in version 1:3.2.8-10ubuntu2
+ This patch has been created by dpkg-source during the package build.
+ Here's the last changelog entry, hopefully it gives details on why
+ those changes were made:
+ .
+ procps (1:3.2.8-10ubuntu2) natty; urgency=low
+ .
+   * pmap.c: pmap -x correctly reports Kbytes column and prints
+     summaries for RSS and Dirty (LP: #753124)
+ .
+ The person named in the Author field signed this changelog entry.
+Author: Andrey Bondarenko <abondarenko@users.sourceforge.net>
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/753124
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- procps-3.2.8.orig/pmap.c
++++ procps-3.2.8/pmap.c
+@@ -167,7 +167,7 @@ static int one_proc(proc_t *p){
+   while(fgets(mapbuf,sizeof mapbuf,fp)){
+     char flags[32];
+     char *tmp; // to clean up unprintables
+-    unsigned KLONG start, end, diff;
++    unsigned KLONG start, end, diff=0;
+     unsigned long long file_offset, inode;
+     unsigned dev_major, dev_minor;
+     unsigned long long smap_value;
+@@ -213,7 +213,6 @@ static int one_proc(proc_t *p){
+       }
+     }
+     sscanf(mapbuf,"%"KLF"x-%"KLF"x %31s %Lx %x:%x %Lu", &start, &end, flags, &file_offset, &dev_major, &dev_minor, &inode);
+-    diff = end-start;
+ 
+     if(start > range_high)
+       break;
+@@ -228,6 +227,7 @@ static int one_proc(proc_t *p){
+       tmp++;
+     }
+     
++    diff = end-start;
+     if(flags[3]=='s') total_shared  += diff;
+     if(flags[3]=='p'){
+       flags[3] = '-';
+@@ -285,13 +285,13 @@ static int one_proc(proc_t *p){
+           "total kB %15ld %7llu %7llu\n",
+           (total_shared + total_private_writeable + total_private_readonly) >> 10,
+           total_rss, (total_shared_dirty+total_private_dirty)
++
+         );
+       }else{
+         printf("-------- ------- ------- ------- -------\n");
+         printf(
+-          "total kB %7ld %7llu %7llu       -\n",
+-          (total_shared + total_private_writeable + total_private_readonly) >> 10,
+-          total_rss, (total_shared_dirty+total_private_dirty)
++          "total kB %7ld       -       -       -\n",
++          (total_shared + total_private_writeable + total_private_readonly) >> 10
+         );
+       }
+     }

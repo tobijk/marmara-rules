@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libproc-dev" section="libdevel">
+    <description>
+        <summary>library for accessing process information from /proc</summary>
+        <p>
+        These are the header files for libproc. Some packages using libproc
+        to access process information from /proc need these to compile.
+        </p>
+    </description>
+
+    <requires>
+        <package name="procps" version="=="/>
+    </requires>
+
+    <contents>
+        <dir src="/usr/include/proc"/>
+        <file src="/usr/include/proc/*.h"/>
+        <file src="/usr/lib/libproc.{a,so}"/>
+    </contents>
+</package>

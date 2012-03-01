@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+for variant in shared static; do
+    cp -a $XPACK_SOURCE_DIR $XPACK_BUILD_DIR/$variant
+done
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+for variant in shared static; do
+    cd $XPACK_BUILD_DIR/$variant
+    if [ "$variant" = "shared" ]; then
+        make m64="-m32" lib64="usr/lib" -j$XPACK_PARALLEL_JOBS
+    else
+        make m64="-m32" lib64="usr/lib" SHARED=0 -j$XPACK_PARALLEL_JOBS
+    fi
+done
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR/shared
+make lib64="usr/lib" ldconfig="true" install="install -D" DESTDIR=$XPACK_INSTALL_DIR install
+cp -a $XPACK_BASE_DIR/etc/ $XPACK_INSTALL_DIR/
+
+# fix for /usr merge
+mv $XPACK_INSTALL_DIR/bin/*  $XPACK_INSTALL_DIR/usr/bin
+mv $XPACK_INSTALL_DIR/sbin/* $XPACK_INSTALL_DIR/usr/sbin
+
+# copy includes
+mkdir -p $XPACK_INSTALL_DIR/usr/include
+cp -a $XPACK_BUILD_DIR/shared/proc $XPACK_INSTALL_DIR/usr/include
+
+# copy static library
+cp -a $XPACK_BUILD_DIR/static/proc/libproc.a $XPACK_INSTALL_DIR/usr/lib/
+
+# create symlink for shared linker
+ln -sf libproc-3.2.8.so $XPACK_INSTALL_DIR/usr/lib/libproc.so
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_BUILD_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>
