@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY libmpfr4 SYSTEM "libmpfr4.xml">
+  <!ENTITY libmpfr-dev SYSTEM "libmpfr-dev.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="mpfr4-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="mpfr4" architecture-independent="false">
+        <description>
+            <summary>multiple precision floating-point computation</summary>
+            <p>
+            MPFR provides a library for multiple-precision floating-point computation
+            with correct rounding.  The computation is both efficient and has a
+            well-defined semantics. It copies the good ideas from the
+            ANSI/IEEE-754 standard for double-precision floating-point arithmetic
+            (53-bit mantissa).
+            </p>
+        </description>
+
+        <sources>
+            <file src="mpfr-3.1.0.tar.xz"/>
+        </sources>
+
+        <requires>
+            <package name="libgmp-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &libmpfr4;
+    &libmpfr-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
