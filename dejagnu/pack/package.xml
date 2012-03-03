@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY dejagnu SYSTEM "dejagnu.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="dejagnu-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="dejagnu" architecture-independent="true">
+        <description>
+            <summary>framework for running test suites on software tools</summary>
+            <p>
+            DejaGnu is a framework for testing other programs.  Its purpose is to
+            provide a single front end for all tests.
+            </p>
+            <p>
+            DejaGnu provides a layer of abstraction which allows you to write
+            tests that are portable to any host or target where a program must
+            be tested.  All tests have the same output format.
+            </p>
+            <p>
+            DejaGnu is written in `expect', which in turn uses &quot;Tcl&quot;--Tool
+            command language.
+            </p>
+        </description>
+
+        <sources>
+            <file src="dejagnu-1.5.tar.gz"/>
+        </sources>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &dejagnu;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
