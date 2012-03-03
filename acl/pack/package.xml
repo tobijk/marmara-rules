@@ -3,7 +3,7 @@
 <!ENTITY rules       SYSTEM "rules.xml">
 <!ENTITY libacl1     SYSTEM "libacl1.xml">
 <!ENTITY acl         SYSTEM "acl.xml">
-<!ENTITY libacl1-dev SYSTEM "libacl1-dev.xml">
+<!ENTITY libacl-dev  SYSTEM "libacl-dev.xml">
 <!ENTITY changelog   SYSTEM "changelog.xml">
 ]>
 <control xmlns:xi="http://www.w3.org/2001/XInclude">
@@ -23,10 +23,11 @@
         </sources>
 
         <requires>
+            <package name="libc6-dev"/>
             <package name="autoconf"/>
             <package name="automake"/>
             <package name="libtool"/>
-            <package name="libattr1-dev"/>
+            <package name="libattr-dev"/>
         </requires>
 
         <!-- build rules -->
@@ -36,7 +37,7 @@
     <!-- package rules -->
     &acl;
     &libacl1;
-    &libacl1-dev;
+    &libacl-dev;
 
     <!-- changelog -->
     &changelog;

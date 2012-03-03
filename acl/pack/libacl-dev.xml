@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<package name="libacl1-dev" section="libdevel">
+<package name="libacl-dev" section="libdevel">
     <description>
         <summary>Access control list static libraries and headers</summary>
         <p>
@@ -12,7 +12,7 @@
     <requires>
         <package name="libacl1" version="=="/>
         <package name="libc6-dev"/>
-        <package name="libattr1-dev" version="&gt;= 2.4.4"/>
+        <package name="libattr-dev"/>
     </requires>
 
     <contents>
