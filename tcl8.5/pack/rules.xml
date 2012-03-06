@@ -7,7 +7,7 @@
 TCLv=tcl8.5
 
 export CFLAGS="$CFLAGS -fno-unit-at-a-time"
-export TCL_PACKAGE_PATH="/usr/local/lib/tcltk /usr/local/share/tcltk /usr/lib/tcltk /usr/share/tcltk /usr/lib"
+export TCL_PACKAGE_PATH="/usr/local/lib/tcltk /usr/local/share/tcltk /usr/lib/tcltk /usr/share/tcltk"
 
 touch $XPACK_SOURCE_DIR/generic/tclStubInit.c
 
