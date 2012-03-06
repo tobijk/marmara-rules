@@ -1,0 +1,24 @@
+Original patch by Sergei Golovan allows to find tclConfig.sh in
+/usr/share/tcltk/tcl8.5 and tkConfig.sh in /usr/share/tcltk/tk8.5 where they
+are located in Debian installation.
+
+Adapted for Marmara Linux.
+
+--- tcl8.5-8.5.9.orig/unix/tcl.m4
++++ tcl8.5-8.5.9/unix/tcl.m4
+@@ -93,6 +93,7 @@
+ 			`ls -d ${prefix}/lib 2>/dev/null` \
+ 			`ls -d /usr/local/lib 2>/dev/null` \
+ 			`ls -d /usr/contrib/lib 2>/dev/null` \
++			`ls -d /usr/lib/tcl8.5 2>/dev/null` \
+ 			`ls -d /usr/lib 2>/dev/null` \
+ 			`ls -d /usr/lib64 2>/dev/null` \
+ 			; do
+@@ -224,6 +225,7 @@
+ 			`ls -d ${prefix}/lib 2>/dev/null` \
+ 			`ls -d /usr/local/lib 2>/dev/null` \
+ 			`ls -d /usr/contrib/lib 2>/dev/null` \
++			`ls -d /usr/lib/tk8.5 2>/dev/null` \
+ 			`ls -d /usr/lib 2>/dev/null` \
+ 			`ls -d /usr/lib64 2>/dev/null` \
+ 			; do

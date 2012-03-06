@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+TCLv=tcl8.5
+
+export CFLAGS="$CFLAGS -fno-unit-at-a-time"
+export TCL_PACKAGE_PATH="/usr/local/lib/tcltk /usr/local/share/tcltk /usr/lib/tcltk /usr/share/tcltk /usr/lib"
+
+touch $XPACK_SOURCE_DIR/generic/tclStubInit.c
+
+cd $XPACK_BUILD_DIR
+$XPACK_SOURCE_DIR/unix/configure \
+    --prefix=/usr \
+    --disable-nls \
+    --enable-shared \
+    --enable-threads \
+    --enable-dll-unloading \
+    --disable-rpath \
+    --mandir=/usr/share/man \
+    --enable-man-symlinks \
+    --enable-man-compression=gzip \
+    --includedir=/usr/include/$TCLv
+
+touch $XPACK_SOURCE_DIR/generic/tclStubInit.c
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+TCLv=tcl8.5
+
+export CFLAGS="$CFLAGS -fno-unit-at-a-time"
+
+cd $XPACK_BUILD_DIR
+make -j$XPACK_PARALLEL_JOBS
+
+ar cr lib${TCLv}.a *.o
+ar d  lib${TCLv}.a tclAppInit.o
+ranlib lib${TCLv}.a
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+TCLv=tcl8.5
+
+cd $XPACK_BUILD_DIR
+make \
+    MAN_INSTALL_DIR=$XPACK_INSTALL_DIR/usr/share/man \
+    INSTALL_ROOT=$XPACK_INSTALL_DIR \
+    MANN_INSTALL_DIR=$XPACK_INSTALL_DIR/usr/share/man/man3 \
+    TCL_MODULE_PATH="/usr/lib/tcltk /usr/share/tcltk" \
+    install
+
+# copy static lib
+cp -a $XPACK_BUILD_DIR/libtcl*.a $XPACK_INSTALL_DIR/usr/lib/
+
+# move scripts
+mv -v $XPACK_INSTALL_DIR/usr/lib/*.sh $XPACK_INSTALL_DIR/usr/lib/$TCLv/
+
+# install private headers
+install -d $XPACK_INSTALL_DIR/usr/include/$TCLv/tcl-private/generic
+cp $XPACK_SOURCE_DIR/generic/*.h $XPACK_INSTALL_DIR/usr/include/$TCLv/tcl-private/generic
+install -d $XPACK_INSTALL_DIR/usr/include/$TCLv/tcl-private/unix
+cp $XPACK_SOURCE_DIR/unix/*.h $XPACK_INSTALL_DIR/usr/include/$TCLv/tcl-private/unix
+install -d $XPACK_INSTALL_DIR/usr/include/$TCLv/tcl-private/compat
+cp $XPACK_SOURCE_DIR/compat/*.h $XPACK_INSTALL_DIR/usr/include/$TCLv/tcl-private/compat
+install -d $XPACK_INSTALL_DIR/usr/include/$TCLv/tcl-private/libtommath
+cp $XPACK_SOURCE_DIR/libtommath/*.h $XPACK_INSTALL_DIR/usr/include/$TCLv/tcl-private/libtommath
+
+# fix permissions
+find $XPACK_INSTALL_DIR -type f -name '*.so' -exec chmod 755 '{}' ';'
+
+# aclocal overrides
+mkdir -p $XPACK_INSTALL_DIR/usr/share/aclocal/
+cp $XPACK_SOURCE_DIR/unix/tcl.m4 $XPACK_INSTALL_DIR/usr/share/aclocal/${TCLv}.m4
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_BUILD_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>

@@ -1,0 +1,29 @@
+Original patch for Debian by Chris Waters removes -rpath from search flags and
+adds -soname to library build options.
+
+Adapted for Marmara Linux.
+
+--- tcl8.5-8.5.9.orig/unix/configure
++++ tcl8.5-8.5.9/unix/configure
+@@ -7328,6 +7328,9 @@
+ 	    # get rid of the warnings.
+ 	    #CFLAGS_OPTIMIZE="${CFLAGS_OPTIMIZE} -D__NO_STRING_INLINES -D__NO_MATH_INLINES"
+ 
++	    # following line added by CW for Debian GNU/Linux
++	    TCL_SHLIB_LD_EXTRAS="-Wl,-soname,\${TCL_LIB_FILE}"
++
+ 	    SHLIB_LD='${CC} -shared ${CFLAGS} ${LDFLAGS}'
+ 	    DL_OBJS="tclLoadDl.o"
+ 	    DL_LIBS="-ldl"
+--- tcl8.5-8.5.9.orig/unix/tcl.m4
++++ tcl8.5-8.5.9/unix/tcl.m4
+@@ -1421,6 +1421,9 @@
+ 	    # get rid of the warnings.
+ 	    #CFLAGS_OPTIMIZE="${CFLAGS_OPTIMIZE} -D__NO_STRING_INLINES -D__NO_MATH_INLINES"
+ 
++	    # following line added by CW for Debian GNU/Linux
++	    TCL_SHLIB_LD_EXTRAS="-Wl,-soname,\${TCL_LIB_FILE}"
++
+ 	    SHLIB_LD='${CC} -shared ${CFLAGS} ${LDFLAGS}'
+ 	    DL_OBJS="tclLoadDl.o"
+ 	    DL_LIBS="-ldl"

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="tcl8.5-dev" section="devel">
+    <description>
+        <summary>Tcl (the Tool Command Language) v8.5 - development files</summary>
+        <p>
+        Tcl is a powerful, easy-to-use, embeddable, cross-platform interpreted
+        scripting language.  This package contains the headers and libraries
+        needed to embed or extend Tcl.
+        </p>
+    </description>
+
+    <requires>
+        <package name="tcl8.5" version="=="/>
+    </requires>
+
+    <contents>
+        <file src="/usr/include/"/>
+        <file src="/usr/lib/*.a"/>
+        <file src="/usr/share/aclocal/"/>
+    </contents>
+</package>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="tcl8.5" section="interpreters">
+    <description>
+        <summary>Tcl (the Tool Command Language) v8.5 - run-time files</summary>
+        <p>
+        Tcl is a powerful, easy to use, embeddable, cross-platform interpreted
+        scripting language.  This package contains everything you need to run
+        Tcl scripts and Tcl-enabled apps.  This version includes thread support.
+        </p>
+    </description>
+
+    <requires>
+    </requires>
+
+    <contents>
+        <file src="/usr/bin"/>
+        <file src="/usr/lib/tcl8/"/>
+        <file src="/usr/lib/tcl8.5/"/>
+        <file src="/usr/lib/libtcl*.so"/>
+    </contents>
+</package>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY tcl SYSTEM "tcl.xml">
+  <!ENTITY tcl-dev SYSTEM "tcl-dev.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="tcl-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="tcl" architecture-independent="false">
+        <description>
+            <summary>Tcl (the Tool Command Language) v8.5 - run-time files</summary>
+            <p>
+            Tcl is a powerful, easy to use, embeddable, cross-platform interpreted
+            scripting language.  This package contains everything you need to run
+            Tcl scripts and Tcl-enabled apps.  This version includes thread support.
+            </p>
+        </description>
+
+        <sources>
+            <file src="tcl8.5.11-src.tar.gz"/>
+        </sources>
+
+        <patches>
+            <patchset>
+                <file src="patches/confsearch.diff"/>
+                <file src="patches/rpath.diff"/>
+                <file src="patches/tclprivate.diff"/>
+            </patchset>
+        </patches>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &tcl;
+    &tcl-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
