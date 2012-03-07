@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="expect-dev" section="devel">
+    <description>
+        <summary>A program that can automate interactive applications (development)</summary>
+        <p>
+        Expect is a tool for automating interactive applications according to a script.
+        Following the script, Expect knows what can be expected from a program and what
+        the correct response should be. Expect is also useful for testing these same
+        applications. And by adding Tk, you can also wrap interactive applications in
+        X11 GUIs. An interpreted language provides branching and high-level control
+        structures to direct the dialogue. In addition, the user can take control and
+        interact directly when desired, afterward returning control to the script.
+        </p>
+        <p>
+        This package contains the development files and examples.
+        </p>
+    </description>
+
+    <requires>
+        <package name="expect" version="=="/>
+        <package name="tcl8.5-dev"/>
+    </requires>
+
+    <contents>
+        <file src="/usr/lib/libexpect.{a,so}"/>
+        <file src="/usr/include/"/>
+    </contents>
+</package>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+$XPACK_SOURCE_DIR/configure \
+    --prefix=/usr \
+    --with-tcl=/usr/lib/tcl8.5 \
+    --includedir=/usr/include/tcl8.5 \
+    --with-tclinclude=/usr/include/tcl8.5 \
+    --enable-shared \
+    --enable-threads \
+    --disable-rpath \
+    --without-tk \
+    --disable-nls
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make SONAME=libexpect5.45.so -j$XPACK_PARALLEL_JOBS
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+cd $XPACK_BUILD_DIR
+make DESTDIR=$XPACK_INSTALL_DIR install
+
+ln -sf expect5.45/libexpect5.45.so $XPACK_INSTALL_DIR/usr/lib/libexpect5.45.so
+ln -sf libexpect5.45.so $XPACK_INSTALL_DIR/usr/lib/libexpect.so
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_BUILD_DIR" "$XPACK_INSTALL_DIR"
+
+    ]]>
+    </clean>
+
+</rules>
