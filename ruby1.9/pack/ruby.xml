@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="ruby" section="interpreters">
+    <description>
+        <summary>Interpreter of object-oriented scripting language Ruby 1.9.2</summary>
+        <p>
+        Ruby is the interpreted scripting language for quick and easy
+        object-oriented programming.  It has many features to process text
+        files and to do system management tasks (as in perl).  It is simple,
+        straight-forward, and extensible.
+        </p>
+        <p>
+        This package currently provides the `1.9.3' branch of Ruby, which is
+        compatible with the `1.9.1' branch.
+        </p>
+    </description>
+
+    <contents>
+        <file src="/usr/bin/{irb,ruby,ri,erb,testrb}"/>
+        <file src="/usr/lib/libruby*.so.*"/>
+
+        <dir src="/usr/lib/ruby"/>
+        <file src="/usr/lib/ruby/1.9.1/"/>
+
+        <dir src="/usr/lib/ruby/gems"/>
+        <file src="/usr/lib/ruby/gems/1.9.1/"/>
+
+        <dir src="/usr/lib/vendor_ruby"/>
+        <dir src="/usr/lib/vendor_ruby/1.9.1"/>
+        <dir src="/usr/lib/vendor_ruby/1.9.1/i686-linux"/>
+    </contents>
+</package>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY ruby SYSTEM "ruby.xml">
+  <!ENTITY ruby-dev SYSTEM "ruby-dev.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="ruby1.9.1-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="ruby1.9" architecture-independent="false">
+        <description>
+            <summary>Object-oriented scripting language Ruby 1.9</summary>
+            <p>
+            Ruby is the interpreted scripting language for quick and easy
+            object-oriented programming.  It has many features to process text
+            files and to do system management tasks (as in perl).  It is simple,
+            straight-forward, and extensible.
+            </p>
+        </description>
+
+        <sources>
+            <file src="ruby-1.9.3-p125.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="autoconf"/>
+            <package name="m4"/>
+            <package name="bison"/>
+            <package name="libgdbm-dev"/>
+            <package name="libncurses5-dev"/>
+            <package name="libreadline5-dev"/>
+            <package name="zlib1g-dev"/>
+            <package name="libssl-dev"/>
+            <package name="procps"/>
+            <package name="file"/>
+            <package name="libffi-dev"/>
+            <package name="ruby1.9"/>
+            <package name="libyaml-dev"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &ruby;
+    &ruby-dev;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
