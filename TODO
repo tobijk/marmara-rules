@@ -7,6 +7,7 @@
 
 * put in place 'alternatives' for
   - automake
+  - pinentry
 
 * an init script for nscd, uuidd
 
