@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+  <!ENTITY pinentry-curses SYSTEM "pinentry-curses.xml">
+  <!ENTITY rules SYSTEM "rules.xml">
+  <!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR"  value="pinentry-src"/>
+        <def name="XPACK_BUILD_DIR"   value="tmp-build"/>
+        <def name="XPACK_INSTALL_DIR" value="tmp-install"/>
+    </defines>
+
+    <source name="pinentry" architecture-independent="false">
+        <description>
+            <summary>curses-based PIN or pass-phrase entry dialog for GnuPG</summary>
+            <p>
+            This package contains a program that allows for secure entry of PINs or
+            pass phrases.  That means it tries to take care that the entered
+            information is not swapped to disk or temporarily stored anywhere.
+            This functionality is particularly useful for entering pass phrases
+            when using encryption software such as GnuPG or e-mail clients using
+            the same.  It uses an open protocol and is therefore not tied to
+            particular software.
+            </p>
+        </description>
+
+        <sources>
+            <file src="pinentry-0.8.1.tar.gz"/>
+        </sources>
+
+        <requires>
+            <package name="libncurses5-dev"/>
+            <package name="m4"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &pinentry-curses;
+
+    <!-- changelog -->
+    &changelog;
+
+</control> 
