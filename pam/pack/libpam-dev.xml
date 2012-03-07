@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="libpam-dev" section="libdevel">
+    <description>
+        <summary>Development files for PAM</summary>
+        <p>
+        Contains C header files and development shared libraries for libpam, the
+        pluggable authentication modules, a suite of shared libraries that enable
+        the local system administrator to choose how applications authenticate
+        users.
+        </p>
+        <p>
+        PAM decouples applications from the authentication mechanism, making it
+        possible to upgrade the authentication system without recompiling or
+        rewriting the applications.
+        </p>
+    </description>
+
+    <requires>
+        <package name="libpam0" version="=="/>
+        <package name="libc6-dev"/>
+    </requires>
+
+    <contents>
+        <file src="/usr/include/security/"/>
+        <file src="/usr/lib/*.{a,la,so}"/>
+    </contents>
+</package>
