@@ -13,9 +13,10 @@ make -C $XPACK_SOURCE_DIR mrproper
     <![CDATA[
 
 mkdir -p $XPACK_INSTALL_DIR/usr
+
+make -C $XPACK_SOURCE_DIR mrproper
 make -C $XPACK_SOURCE_DIR headers_check
 make -C $XPACK_SOURCE_DIR INSTALL_HDR_PATH=$XPACK_INSTALL_DIR/usr headers_install
-
 
     ]]>
     </install>
