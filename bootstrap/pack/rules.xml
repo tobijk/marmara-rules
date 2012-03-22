@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>
+
+    <prepare>
+    <![CDATA[
+
+cd $XPACK_SOURCE_DIR/eglibc
+mv linuxthreads/* libc
+mv ports libc
+
+    ]]>
+    </prepare>
+
+    <build>
+    <![CDATA[
+
+XPACK_NATIVE_ARCH="`$XPACK_BASE_DIR/script/config.guess`"
+XPACK_XTOOLS_ARCH="`echo $XPACK_NATIVE_ARCH | sed -e 's/-[^-]*/-cross/'`"
+
+XPACK_TARGET_ARCH="i686-pc-linux-gnu"
+XPACK_TARGET_NAME="`echo $XPACK_TARGET_ARCH | sed 's/\([^-]*\).*/\1/'`"
+
+export CFLAGS="$CFLAGS -fno-stack-protector -U_FORTIFY_SOURCE"
+export PATH="$XPACK_BASE_DIR/tools/$XPACK_TARGET_NAME/bin:$XPACK_BASE_DIR/tools/$XPACK_TARGET_NAME/sbin:$PATH"
+
+. $XPACK_BASE_DIR/script/create-dirs.sh
+. $XPACK_BASE_DIR/script/binutils-pass1.sh
+. $XPACK_BASE_DIR/script/gcc-pass1.sh
+. $XPACK_BASE_DIR/script/kernel-headers.sh
+. $XPACK_BASE_DIR/script/glibc-headers.sh
+. $XPACK_BASE_DIR/script/gcc-pass2.sh
+. $XPACK_BASE_DIR/script/glibc.sh
+. $XPACK_BASE_DIR/script/gcc-pass3.sh
+. $XPACK_BASE_DIR/script/ncurses.sh
+. $XPACK_BASE_DIR/script/zsh.sh
+. $XPACK_BASE_DIR/script/binutils-pass2.sh
+. $XPACK_BASE_DIR/script/remove-diverts.sh
+
+    ]]>
+    </build>
+
+    <install>
+    <![CDATA[
+
+    ]]>
+    </install>
+
+    <clean>
+    <![CDATA[
+
+rm -fr "$XPACK_SOURCE_DIR" "$XPACK_BUILD_DIR" "$XPACK_INSTALL_DIR"
+rm -fr "$XPACK_BASE_DIR/sysroot" "$XPACK_BASE_DIR/tools"
+
+    ]]>
+    </clean>
+
+</rules>

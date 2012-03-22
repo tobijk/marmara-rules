@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE control [
+<!ENTITY rules SYSTEM "rules.xml">
+<!ENTITY toolchain-i386 SYSTEM "toolchain-i386.xml">
+<!ENTITY changelog SYSTEM "changelog.xml">
+]>
+<control xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <defines>
+        <def name="XPACK_SOURCE_DIR" value="sources"/>
+        <def name="XPACK_BUILD_DIR" value="obj"/>
+        <def name="XPACK_INSTALL_DIR" value="install"/>
+    </defines>
+
+    <source name="toolchain" architecture-independent="false">
+        <description>
+            <summary>Self-contained toolchains for supported architectures</summary>
+        </description>
+
+        <sources>
+            <file src="../linux/linux-2.6.32.57.tar.bz2" subdir="linux"/>
+            <file src="../eglibc/eglibc-2.12.1.tar.gz" subdir="eglibc"/>
+            <file src="../gcc/gcc-linaro-4.5-2012.01.tar.bz2" subdir="gcc"/>
+            <file src="../gmp/gmp-5.0.4.tar.bz2" subdir="gcc/gmp"/>
+            <file src="../mpfr4/mpfr-3.1.0.tar.xz" subdir="gcc/mpfr"/>
+            <file src="../mpclib/mpc-0.9.tar.gz" subdir="gcc/mpc"/>
+            <file src="../binutils/binutils_2.21.53.20110810.tar.gz" subdir="binutils"/>
+            <file src="../ncurses5/ncurses-5.9.tar.gz" subdir="ncurses"/>
+            <file src="../zsh/zsh-4.3.15.tar.bz2" subdir="zsh"/>
+        </sources>
+
+        <patches>
+            <patchset subdir="gcc/mpc">
+                <file src="../mpclib/patches/unbreak-configure-debian.patch"/>
+            </patchset>
+        </patches>
+
+        <requires>
+            <package name="libc6-dev"/>
+            <package name="autoconf"/>
+            <package name="automake"/>
+        </requires>
+
+        <!-- build rules -->
+        &rules;
+    </source>
+
+    <!-- package rules -->
+    &toolchain-i386;
+
+    <!-- changelog -->
+    &changelog;
+
+</control>

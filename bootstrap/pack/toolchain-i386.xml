@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="toolchain-i386" section="devel">
+    <description>
+        <summary>self-contained compiler toolchain for i386</summary>
+        <p>
+            This package contains a completely self-contained toolchain
+        for compiling C/C++ code to Intel x86 target machine code. It
+        installs in /tools and works without host libraries.
+        </p>
+    </description>
+
+    <contents>
+    </contents>
+</package>
