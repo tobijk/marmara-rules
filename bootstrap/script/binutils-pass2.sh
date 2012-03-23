@@ -1,5 +1,6 @@
 ###############################################################################
-# Binutils
+# Compile a cross binutils for the actual target platform. The resulting tools
+# will be installed in the 'tools' directory in the |actual| target sysroot.
 ###############################################################################
 
 mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/binutils-pass2 && \

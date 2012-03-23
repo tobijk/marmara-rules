@@ -1,5 +1,6 @@
 ###############################################################################
-# Kernel headers
+# The kernel headers are required for the C library in order to determine the
+# available kernel APIs.
 ###############################################################################
 
 cd $XPACK_SOURCE_DIR/linux

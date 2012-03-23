@@ -1,5 +1,6 @@
 ###############################################################################
-# Glibc
+# We have bootstrap a usuable version of GCC and are now ready to build the C
+# library.
 ###############################################################################
 
 mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/glibc && \

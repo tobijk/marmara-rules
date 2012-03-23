@@ -1,5 +1,6 @@
 ###############################################################################
-# GCC pass 3
+# After having built the full (meaning not just the headers) Glibc, we can now
+# build a complete toolchain including C++ support.
 ###############################################################################
 
 mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/gcc-pass3 && \

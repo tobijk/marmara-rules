@@ -1,5 +1,7 @@
 ###############################################################################
-# GCC pass 1
+# Compile a minimal GCC. All we want to get out of this build is libgcc and
+# some essential headers, which we need in order to install the Glibc headers.
+# The Glibc headers in turn are required to fully bootstrap GCC later.
 ###############################################################################
 
 mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/gcc-pass1 && \
