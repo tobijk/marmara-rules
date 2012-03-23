@@ -2,17 +2,17 @@
 # NCurses
 ###############################################################################
 
-mkdir -p $XPACK_BUILD_DIR/$XPACK_TARGET_NAME/ncurses && \
-    cd $XPACK_BUILD_DIR/$XPACK_TARGET_NAME/ncurses
+mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/ncurses && \
+    cd $XPACK_BUILD_DIR/$TARGET_NAME/ncurses
 
-CC=$XPACK_BASE_DIR/tools/$XPACK_TARGET_NAME/bin/$XPACK_XTOOLS_ARCH-gcc \
-CXX=$XPACK_BASE_DIR/tools/$XPACK_TARGET_NAME/bin/$XPACK_XTOOLS_ARCH-g++ \
-AR=$XPACK_BASE_DIR/tools/$XPACK_TARGET_NAME/bin/$XPACK_XTOOLS_ARCH-ar \
-RANLIB=$XPACK_BASE_DIR/tools/$XPACK_TARGET_NAME/bin/$XPACK_XTOOLS_ARCH-ranlib \
+CC=$STAGE1_DIR/$TARGET_NAME/bin/$XTOOLS_ARCH-gcc \
+CXX=$STAGE1_DIR/$TARGET_NAME/bin/$XTOOLS_ARCH-g++ \
+AR=$STAGE1_DIR/$TARGET_NAME/bin/$XTOOLS_ARCH-ar \
+RANLIB=$STAGE1_DIR/$TARGET_NAME/bin/$XTOOLS_ARCH-ranlib \
 $XPACK_SOURCE_DIR/ncurses/configure \
-    --prefix=/tools/$XPACK_TARGET_NAME \
-    --host=$XPACK_XTOOLS_ARCH \
-    --mandir=/tools/$XPACK_TARGET_NAME/share/man \
+    --prefix=/tools/$TARGET_NAME \
+    --host=$XTOOLS_ARCH \
+    --mandir=/tools/$TARGET_NAME/share/man \
     --without-profile \
     --without-debug \
     --disable-rpath \
@@ -25,12 +25,12 @@ $XPACK_SOURCE_DIR/ncurses/configure \
     --with-chtype=long \
     --with-mmask-t=long \
     --disable-termcap \
-    --with-default-terminfo-dir=/tools/$XPACK_TARGET_NAME/share/terminfo \
-    --with-terminfo-dirs=/tools/$XPACK_TARGET_NAME/share/terminfo \
+    --with-default-terminfo-dir=/tools/$TARGET_NAME/share/terminfo \
+    --with-terminfo-dirs=/tools/$TARGET_NAME/share/terminfo \
     --with-ticlib \
     --disable-nls \
     --with-shared
 
 make -j$XPACK_PARALLEL_JOBS
-make DESTDIR=$XPACK_BASE_DIR/sysroot/$XPACK_TARGET_NAME install
+make DESTDIR=$SYSTEM_ROOT/$TARGET_NAME install
 

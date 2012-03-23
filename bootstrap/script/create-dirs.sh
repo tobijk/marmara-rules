@@ -4,10 +4,10 @@
 # contained toolchain for the intended target architecture.
 ###############################################################################
 
-install -dv -m 0755 $XPACK_BASE_DIR/sysroot/$XPACK_TARGET_NAME
-install -dv -m 0755 $XPACK_BASE_DIR/tools/$XPACK_TARGET_NAME
+install -dv -m 0755 $SYSTEM_ROOT/$TARGET_NAME
+install -dv -m 0755 $XPACK_BASE_DIR/stage1/$TARGET_NAME
 
-cd $XPACK_BASE_DIR/sysroot/$XPACK_TARGET_NAME
+cd $SYSTEM_ROOT/$TARGET_NAME
 
 install -dv -m 0755 boot etc etc/opt home mnt opt
 install -dv -m 0755 usr usr/local media srv var
@@ -33,11 +33,10 @@ test -h lib  || ln -sf usr/lib lib
 
 # add 'tools' directory
 
-install -dv -m 0755 tools tools/$XPACK_TARGET_NAME \
-    tools/$XPACK_TARGET_NAME/include tools/$XPACK_TARGET_NAME/lib
+install -dv -m 0755 tools tools/$TARGET_NAME \
+    tools/$TARGET_NAME/include tools/$TARGET_NAME/lib
 
-# create some diversions so that headers and libs are found
-rmdir $XPACK_BASE_DIR/sysroot/$XPACK_TARGET_NAME/usr/include
-ln -sf ../tools/$XPACK_TARGET_NAME/include $XPACK_BASE_DIR/sysroot/$XPACK_TARGET_NAME/usr/include
-rmdir $XPACK_BASE_DIR/sysroot/$XPACK_TARGET_NAME/usr/lib
-ln -sf ../tools/$XPACK_TARGET_NAME/lib $XPACK_BASE_DIR/sysroot/$XPACK_TARGET_NAME/usr/lib
+# some symlinks to trick the build system
+ln -sf $TARGET_NAME tools/usr
+ln -sf . tools/tools
+

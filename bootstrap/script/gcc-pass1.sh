@@ -2,12 +2,12 @@
 # GCC pass 1
 ###############################################################################
 
-mkdir -p $XPACK_BUILD_DIR/$XPACK_TARGET_NAME/gcc-pass1 && \
-    cd $XPACK_BUILD_DIR/$XPACK_TARGET_NAME/gcc-pass1
+mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/gcc-pass1 && \
+    cd $XPACK_BUILD_DIR/$TARGET_NAME/gcc-pass1
 
 $XPACK_SOURCE_DIR/gcc/configure \
-    --prefix=$XPACK_BASE_DIR/tools/$XPACK_TARGET_NAME \
-    --target=$XPACK_XTOOLS_ARCH \
+    --prefix=$STAGE1_DIR/$TARGET_NAME \
+    --target=$XTOOLS_ARCH \
     --disable-decimal-float \
     --without-headers \
     --with-newlib \

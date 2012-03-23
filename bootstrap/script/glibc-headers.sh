@@ -2,34 +2,34 @@
 # GLibc headers
 ###############################################################################
 
-mkdir -p $XPACK_BUILD_DIR/$XPACK_TARGET_NAME/glibc-headers && \
-    cd $XPACK_BUILD_DIR/$XPACK_TARGET_NAME/glibc-headers
+mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/glibc-headers && \
+    cd $XPACK_BUILD_DIR/$TARGET_NAME/glibc-headers
 
 BUILD_CC=gcc \
-CC=$XPACK_BASE_DIR/tools/$XPACK_TARGET_NAME/bin/$XPACK_XTOOLS_ARCH-gcc \
-CXX=$XPACK_BASE_DIR/tools/$XPACK_TARGET_NAME/bin/$XPACK_XTOOLS_ARCH-g++ \
-AR=$XPACK_BASE_DIR/tools/$XPACK_TARGET_NAME/bin/$XPACK_XTOOLS_ARCH-ar \
-RANLIB=$XPACK_BASE_DIR/tools/$XPACK_TARGET_NAME/bin/$XPACK_XTOOLS_ARCH-ranlib \
+CC=$STAGE1_DIR/$TARGET_NAME/bin/$XTOOLS_ARCH-gcc \
+CXX=$STAGE1_DIR/$TARGET_NAME/bin/$XTOOLS_ARCH-g++ \
+AR=$STAGE1_DIR/$TARGET_NAME/bin/$XTOOLS_ARCH-ar \
+RANLIB=$STAGE1_DIR/$TARGET_NAME/bin/$XTOOLS_ARCH-ranlib \
 $XPACK_SOURCE_DIR/eglibc/libc/configure \
-    --prefix=/tools/$XPACK_TARGET_NAME \
-    --with-headers=$XPACK_BASE_DIR/sysroot/$XPACK_TARGET_NAME/tools/$XPACK_TARGET_NAME/include \
-    --host=$XPACK_XTOOLS_ARCH \
+    --prefix=/tools/$TARGET_NAME \
+    --with-headers=$SYSTEM_ROOT/$TARGET_NAME/tools/$TARGET_NAME/include \
+    --host=$XTOOLS_ARCH \
     --disable-profile \
     --without-gd \
     --without-cvs \
     --enable-add-ons
 
-make install-headers install_root=$XPACK_BASE_DIR/sysroot/$XPACK_TARGET_NAME \
+make install-headers install_root=$SYSTEM_ROOT/$TARGET_NAME \
     install-bootstrap-headers=yes
 
 make csu/subdir_lib
-cp csu/crt1.o csu/crti.o csu/crtn.o $XPACK_BASE_DIR/sysroot/$XPACK_TARGET_NAME/tools/$XPACK_TARGET_NAME/lib
+cp csu/crt1.o csu/crti.o csu/crtn.o $SYSTEM_ROOT/$TARGET_NAME/tools/$TARGET_NAME/lib
 
-$XPACK_BASE_DIR/tools/$XPACK_TARGET_NAME/bin/$XPACK_XTOOLS_ARCH-gcc \
+$STAGE1_DIR/$TARGET_NAME/bin/$XTOOLS_ARCH-gcc \
     -nostdlib \
     -nostartfiles \
     -shared \
     -x c \
     /dev/null \
-    -o $XPACK_BASE_DIR/sysroot/$XPACK_TARGET_NAME/tools/$XPACK_TARGET_NAME/lib/libc.so
+    -o $SYSTEM_ROOT/$TARGET_NAME/tools/$TARGET_NAME/lib/libc.so
 

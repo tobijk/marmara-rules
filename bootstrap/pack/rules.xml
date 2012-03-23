@@ -14,27 +14,32 @@ mv ports libc
     <build>
     <![CDATA[
 
-XPACK_NATIVE_ARCH="`$XPACK_BASE_DIR/script/config.guess`"
-XPACK_XTOOLS_ARCH="`echo $XPACK_NATIVE_ARCH | sed -e 's/-[^-]*/-cross/'`"
+SCRIPT_DIR="$XPACK_BASE_DIR/script"
 
-XPACK_TARGET_ARCH="i686-pc-linux-gnu"
-XPACK_TARGET_NAME="`echo $XPACK_TARGET_ARCH | sed 's/\([^-]*\).*/\1/'`"
+NATIVE_ARCH="`$SCRIPT_DIR/config.guess`"
+XTOOLS_ARCH="`echo $NATIVE_ARCH | sed -e 's/-[^-]*/-cross/'`"
+TARGET_ARCH="i686-pc-linux-gnu"
+TARGET_NAME="`echo $TARGET_ARCH | sed 's/\([^-]*\).*/\1/'`"
+
+STAGE1_DIR="$XPACK_BASE_DIR/stage1"
+STAGE2_DIR="$XPACK_BASE_DIR/stage2"
+
+SYSTEM_ROOT="$XPACK_BASE_DIR/sysroot"
 
 export CFLAGS="$CFLAGS -fno-stack-protector -U_FORTIFY_SOURCE"
-export PATH="$XPACK_BASE_DIR/tools/$XPACK_TARGET_NAME/bin:$XPACK_BASE_DIR/tools/$XPACK_TARGET_NAME/sbin:$PATH"
+export PATH="$STAGE1_DIR/$TARGET_NAME/bin:$STAGE1_DIR/$TARGET_NAME/sbin:$PATH"
 
-. $XPACK_BASE_DIR/script/create-dirs.sh
-. $XPACK_BASE_DIR/script/binutils-pass1.sh
-. $XPACK_BASE_DIR/script/gcc-pass1.sh
-. $XPACK_BASE_DIR/script/kernel-headers.sh
-. $XPACK_BASE_DIR/script/glibc-headers.sh
-. $XPACK_BASE_DIR/script/gcc-pass2.sh
-. $XPACK_BASE_DIR/script/glibc.sh
-. $XPACK_BASE_DIR/script/gcc-pass3.sh
-. $XPACK_BASE_DIR/script/ncurses.sh
-. $XPACK_BASE_DIR/script/zsh.sh
-. $XPACK_BASE_DIR/script/binutils-pass2.sh
-. $XPACK_BASE_DIR/script/remove-diverts.sh
+. $SCRIPT_DIR/create-dirs.sh
+. $SCRIPT_DIR/binutils-pass1.sh
+. $SCRIPT_DIR/gcc-pass1.sh
+. $SCRIPT_DIR/kernel-headers.sh
+. $SCRIPT_DIR/glibc-headers.sh
+. $SCRIPT_DIR/gcc-pass2.sh
+. $SCRIPT_DIR/glibc.sh
+. $SCRIPT_DIR/gcc-pass3.sh
+. $SCRIPT_DIR/ncurses.sh
+. $SCRIPT_DIR/zsh.sh
+. $SCRIPT_DIR/binutils-pass2.sh
 
     ]]>
     </build>
@@ -49,7 +54,7 @@ export PATH="$XPACK_BASE_DIR/tools/$XPACK_TARGET_NAME/bin:$XPACK_BASE_DIR/tools/
     <![CDATA[
 
 rm -fr "$XPACK_SOURCE_DIR" "$XPACK_BUILD_DIR" "$XPACK_INSTALL_DIR"
-rm -fr "$XPACK_BASE_DIR/sysroot" "$XPACK_BASE_DIR/tools"
+rm -fr "$XPACK_BASE_DIR/sysroot" "$XPACK_BASE_DIR/stage1"
 
     ]]>
     </clean>

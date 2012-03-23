@@ -2,13 +2,13 @@
 # Binutils
 ###############################################################################
 
-mkdir -p $XPACK_BUILD_DIR/$XPACK_TARGET_NAME/binutils-pass1 && \
-    cd $XPACK_BUILD_DIR/$XPACK_TARGET_NAME/binutils-pass1
+mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/binutils-pass1 && \
+    cd $XPACK_BUILD_DIR/$TARGET_NAME/binutils-pass1
 
 $XPACK_SOURCE_DIR/binutils/configure \
-    --target=$XPACK_XTOOLS_ARCH \
-    --prefix=$XPACK_BASE_DIR/tools/$XPACK_TARGET_NAME \
-    --with-sysroot=$XPACK_BASE_DIR/sysroot/$XPACK_TARGET_NAME \
+    --target=$XTOOLS_ARCH \
+    --prefix=$STAGE1_DIR/$TARGET_NAME \
+    --with-sysroot=$SYSTEM_ROOT/$TARGET_NAME/tools \
     --disable-nls \
     --disable-multilib
 
