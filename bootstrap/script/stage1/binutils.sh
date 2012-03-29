@@ -4,8 +4,8 @@
 # the host, as we continue to bootstrap a |fully| self-contained toolchain.
 ###############################################################################
 
-mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/binutils-pass1 && \
-    cd $XPACK_BUILD_DIR/$TARGET_NAME/binutils-pass1
+mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/stage1/binutils && \
+    cd $XPACK_BUILD_DIR/$TARGET_NAME/stage1/binutils
 
 $XPACK_SOURCE_DIR/binutils/configure \
     --target=$XTOOLS_ARCH \

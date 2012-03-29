@@ -4,8 +4,8 @@
 # complete version of the toolchain.
 ###############################################################################
 
-mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/glibc-headers && \
-    cd $XPACK_BUILD_DIR/$TARGET_NAME/glibc-headers
+mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/stage1/glibc-headers && \
+    cd $XPACK_BUILD_DIR/$TARGET_NAME/stage1/glibc-headers
 
 BUILD_CC=gcc \
 CC=$STAGE1_DIR/$TARGET_NAME/bin/$XTOOLS_ARCH-gcc \

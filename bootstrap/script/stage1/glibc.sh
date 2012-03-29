@@ -3,8 +3,8 @@
 # library.
 ###############################################################################
 
-mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/glibc && \
-    cd $XPACK_BUILD_DIR/$TARGET_NAME/glibc
+mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/stage1/glibc && \
+    cd $XPACK_BUILD_DIR/$TARGET_NAME/stage1/glibc
 
 echo "slibdir=/tools/$TARGET_NAME/lib" >> configparms
 echo "rootsbindir=/tools/$TARGET_NAME/bin" >> configparms

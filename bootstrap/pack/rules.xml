@@ -18,28 +18,62 @@ SCRIPT_DIR="$XPACK_BASE_DIR/script"
 
 NATIVE_ARCH="`$SCRIPT_DIR/config.guess`"
 XTOOLS_ARCH="`echo $NATIVE_ARCH | sed -e 's/-[^-]*/-cross/'`"
-TARGET_ARCH="i686-pc-linux-gnu"
+
+TARGET_ARCH="arm-softfp-linux-gnueabi"
 TARGET_NAME="`echo $TARGET_ARCH | sed 's/\([^-]*\).*/\1/'`"
+
+if [ "$TARGET_ARCH" = "$NATIVE_ARCH" ]; then
+    TARGET_ARCH="`echo $NATIVE_ARCH | sed -e 's/-[^-]*/-native/'`"
+fi
 
 STAGE1_DIR="$XPACK_BASE_DIR/stage1"
 STAGE2_DIR="$XPACK_BASE_DIR/stage2"
 
 SYSTEM_ROOT="$XPACK_BASE_DIR/sysroot"
 
-export CFLAGS="$CFLAGS -fno-stack-protector -U_FORTIFY_SOURCE"
-export PATH="$STAGE1_DIR/$TARGET_NAME/bin:$STAGE1_DIR/$TARGET_NAME/sbin:$PATH"
+SEARCH_PATH="$PATH"
 
-. $SCRIPT_DIR/create-dirs.sh
-. $SCRIPT_DIR/binutils-pass1.sh
-. $SCRIPT_DIR/gcc-pass1.sh
-. $SCRIPT_DIR/kernel-headers.sh
-. $SCRIPT_DIR/glibc-headers.sh
-. $SCRIPT_DIR/gcc-pass2.sh
-. $SCRIPT_DIR/glibc.sh
-. $SCRIPT_DIR/gcc-pass3.sh
-. $SCRIPT_DIR/ncurses.sh
-. $SCRIPT_DIR/zsh.sh
-. $SCRIPT_DIR/binutils-pass2.sh
+# Neutralize some security stuff on Ubuntu
+
+export CFLAGS="$CFLAGS -fno-stack-protector -U_FORTIFY_SOURCE"
+
+# Stage 1
+
+export PATH="$STAGE1_DIR/$TARGET_NAME/bin:$SEARCH_PATH"
+
+. $SCRIPT_DIR/stage1/create-dirs.sh
+. $SCRIPT_DIR/stage1/binutils.sh
+. $SCRIPT_DIR/stage1/gcc-pass1.sh
+. $SCRIPT_DIR/stage1/kernel-headers.sh
+. $SCRIPT_DIR/stage1/glibc-headers.sh
+. $SCRIPT_DIR/stage1/gcc-pass2.sh
+. $SCRIPT_DIR/stage1/glibc.sh
+. $SCRIPT_DIR/stage1/gcc-pass3.sh
+
+# Stage 2
+
+export PATH="$STAGE2_DIR/$TARGET_NAME/bin:$SEARCH_PATH"
+
+. $SCRIPT_DIR/stage2/binutils.sh
+. $SCRIPT_DIR/stage2/gcc-pass1.sh
+. $SCRIPT_DIR/stage2/kernel-headers.sh
+. $SCRIPT_DIR/stage2/glibc-headers.sh
+. $SCRIPT_DIR/stage2/gcc-pass2.sh
+. $SCRIPT_DIR/stage2/glibc.sh
+. $SCRIPT_DIR/stage2/gcc-pass3.sh
+
+# Stage 3
+
+export PATH="$STAGE1_DIR/$TARGET_NAME/bin:$STAGE2_DIR/$TARGET_NAME/bin:$SEARCH_PATH"
+
+. $SCRIPT_DIR/stage3/gmp.sh
+. $SCRIPT_DIR/stage3/mpfr.sh
+. $SCRIPT_DIR/stage3/mpc.sh
+
+. $SCRIPT_DIR/stage3/binutils.sh
+. $SCRIPT_DIR/stage3/gcc.sh
+. $SCRIPT_DIR/stage3/ncurses.sh
+. $SCRIPT_DIR/stage3/zsh.sh
 
     ]]>
     </build>
@@ -54,7 +88,10 @@ export PATH="$STAGE1_DIR/$TARGET_NAME/bin:$STAGE1_DIR/$TARGET_NAME/sbin:$PATH"
     <![CDATA[
 
 rm -fr "$XPACK_SOURCE_DIR" "$XPACK_BUILD_DIR" "$XPACK_INSTALL_DIR"
-rm -fr "$XPACK_BASE_DIR/sysroot" "$XPACK_BASE_DIR/stage1"
+rm -fr "$XPACK_BASE_DIR/sysroot"
+rm -fr "$XPACK_BASE_DIR/stage1"
+rm -fr "$XPACK_BASE_DIR/stage2"
+rm -fr "$XPACK_BASE_DIR/stage3"
 
     ]]>
     </clean>

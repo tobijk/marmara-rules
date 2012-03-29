@@ -4,8 +4,8 @@
 # The Glibc headers in turn are required to fully bootstrap GCC later.
 ###############################################################################
 
-mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/gcc-pass1 && \
-    cd $XPACK_BUILD_DIR/$TARGET_NAME/gcc-pass1
+mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/stage1/gcc-pass1 && \
+    cd $XPACK_BUILD_DIR/$TARGET_NAME/stage1/gcc-pass1
 
 $XPACK_SOURCE_DIR/gcc/configure \
     --prefix=$STAGE1_DIR/$TARGET_NAME \

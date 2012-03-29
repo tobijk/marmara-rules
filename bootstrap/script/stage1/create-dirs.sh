@@ -6,6 +6,8 @@
 
 install -dv -m 0755 $SYSTEM_ROOT/$TARGET_NAME
 install -dv -m 0755 $XPACK_BASE_DIR/stage1/$TARGET_NAME
+install -dv -m 0755 $XPACK_BASE_DIR/stage2/$TARGET_NAME
+install -dv -m 0755 $XPACK_BASE_DIR/stage3/$TARGET_NAME
 
 cd $SYSTEM_ROOT/$TARGET_NAME
 
