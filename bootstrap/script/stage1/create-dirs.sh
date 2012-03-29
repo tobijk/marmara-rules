@@ -1,7 +1,5 @@
 ###############################################################################
-# Create an almost FHS compliant directory structure, but without the 'local'
-# branch, plus a directory 'tools' into which we will bootstrap a self-
-# contained toolchain for the intended target architecture.
+# Create a basic FSH
 ###############################################################################
 
 install -dv -m 0755 $SYSTEM_ROOT/$TARGET_NAME

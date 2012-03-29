@@ -1,7 +1,5 @@
 ###############################################################################
-# The Glibc headers are installed now, which means we can generate a GCC with
-# more complete functionality than before. In stage1 there is yet another
-# build of GCC coming up, once we have a full-featured Glibc installation.
+# Minimal GCC configured against libc headers
 ###############################################################################
 
 mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/stage1/gcc-pass2 && \

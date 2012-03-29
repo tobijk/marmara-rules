@@ -1,6 +1,5 @@
-###############################################################################
-# This is identical to gcc-pass1, except that now we actually start to boot-
-# strap the libraries for the actual target architecture.
+################################################################################
+# Minimal GCC without libc
 ###############################################################################
 
 mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/stage2/gcc-pass1 && \

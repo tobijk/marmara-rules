@@ -1,7 +1,5 @@
 ###############################################################################
-# At this point we don't have a full-featured compiler, yet. We install the
-# library headers and a stub for the shared library in order to compile a more
-# complete version of the toolchain.
+# Install libc headers to further bootstrap GCC
 ###############################################################################
 
 mkdir -p $XPACK_BUILD_DIR/$TARGET_NAME/stage1/glibc-headers && \
