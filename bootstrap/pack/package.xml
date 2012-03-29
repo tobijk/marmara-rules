@@ -34,7 +34,7 @@
                 <file src="../mpclib/patches/unbreak-configure-debian.patch"/>
             </patchset>
 
-            <patchset>
+            <patchset subdir="binutils">
                 <file src="../binutils/patches/001_ld_makefile_patch.patch"/>
                 <file src="../binutils/patches/006_better_file_error.patch"/>
                 <file src="../binutils/patches/012_check_ldrunpath_length.patch"/>
