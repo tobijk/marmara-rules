@@ -33,6 +33,7 @@
             <package name="bison"/>
             <package name="file"/>
             <package name="flex"/>
+            <package name="libc6-dev"/>
             <package name="libreadline-dev"/>
         </requires>
 
