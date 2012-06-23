@@ -52,10 +52,12 @@
         </patches>
 
         <requires>
-            <package name="autoconf" version=">= 2.64"/>
+            <package name="autoconf"/>
             <package name="bison"/>
             <package name="flex"/>
             <package name="file"/>
+            <package name="xz-utils"/>
+            <package name="libc6-dev"/>
             <package name="zlib1g-dev"/>
         </requires>
 
