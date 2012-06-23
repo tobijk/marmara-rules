@@ -14,8 +14,9 @@
     </description>
 
     <requires>
+        <package name="libc6-dev"/>
         <package name="libppl0.10-dev"/>
-        <package name="libgmp3-dev"/>
+        <package name="libgmp-dev"/>
         <package name="libcloog-ppl0" version="=="/>
     </requires>
 

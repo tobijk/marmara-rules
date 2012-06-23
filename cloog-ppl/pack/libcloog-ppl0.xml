@@ -10,9 +10,6 @@
         </p>
     </description>
 
-    <requires>
-    </requires>
-
     <contents>
         <file src="/usr/lib/lib*.so.*"/>
     </contents>
