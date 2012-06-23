@@ -18,7 +18,8 @@ $XPACK_SOURCE_DIR/libc/configure \
         --prefix=/usr \
         --sysconfdir=/etc \
         --libexecdir=/usr/lib \
-        --disable-profile
+        --disable-profile \
+        --enable-kernel=2.6.32
 
     ]]>
     </prepare>
