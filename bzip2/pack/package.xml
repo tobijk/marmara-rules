@@ -49,6 +49,7 @@
         </patches>
 
         <requires>
+            <package name="libc6-dev"/>
         </requires>
 
         <!-- build rules -->
