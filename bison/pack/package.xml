@@ -21,6 +21,7 @@
         </sources>
 
         <requires>
+            <package name="libc6-dev"/>
             <package name="m4"/>
             <package name="autotools-dev"/>
         </requires>
