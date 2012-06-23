@@ -17,6 +17,6 @@
         <file src="/usr/bin/zsh"/>
         <file src="/usr/share/zsh/"/>
         <file src="/usr/lib/zsh/"/>
-        <file src="/etc/"/>
+        <file src="/etc/zsh/"/>
     </contents>
 </package>
