@@ -15,7 +15,7 @@
         <def name="XPACK_BUILD_DIR" value="tmp-build"/>
     </defines>
 
-    <source name="curl" architecture-independent="false">
+    <source name="file" architecture-independent="false">
         &description;
 
         <sources>
