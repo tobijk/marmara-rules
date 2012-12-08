@@ -1,0 +1,1 @@
+../scripts/selfx-tools.sh
