@@ -16,9 +16,9 @@
     </requires>
 
     <contents>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/cc1obj"/>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/include/objc/"/>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/libobjc.{a,so}"/>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/libobjc_gc.{a,so}"/>
+        <file src="/usr/lib/gcc/*/4.5/cc1obj"/>
+        <file src="/usr/lib/gcc/*/4.5/include/objc/"/>
+        <file src="/usr/lib/gcc/*/4.5/libobjc.{a,so}"/>
+        <file src="/usr/lib/gcc/*/4.5/libobjc_gc.{a,so}"/>
     </contents>
 </package>

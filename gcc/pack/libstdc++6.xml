@@ -18,6 +18,6 @@
     </requires>
 
     <contents>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/libstdc++.so.*"/>
+        <file src="/usr/lib/gcc/*/4.5/libstdc++.so.*"/>
     </contents>
 </package>

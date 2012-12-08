@@ -19,6 +19,6 @@
         <!-- TODO: provide wrapper
         <file src="/usr/bin/fixincludes"/>
         -->
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/install-tools/"/>
+        <file src="/usr/lib/gcc/*/4.5/install-tools/"/>
     </contents>
 </package>

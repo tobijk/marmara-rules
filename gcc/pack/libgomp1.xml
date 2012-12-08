@@ -13,6 +13,6 @@
     </requires>
 
     <contents>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/libgomp.so.*"/>
+        <file src="/usr/lib/gcc/*/4.5/libgomp.so.*"/>
     </contents>
 </package>

@@ -9,6 +9,6 @@
     </description>
 
     <contents>
-        <dir src="/usr/lib/gcc/i686-pc-linux-gnu/4.5"/>
+        <dir src="/usr/lib/gcc/*/4.5"/>
     </contents>
 </package>

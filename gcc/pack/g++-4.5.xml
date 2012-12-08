@@ -16,7 +16,7 @@
     <contents>
         <!-- these are hardlinked -->
         <file src="/usr/bin/g++-4.5"/>
-        <file src="/usr/bin/i686-pc-linux-gnu-g++-4.5"/>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/cc1plus"/>
+        <file src="/usr/bin/*-g++-4.5"/>
+        <file src="/usr/lib/gcc/*/4.5/cc1plus"/>
     </contents>
 </package>

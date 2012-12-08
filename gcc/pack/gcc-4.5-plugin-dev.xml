@@ -16,6 +16,6 @@
     </requires>
 
     <contents>
-        <file src="/usr/lib/gcc/i686-pc-linux-gnu/4.5/plugin/include"/>
+        <file src="/usr/lib/gcc/*/4.5/plugin/include"/>
     </contents>
 </package>
