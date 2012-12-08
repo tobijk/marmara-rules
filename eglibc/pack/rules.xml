@@ -5,20 +5,20 @@
     <![CDATA[
 
 cd "$XPACK_SOURCE_DIR"
-# re-arrange sources
-mv linuxthreads/* libc
-mv ports libc
+mv ports libc || true
 
 export CFLAGS="$CFLAGS -fno-stack-protector -U_FORTIFY_SOURCE"
-export BASH_SHELL=/bin/sh
+export BASH_SHELL=$XPACK_EXTRA_PREFIX/bin/sh
 
 # configure
 cd "$XPACK_BUILD_DIR"
 $XPACK_SOURCE_DIR/libc/configure \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-        --libexecdir=/usr/lib \
+        --prefix=$XPACK_EXTRA_PREFIX/usr \
+        --sysconfdir=$XPACK_EXTRA_PREFIX/etc \
+        --libexecdir=$XPACK_EXTRA_PREFIX/usr/lib \
+        --host=$XPACK_HOST_TYPE \
         --disable-profile \
+        --enable-add-ons \
         --enable-kernel=2.6.32
 
     ]]>
@@ -28,8 +28,8 @@ $XPACK_SOURCE_DIR/libc/configure \
     <![CDATA[
 
 # create configparams
-echo "slibdir=/usr/lib" >> "$XPACK_BUILD_DIR/configparms"
-echo "rootsbindir=/usr/sbin" >> "$XPACK_BUILD_DIR/configparms"
+echo "slibdir=$XPACK_EXTRA_PREFIX/usr/lib" >> "$XPACK_BUILD_DIR/configparms"
+echo "rootsbindir=$XPACK_EXTRA_PREFIX/usr/sbin" >> "$XPACK_BUILD_DIR/configparms"
 
 cd "$XPACK_BUILD_DIR"
 make PARALLELMFLAGS="-j${XPACK_PARALLEL_JOBS}"
@@ -42,8 +42,8 @@ make PARALLELMFLAGS="-j${XPACK_PARALLEL_JOBS}"
 
 cd "$XPACK_BUILD_DIR"
 make install_root="$XPACK_INSTALL_DIR" install
-install -m 644 "$XPACK_SOURCE_DIR/libc/posix/gai.conf" "$XPACK_INSTALL_DIR/etc/gai.conf"
-install -m 644 "$XPACK_SOURCE_DIR/libc/nscd/nscd.conf" "$XPACK_INSTALL_DIR/etc/nscd.conf"
+install -m 644 "$XPACK_SOURCE_DIR/libc/posix/gai.conf" "$XPACK_INSTALL_DIR/$XPACK_EXTRA_PREFIX/etc/gai.conf"
+install -m 644 "$XPACK_SOURCE_DIR/libc/nscd/nscd.conf" "$XPACK_INSTALL_DIR/$XPACK_EXTRA_PREFIX/etc/nscd.conf"
 
     ]]>
     </install>
